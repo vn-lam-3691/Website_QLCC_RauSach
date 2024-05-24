@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "8BSK1t6knkSgmPF9rYvbptvtkdGhPe9/DUtrmBZ3lGM=",
+  "Hash": "az6yx9q7SS+JYZromXmFooO2PirTqqOhtrhNmHqqXsg=",
   "Source": "Website_QLCC_RauSach",
   "BasePath": "_content/Website_QLCC_RauSach",
   "Mode": "Default",
@@ -207,6 +207,25 @@
       "OriginalItemSpec": "wwwroot\\assets\\css\\style.css"
     },
     {
+      "Identity": "D:\\Workspace\\ASP.NET\\Website_QLCC_RauSach\\Website_QLCC_RauSach\\wwwroot\\assets\\css\\style2.css",
+      "SourceId": "Website_QLCC_RauSach",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Workspace\\ASP.NET\\Website_QLCC_RauSach\\Website_QLCC_RauSach\\wwwroot\\",
+      "BasePath": "_content/Website_QLCC_RauSach",
+      "RelativePath": "assets/css/style2.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\css\\style2.css"
+    },
+    {
       "Identity": "D:\\Workspace\\ASP.NET\\Website_QLCC_RauSach\\Website_QLCC_RauSach\\wwwroot\\assets\\fonts\\ElegantIcons.eot",
       "SourceId": "Website_QLCC_RauSach",
       "SourceType": "Discovered",
@@ -395,6 +414,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\fonts\\fontawesome-webfont.woff2"
+    },
+    {
+      "Identity": "D:\\Workspace\\ASP.NET\\Website_QLCC_RauSach\\Website_QLCC_RauSach\\wwwroot\\assets\\fonts\\style.css",
+      "SourceId": "Website_QLCC_RauSach",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Workspace\\ASP.NET\\Website_QLCC_RauSach\\Website_QLCC_RauSach\\wwwroot\\",
+      "BasePath": "_content/Website_QLCC_RauSach",
+      "RelativePath": "assets/fonts/style.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\fonts\\style.css"
     },
     {
       "Identity": "D:\\Workspace\\ASP.NET\\Website_QLCC_RauSach\\Website_QLCC_RauSach\\wwwroot\\assets\\img\\banner\\banner-1.jpg",

@@ -26,8 +26,40 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = D:\Workspace\ASP.NET\Website_QLCC_RauSach\Website_QLCC_RauSach
 build_property._RazorSourceGeneratorDebug = 
 
+[D:/Workspace/ASP.NET/Website_QLCC_RauSach/Website_QLCC_RauSach/Areas/Admin/Shared/_LayoutContainer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cU2hhcmVkXF9MYXlvdXRDb250YWluZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Workspace/ASP.NET/Website_QLCC_RauSach/Website_QLCC_RauSach/Areas/Admin/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Workspace/ASP.NET/Website_QLCC_RauSach/Website_QLCC_RauSach/Areas/Admin/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Workspace/ASP.NET/Website_QLCC_RauSach/Website_QLCC_RauSach/Areas/NhaCungCap/Shared/_LayoutContainer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTmhhQ3VuZ0NhcFxTaGFyZWRcX0xheW91dENvbnRhaW5lci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Workspace/ASP.NET/Website_QLCC_RauSach/Website_QLCC_RauSach/Areas/NhaCungCap/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTmhhQ3VuZ0NhcFxWaWV3c1xIb21lXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Workspace/ASP.NET/Website_QLCC_RauSach/Website_QLCC_RauSach/Areas/NhaCungCap/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTmhhQ3VuZ0NhcFxWaWV3c1xfVmlld0ltcG9ydHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Workspace/ASP.NET/Website_QLCC_RauSach/Website_QLCC_RauSach/Views/Account/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Workspace/ASP.NET/Website_QLCC_RauSach/Website_QLCC_RauSach/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Workspace/ASP.NET/Website_QLCC_RauSach/Website_QLCC_RauSach/Views/Home/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Workspace/ASP.NET/Website_QLCC_RauSach/Website_QLCC_RauSach/Views/Shared/Error.cshtml]

@@ -29,7 +29,7 @@
 <body>
     <!-- Page Preloder -->
     @* <div id="preloder">
-        <div class="loader"></div>
+    <div class="loader"></div>
     </div> *@
     <!-- Header Section Begin -->
     <header class="header">
@@ -52,10 +52,14 @@
                                 @if (HttpContextAccessor.HttpContext.Session.GetInt32("MaTaiKhoan") == null)
                                 {
                                     <a asp-controller="Home" asp-action="Login">Đăng ký / Đăng nhập</a>
-                                } 
-                                else if (HttpContextAccessor.HttpContext.Session.GetInt32("MaPhanQuyen") == 2)
+                                }
+                                else if (HttpContextAccessor.HttpContext.Session.GetInt32("MaPhanQuyen") == 3)
                                 {
-                                    <a asp-controller="Account" asp-action="Index">@HttpContextAccessor.HttpContext.Session.GetString("TenNv")</a>
+                                    <a asp-area="NhaCungCap" asp-controller="Home" asp-action="Index">@HttpContextAccessor.HttpContext.Session.GetString("TenNv")</a>
+                                }
+                                else
+                                {
+                                    <span>Đăng ký / Đăng nhập</span>
                                 }
                             </div>
                         </div>
@@ -151,9 +155,8 @@
         </div>
     </section>
     <!-- Hero Section End -->
-
     @RenderBody()
-    
+
     <!-- Footer Section Begin -->
     <footer class="footer spad">
         <div class="container">
@@ -192,7 +195,7 @@
                         <div class="footer__copyright__text">
                             <p>
                                 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                                Copyright &copy; Tháng 5 Năm 2024 | Nhóm 5 Đồ Án Phần Mềm - UTE thực hiện 
+                                Copyright &copy; Tháng 5 Năm 2024 | Nhóm 5 Đồ Án Phần Mềm - UTE thực hiện
                                 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                             </p>
                         </div>

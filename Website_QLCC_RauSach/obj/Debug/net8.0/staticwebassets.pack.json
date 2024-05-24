@@ -65,6 +65,10 @@
       "PackagePath": "staticwebassets\\assets\\css\\style.css"
     },
     {
+      "Id": "D:\\Workspace\\ASP.NET\\Website_QLCC_RauSach\\Website_QLCC_RauSach\\wwwroot\\assets\\css\\style2.css",
+      "PackagePath": "staticwebassets\\assets\\css\\style2.css"
+    },
+    {
       "Id": "D:\\Workspace\\ASP.NET\\Website_QLCC_RauSach\\Website_QLCC_RauSach\\wwwroot\\assets\\fonts\\ElegantIcons.eot",
       "PackagePath": "staticwebassets\\assets\\fonts\\ElegantIcons.eot"
     },
@@ -103,6 +107,10 @@
     {
       "Id": "D:\\Workspace\\ASP.NET\\Website_QLCC_RauSach\\Website_QLCC_RauSach\\wwwroot\\assets\\fonts\\fontawesome-webfont.woff2",
       "PackagePath": "staticwebassets\\assets\\fonts\\fontawesome-webfont.woff2"
+    },
+    {
+      "Id": "D:\\Workspace\\ASP.NET\\Website_QLCC_RauSach\\Website_QLCC_RauSach\\wwwroot\\assets\\fonts\\style.css",
+      "PackagePath": "staticwebassets\\assets\\fonts\\style.css"
     },
     {
       "Id": "D:\\Workspace\\ASP.NET\\Website_QLCC_RauSach\\Website_QLCC_RauSach\\wwwroot\\assets\\img\\banner\\banner-1.jpg",

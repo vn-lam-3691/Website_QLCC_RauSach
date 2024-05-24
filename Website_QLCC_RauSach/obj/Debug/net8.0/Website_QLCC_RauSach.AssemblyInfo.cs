@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Website_QLCC_RauSach")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cc16b270dffd106c02148c96f82ebad7d80f7001")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1ec2db3a7f245b95c2f3df703b85c4afdceca756")]
 [assembly: System.Reflection.AssemblyProductAttribute("Website_QLCC_RauSach")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Website_QLCC_RauSach")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

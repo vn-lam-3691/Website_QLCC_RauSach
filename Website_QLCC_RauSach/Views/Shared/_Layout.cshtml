@@ -55,7 +55,15 @@
                                 } 
                                 else if (HttpContextAccessor.HttpContext.Session.GetInt32("MaPhanQuyen") == 2)
                                 {
-                                    <a asp-controller="Account" asp-action="Index">@HttpContextAccessor.HttpContext.Session.GetString("TenNv")</a>
+                                    <div class="header__top__right__language">
+                                        <a>@HttpContextAccessor.HttpContext.Session.GetString("TenNv")</a>
+                                        <ul>
+                                            <li><a class="dropdown-item" href="#">Tài khoản</a></li>
+                                            <li><a class="dropdown-item" asp-controller="Account" asp-action="Index">Đơn mua</a></li>
+                                            <li><a class="dropdown-item" asp-controller="Account" asp-action="Logout">Đăng xuất</a></li>
+                                        </ul>
+                                    </div>
+                                    //<a asp-controller="Account" asp-action="Index">@HttpContextAccessor.HttpContext.Session.GetString("TenNv")</a>
                                 }
                             </div>
                         </div>

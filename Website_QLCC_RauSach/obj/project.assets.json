@@ -12089,19 +12089,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\VAN LAM\\.nuget\\packages\\": {}
+    "C:\\Users\\HELLO\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Workspace\\ASP.NET\\Website_QLCC_RauSach\\Website_QLCC_RauSach\\Website_QLCC_RauSach.csproj",
+      "projectUniqueName": "D:\\GitHub\\Website_QLCC_RauSach\\Website_QLCC_RauSach\\Website_QLCC_RauSach.csproj",
       "projectName": "Website_QLCC_RauSach",
-      "projectPath": "D:\\Workspace\\ASP.NET\\Website_QLCC_RauSach\\Website_QLCC_RauSach\\Website_QLCC_RauSach.csproj",
-      "packagesPath": "C:\\Users\\VAN LAM\\.nuget\\packages\\",
-      "outputPath": "D:\\Workspace\\ASP.NET\\Website_QLCC_RauSach\\Website_QLCC_RauSach\\obj\\",
+      "projectPath": "D:\\GitHub\\Website_QLCC_RauSach\\Website_QLCC_RauSach\\Website_QLCC_RauSach.csproj",
+      "packagesPath": "C:\\Users\\HELLO\\.nuget\\packages\\",
+      "outputPath": "D:\\GitHub\\Website_QLCC_RauSach\\Website_QLCC_RauSach\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\VAN LAM\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\HELLO\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -12109,6 +12109,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -12170,7 +12171,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

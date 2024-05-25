@@ -250,6 +250,7 @@ ul {
             justify-content: space-between;
             align-items: center;
             font-size: 14px;
+            border-bottom: 0.1px solid #7FAD39;
 
             .status-order {
                 margin-left: auto;
@@ -330,7 +331,7 @@ ul {
             }
 
             .od-danhgia {
-                width: 10%;
+                width: 15%;
 
                 a {
                     padding: 5px;

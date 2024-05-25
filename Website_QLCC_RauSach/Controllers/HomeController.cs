@@ -61,6 +61,10 @@ namespace Website_QLCC_RauSach.Controllers
                     case 2:
                         var tennvst = _context.NhanVienSts.FirstOrDefault(x => x.MaTk == user.MaTk).TenNv;
                         HttpContext.Session.SetString("TenNv", tennvst);
+
+
+                        var maNVST = _context.NhanVienSts.FirstOrDefault(x => x.MaTk == user.MaTk).MaNv;
+                        HttpContext.Session.SetString("MaNv", maNVST);
                         return RedirectToAction("Index", "Home");
                     case 3:
                         var tennvncc = _context.NhanVienNccs.FirstOrDefault(x => x.MaTk == user.MaTk).TenNv;

@@ -1,8 +1,9 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model IEnumerable<Website_QLCC_RauSach.Models.DonHang>
+
 @{
+    //Layout = null;
 }
+
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -36,6 +37,7 @@
 <link rel="stylesheet" href="~/assets/css/owl.carousel.min.css" type="text/css">
 <link rel="stylesheet" href="~/assets/css/slicknav.min.css" type="text/css">
 <link rel="stylesheet" href="~/assets/css/style.css" type="text/css">
+
 <body class="goto-here">
     <section class="featured spad">
         <div class="container">
@@ -73,49 +75,68 @@
                         <div class="col-md-12 tab-wrap">
 
                             <div class="tab-content bg-light" id="v-pills-tabContent">
-                                
+
                                 <!--Tất cả các đơn-->
                                 <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel" aria-labelledby="v-pills-1-tab">
                                     <ul class="orders">
-
-                                        <!--Một đơn hàng gồm nhiều loại sản phẩm-->
-                                        <li class="order">
-                                            <div class="info-order">
-                                                <p class="id-order">Mã đơn hàng: 2184674641</p>
-                                                <p class="status-order">Tình trạng: <p style="color: #7FAD39">Đang giao</p></p>
-                                            </div>
-                                            <!--Danh sách sản phẩm-->
-                                            <ul class="products-od">
-                                                <li class="product-od">
-                                                    <div class="prd-od-left">
-                                                        <a><img src="images/product12.png"></a>
+                                        @if (ViewBag.donHangsAll != null && ViewBag.donHangsAll.Count > 0)
+                                        {
+                                            @foreach (var item in ViewBag.donHangsAll)
+                                            {
+                                                <li class="order">
+                                                    <div class="info-order">
+                                                        <p class="id-order">Mã đơn hàng: @item.MaDh</p>
+                                                        <p class="status-order">Tình trạng: <span style="color: #7FAD39">@item.TrangThaiDh</span></p>
                                                     </div>
-                                                    <div class="prd-od-center">
-                                                        <h5>Tên sản phẩm</h5>
-                                                        <p>x3</p>
-                                                        <p class="prd-od-price">5.000.000 VNĐ</p>
-                                                    </div>
+                                                    <ul class="products-od">
+                                                        @{
+                                                            decimal totalPrice = 0; // Initialize total price variable
+                                                        }
+                                                        @foreach (var ct in item.ChiTietDonHangs)
+                                                        {
+                                                            <li class="product-od">
+                                                                <div class="prd-od-left">
+                                                                    @foreach (var image in ct.MaMhNavigation.HinhAnhMatHangs)
+                                                                    {
+                                                                        <a><img src="@Url.Content($"../assets/img/myproducts/{image.DuongDanHinhAnh}")"></a>
+                                                                    }
+                                                                </div>
+                                                                <div class="prd-od-center">
+                                                                    <h5>@ct.MaMhNavigation.TenMh</h5>
+                                                                </div>
+                                                                <div class="prd-od-center">
+                                                                    <p>x @ct.SoLuongDat</p>
+                                                                </div>
+                                                                <div class="prd-od-center">
+                                                                    <p class="prd-od-price">@ct.DonGia.ToString("#,##0") VNĐ</p>
+                                                                </div>
+                                                            </li>
+                                                            decimal subtotal = ct.SoLuongDat * ct.DonGia;
+                                                            totalPrice += subtotal;
+                                                        }
+                                                        <div class="od-xacnhan">
+                                                            <p class="od-day-order">Thời gian đặt hàng: <span>@item.TgtaoDon.ToString("h:mm tt dd/MM/yyyy")</span></p>
+                                                            <p class="od-price">Thành tiền: <span>@totalPrice.ToString("#,##0") VNĐ</span></p>
+                                                            <div class="od-danhgia">
+                                                                <a href="#" onclick="document.getElementById('rate-form').style.display='block'" style="width:auto;">Đánh giá</a>
+                                                            </div>
+                                                        </div>
+                                                    </ul>
                                                 </li>
-                                                <li class="product-od">
-                                                    <div class="prd-od-left">
-                                                        <a><img src="images/product12.png"></a>
-                                                    </div>
-                                                    <div class="prd-od-center">
-                                                        <h5>Tên sản phẩm</h5>
-                                                        <p>x3</p>
-                                                        <p class="prd-od-price">5.000.000 VNĐ</p>
-                                                    </div>
-                                                </li>
-                                                <div class="od-xacnhan">
-                                                    <p class="od-day-order">Thời gian đặt hàng: <span>9:00 12/12/2023</span></p>
-                                                    <p class="od-price">Thành tiền: <span>15.000.000 VNĐ</span></p>
-                                                    <div class="od-danhgia">
-                                                        <a href="#" onclick="document.getElementById('rate-form').style.display='block'" style="width:auto;">Đánh giá</a>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <div class="hero-wrap">
+                                                <div class="container">
+                                                    <div class="row no-gutters slider-text align-items-center justify-content-center">
+                                                        <div class="col-md-9 ftco-animate text-center">
+                                                            <h6 class="mb-0 bread">Chưa có đơn hàng nào</h6>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </ul>
-                                        </li>
-                                        <!--Hết 1 order-->
+                                            </div>
+                                        }
                                     </ul>
 
                                     <!--Đánh giá sản phẩm-->
@@ -169,44 +190,64 @@
                                 <!--Các đơn chờ xác nhận-->
                                 <div class="tab-pane fade" id="v-pills-2" role="tabpanel" aria-labelledby="v-pills-2-tab">
                                     <ul class="orders">
-
-                                        <!--Một đơn hàng gồm nhiều loại sản phẩm-->
-                                        <li class="order">
-                                            <div class="info-order">
-                                                <p class="id-order">Mã đơn hàng: 2184674641</p>|
-                                                <p class="status-order">Đang giao</p>
-                                            </div>
-                                            <!--Danh sách sản phẩm-->
-                                            <ul class="products-od">
-                                                <li class="product-od">
-                                                    <div class="prd-od-left">
-                                                        <a><img src="images/product12.png"></a>
+                                        @if (ViewBag.donHangsCXN != null && ViewBag.donHangsCXN.Count > 0)
+                                        {
+                                            @foreach (var item in ViewBag.donHangsCXN)
+                                            {
+                                                <li class="order">
+                                                    <div class="info-order">
+                                                        <p class="id-order">Mã đơn hàng: @item.MaDh</p>
+                                                        <p class="status-order">Tình trạng: <span style="color: #7FAD39">@item.TrangThaiDh</span></p>
                                                     </div>
-                                                    <div class="prd-od-center">
-                                                        <h5>Tên sản phẩm</h5>
-                                                        <p>x3</p>
-                                                        <p class="prd-od-price">5.000.000 VNĐ</p>
-                                                    </div>
+                                                    <ul class="products-od">
+                                                        @{
+                                                            decimal totalPrice = 0; // Initialize total price variable
+                                                        }
+                                                        @foreach (var ct in item.ChiTietDonHangs)
+                                                        {
+                                                            <li class="product-od">
+                                                                <div class="prd-od-left">
+                                                                    @foreach (var image in ct.MaMhNavigation.HinhAnhMatHangs)
+                                                                    {
+                                                                        <a><img src="@Url.Content($"../assets/img/myproducts/{image.DuongDanHinhAnh}")"></a>
+                                                                    }
+                                                                </div>
+                                                                <div class="prd-od-center">
+                                                                    <h5>@ct.MaMhNavigation.TenMh</h5>
+                                                                </div>
+                                                                <div class="prd-od-center">
+                                                                    <p>x @ct.SoLuongDat</p>
+                                                                </div>
+                                                                <div class="prd-od-center">
+                                                                    <p class="prd-od-price">@ct.DonGia.ToString("#,##0") VNĐ</p>
+                                                                </div>
+                                                            </li>
+                                                            decimal subtotal = ct.SoLuongDat * ct.DonGia;
+                                                            totalPrice += subtotal;
+                                                        }
+                                                        <div class="od-xacnhan">
+                                                            <p class="od-day-order">Thời gian đặt hàng: <span>@item.TgtaoDon.ToString("h:mm tt dd/MM/yyyy")</span></p>
+                                                            <p class="od-price">Thành tiền: <span>@totalPrice.ToString("#,##0") VNĐ</span></p>
+                                                            <div class="od-danhgia">
+                                                                <a href="#" onclick="document.getElementById('rate-form-2').style.display='block'" style="width:auto;">Hủy đơn hàng</a>
+                                                            </div>
+                                                        </div>
+                                                    </ul>
                                                 </li>
-                                                <li class="product-od">
-                                                    <div class="prd-od-left">
-                                                        <a><img src="images/product12.png"></a>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <div class="hero-wrap">
+                                                <div class="container">
+                                                    <div class="row no-gutters slider-text align-items-center justify-content-center">
+                                                        <div class="col-md-9 ftco-animate text-center">
+                                                            <h6 class="mb-0 bread">Chưa có đơn hàng nào</h6>
+                                                        </div>
                                                     </div>
-                                                    <div class="prd-od-center">
-                                                        <h5>Tên sản phẩm</h5>
-                                                        <p>x3</p>
-                                                        <p class="prd-od-price">5.000.000 VNĐ</p>
-                                                    </div>
-                                                    <div class="btn-danhgia">
-                                                        <a href="#" onclick="document.getElementById('rate-form-2').style.display='block'" style="width:auto;">Đánh giá</a>
-                                                    </div>
-                                                </li>
-                                                <div class="od-xacnhan">
-                                                    <p class="od-price">Thành tiền: <span>15.000.000 VNĐ</span></p>
                                                 </div>
-                                            </ul>
-                                        </li>
-                                        <!--Hết 1 order-->
+                                            </div>
+                                        }
                                     </ul>
 
                                     <!--Đánh giá sản phẩm-->
@@ -260,135 +301,128 @@
                                 <!--Các đơn đang xử lý-->
                                 <div class="tab-pane fade" id="v-pills-3" role="tabpanel" aria-labelledby="v-pills-3-tab">
                                     <ul class="orders">
-
-                                        <!--Một đơn hàng gồm nhiều loại sản phẩm-->
-                                        <li class="order">
-                                            <div class="info-order">
-                                                <p class="id-order">Mã đơn hàng: 2184674641</p>|
-                                                <p class="status-order">Đang giao</p>
-                                            </div>
-                                            <!--Danh sách sản phẩm-->
-                                            <ul class="products-od">
-                                                <li class="product-od">
-                                                    <div class="prd-od-left">
-                                                        <a><img src="images/product12.png"></a>
+                                        @if (ViewBag.donHangsDXL != null && ViewBag.donHangsDXL.Count > 0)
+                                        {
+                                            @foreach (var item in ViewBag.donHangsDXL)
+                                            {
+                                                <li class="order">
+                                                    <div class="info-order">
+                                                        <p class="id-order">Mã đơn hàng: @item.MaDh</p>
+                                                        <p class="status-order">Tình trạng: <span style="color: #7FAD39">@item.TrangThaiDh</span></p>
                                                     </div>
-                                                    <div class="prd-od-center">
-                                                        <h5>Tên sản phẩm</h5>
-                                                        <p>x3</p>
-                                                        <p class="prd-od-price">5.000.000 VNĐ</p>
-                                                    </div>
+                                                    <ul class="products-od">
+                                                        @{
+                                                            decimal totalPrice = 0; // Initialize total price variable
+                                                        }
+                                                        @foreach (var ct in item.ChiTietDonHangs)
+                                                        {
+                                                            <li class="product-od">
+                                                                <div class="prd-od-left">
+                                                                    @foreach (var image in ct.MaMhNavigation.HinhAnhMatHangs)
+                                                                    {
+                                                                        <a><img src="@Url.Content($"../assets/img/myproducts/{image.DuongDanHinhAnh}")"></a>
+                                                                    }
+                                                                </div>
+                                                                <div class="prd-od-center">
+                                                                    <h5>@ct.MaMhNavigation.TenMh</h5>
+                                                                </div>
+                                                                <div class="prd-od-center">
+                                                                    <p>x @ct.SoLuongDat</p>
+                                                                </div>
+                                                                <div class="prd-od-center">
+                                                                    <p class="prd-od-price">@ct.DonGia.ToString("#,##0") VNĐ</p>
+                                                                </div>
+                                                            </li>
+                                                            decimal subtotal = ct.SoLuongDat * ct.DonGia;
+                                                            totalPrice += subtotal;
+                                                        }
+                                                        <div class="od-xacnhan">
+                                                            <p class="od-day-order">Thời gian đặt hàng: <span>@item.TgtaoDon.ToString("h:mm tt dd/MM/yyyy")</span></p>
+                                                            <p class="od-price">Thành tiền: <span>@totalPrice.ToString("#,##0") VNĐ</span></p>
+                                                        </div>
+                                                    </ul>
                                                 </li>
-                                                <li class="product-od">
-                                                    <div class="prd-od-left">
-                                                        <a><img src="images/product12.png"></a>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <div class="hero-wrap">
+                                                <div class="container">
+                                                    <div class="row no-gutters slider-text align-items-center justify-content-center">
+                                                        <div class="col-md-9 ftco-animate text-center">
+                                                            <h6 class="mb-0 bread">Chưa có đơn hàng nào</h6>
+                                                        </div>
                                                     </div>
-                                                    <div class="prd-od-center">
-                                                        <h5>Tên sản phẩm</h5>
-                                                        <p>x3</p>
-                                                        <p class="prd-od-price">5.000.000 VNĐ</p>
-                                                    </div>
-                                                    <div class="btn-danhgia">
-                                                        <a href="#" onclick="document.getElementById('rate-form-3').style.display='block'" style="width:auto;">Đánh giá</a>
-                                                    </div>
-                                                </li>
-                                                <div class="od-xacnhan">
-                                                    <p class="od-price">Thành tiền: <span>15.000.000 VNĐ</span></p>
                                                 </div>
-                                            </ul>
-                                        </li>
-                                        <!--Hết 1 order-->
+                                            </div>
+                                        }
                                     </ul>
-
-                                    <!--Đánh giá sản phẩm-->
-                                    <div class="modal" id="rate-form-3">
-                                        <form class="rate-product animate">
-                                            <div class="close-rate" href="#">
-                                                <a href="#">
-                                                    <i class="fa-solid fa-circle-xmark fa-2xl" onclick="document.getElementById('rate-form-3').style.display='none'" class="close"></i>
-                                                </a>
-                                            </div>
-                                            <div class="product-rate-info">
-                                                <img src="images/product22.png">
-                                                <div class="prd-info">
-                                                    <h4>Tên sản phẩm</h4>
-                                                    <p>5.000.000 VNĐ</p>
-                                                </div>
-                                            </div>
-                                            <div class="rate-star">
-                                                <div class="rating large star-icon direction-rtl value-1 half color-default label-top">
-                                                    <div id="rating">
-                                                        <input type="radio" id="star5" name="rating" value="5" />
-                                                        <label class="full" for="star5" title="Awesome - 5 stars"></label>
-
-                                                        <input type="radio" id="star4" name="rating" value="4" />
-                                                        <label class="full" for="star4" title="Pretty good - 4 stars"></label>
-
-                                                        <input type="radio" id="star3" name="rating" value="3" />
-                                                        <label class="full" for="star3" title="Meh - 3 stars"></label>
-
-                                                        <input type="radio" id="star2" name="rating" value="2" />
-                                                        <label class="full" for="star2" title="Kinda bad - 2 stars"></label>
-
-                                                        <input type="radio" id="star1" name="rating" value="1" />
-                                                        <label class="full" for="star1" title="Sucks big time - 1 star"></label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="rate-comment">
-                                                <h5>Đánh giá về sản phẩm</h5>
-                                                <textarea></textarea>
-                                            </div>
-                                            <div class="btn-rate">
-                                                <a class="huy" href="#">HỦY</a>
-                                                <a class="hoanthanh" href="#">HOÀN THÀNH</a>
-                                            </div>
-                                        </form>
-                                    </div>
-                                    <!--Hết đánh giá sản phẩm-->
                                 </div>
 
                                 <!--Các đơn đang giao-->
                                 <div class="tab-pane fade" id="v-pills-4" role="tabpanel" aria-labelledby="v-pills-4-tab">
                                     <ul class="orders">
-
-                                        <!--Một đơn hàng gồm nhiều loại sản phẩm-->
-                                        <li class="order">
-                                            <div class="info-order">
-                                                <p class="id-order">Mã đơn hàng: 2184674641</p>|
-                                                <p class="status-order">Đang giao</p>
-                                            </div>
-                                            <!--Danh sách sản phẩm-->
-                                            <ul class="products-od">
-                                                <li class="product-od">
-                                                    <div class="prd-od-left">
-                                                        <a><img src="images/product12.png"></a>
+                                        @if (ViewBag.donHangsDG != null && ViewBag.donHangsDG.Count > 0)
+                                        {
+                                            @foreach (var item in ViewBag.donHangsDG)
+                                            {
+                                                <li class="order">
+                                                    <div class="info-order">
+                                                        <p class="id-order">Mã đơn hàng: @item.MaDh</p>
+                                                        <p class="status-order">Tình trạng: <span style="color: #7FAD39">@item.TrangThaiDh</span></p>
                                                     </div>
-                                                    <div class="prd-od-center">
-                                                        <h5>Tên sản phẩm</h5>
-                                                        <p>x3</p>
-                                                        <p class="prd-od-price">5.000.000 VNĐ</p>
-                                                    </div>
+                                                    <ul class="products-od">
+                                                        @{
+                                                            decimal totalPrice = 0; // Initialize total price variable
+                                                        }
+                                                        @foreach (var ct in item.ChiTietDonHangs)
+                                                        {
+                                                            <li class="product-od">
+                                                                <div class="prd-od-left">
+                                                                    @foreach (var image in ct.MaMhNavigation.HinhAnhMatHangs)
+                                                                    {
+                                                                        <a><img src="@Url.Content($"../assets/img/myproducts/{image.DuongDanHinhAnh}")"></a>
+                                                                    }
+                                                                </div>
+                                                                <div class="prd-od-center">
+                                                                    <h5>@ct.MaMhNavigation.TenMh</h5>
+                                                                </div>
+                                                                <div class="prd-od-center">
+                                                                    <p>x @ct.SoLuongDat</p>
+                                                                </div>
+                                                                <div class="prd-od-center">
+                                                                    <p class="prd-od-price">@ct.DonGia.ToString("#,##0") VNĐ</p>
+                                                                </div>
+                                                            </li>
+                                                            decimal subtotal = ct.SoLuongDat * ct.DonGia;
+                                                            totalPrice += subtotal;
+                                                        }
+                                                        <div class="od-xacnhan">
+                                                            <p class="od-day-order">Thời gian đặt hàng: <span>@item.TgtaoDon.ToString("h:mm tt dd/MM/yyyy")</span></p>
+                                                            <p class="od-price">Thành tiền: <span>@totalPrice.ToString("#,##0") VNĐ</span></p>
+                                                            <div class="od-danhgia">
+                                                                <a href="#" onclick="document.getElementById('rate-form-4').style.display='block'" style="width:auto; background-color:orangered">Đổi hàng</a>
+                                                            </div>
+                                                            <div class="od-danhgia">
+                                                                <a href="#" onclick="document.getElementById('rate-form-4').style.display='block'" style="width:auto;">Xác nhận nhập hàng</a>
+                                                            </div>
+                                                        </div>
+                                                    </ul>
                                                 </li>
-                                                <li class="product-od">
-                                                    <div class="prd-od-left">
-                                                        <a><img src="images/product12.png"></a>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <div class="hero-wrap">
+                                                <div class="container">
+                                                    <div class="row no-gutters slider-text align-items-center justify-content-center">
+                                                        <div class="col-md-9 ftco-animate text-center">
+                                                            <h6 class="mb-0 bread">Chưa có đơn hàng nào</h6>
+                                                        </div>
                                                     </div>
-                                                    <div class="prd-od-center">
-                                                        <h5>Tên sản phẩm</h5>
-                                                        <p>x3</p>
-                                                        <p class="prd-od-price">5.000.000 VNĐ</p>
-                                                    </div>
-                                                    <div class="btn-danhgia">
-                                                        <a href="#" onclick="document.getElementById('rate-form-4').style.display='block'" style="width:auto;">Đánh giá</a>
-                                                    </div>
-                                                </li>
-                                                <div class="od-xacnhan">
-                                                    <p class="od-price">Thành tiền: <span>15.000.000 VNĐ</span></p>
                                                 </div>
-                                            </ul>
-                                        </li>
-                                        <!--Hết 1 order-->
+                                            </div>
+                                        }
                                     </ul>
 
                                     <!--Đánh giá sản phẩm-->
@@ -442,44 +476,67 @@
                                 <!--Các đơn đã hoàn thành-->
                                 <div class="tab-pane fade" id="v-pills-5" role="tabpanel" aria-labelledby="v-pills-5-tab">
                                     <ul class="orders">
-
-                                        <!--Một đơn hàng gồm nhiều loại sản phẩm-->
-                                        <li class="order">
-                                            <div class="info-order">
-                                                <p class="id-order">Mã đơn hàng: 2184674641</p>|
-                                                <p class="status-order">Đang giao</p>
-                                            </div>
-                                            <!--Danh sách sản phẩm-->
-                                            <ul class="products-od">
-                                                <li class="product-od">
-                                                    <div class="prd-od-left">
-                                                        <a><img src="images/product12.png"></a>
+                                        @if (ViewBag.donHangsHT != null && ViewBag.donHangsHT.Count > 0)
+                                        {
+                                            @foreach (var item in ViewBag.donHangsHT)
+                                            {
+                                                <li class="order">
+                                                    <div class="info-order">
+                                                        <p class="id-order">Mã đơn hàng: @item.MaDh</p>
+                                                        <p class="status-order">Tình trạng: <span style="color: #7FAD39">@item.TrangThaiDh</span></p>
                                                     </div>
-                                                    <div class="prd-od-center">
-                                                        <h5>Tên sản phẩm</h5>
-                                                        <p>x3</p>
-                                                        <p class="prd-od-price">5.000.000 VNĐ</p>
-                                                    </div>
+                                                    <ul class="products-od">
+                                                        @{
+                                                            decimal totalPrice = 0; // Initialize total price variable
+                                                        }
+                                                        @foreach (var ct in item.ChiTietDonHangs)
+                                                        {
+                                                            <li class="product-od">
+                                                                <div class="prd-od-left">
+                                                                    @foreach (var image in ct.MaMhNavigation.HinhAnhMatHangs)
+                                                                    {
+                                                                        <a><img src="@Url.Content($"../assets/img/myproducts/{image.DuongDanHinhAnh}")"></a>
+                                                                    }
+                                                                </div>
+                                                                <div class="prd-od-center">
+                                                                    <h5>@ct.MaMhNavigation.TenMh</h5>
+                                                                </div>
+                                                                <div class="prd-od-center">
+                                                                    <p>x @ct.SoLuongDat</p>
+                                                                </div>
+                                                                <div class="prd-od-center">
+                                                                    <p class="prd-od-price">@ct.DonGia.ToString("#,##0") VNĐ</p>
+                                                                </div>
+                                                            </li>
+                                                            decimal subtotal = ct.SoLuongDat * ct.DonGia;
+                                                            totalPrice += subtotal;
+                                                        }
+                                                        <div class="od-xacnhan">
+                                                            <p class="od-day-order">Thời gian đặt hàng: <span>@item.TgtaoDon.ToString("h:mm tt dd/MM/yyyy")</span></p>
+                                                            <p class="od-price">Thành tiền: <span>@totalPrice.ToString("#,##0") VNĐ</span></p>
+                                                            <div class="od-danhgia">
+                                                                <a href="#" onclick="document.getElementById('rate-form-5').style.display='block'" style="width:auto;">Đánh giá</a>
+                                                            </div>
+                                                            <div class="od-danhgia">
+                                                                <a href="#" onclick="document.getElementById('rate-form-5').style.display='block'" style="width:auto;">Mua lại</a>
+                                                            </div>
+                                                        </div>
+                                                    </ul>
                                                 </li>
-                                                <li class="product-od">
-                                                    <div class="prd-od-left">
-                                                        <a><img src="images/product12.png"></a>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <div class="hero-wrap">
+                                                <div class="container">
+                                                    <div class="row no-gutters slider-text align-items-center justify-content-center">
+                                                        <div class="col-md-9 ftco-animate text-center">
+                                                            <h6 class="mb-0 bread">Chưa có đơn hàng nào</h6>
+                                                        </div>
                                                     </div>
-                                                    <div class="prd-od-center">
-                                                        <h5>Tên sản phẩm</h5>
-                                                        <p>x3</p>
-                                                        <p class="prd-od-price">5.000.000 VNĐ</p>
-                                                    </div>
-                                                    <div class="btn-danhgia">
-                                                        <a href="#" onclick="document.getElementById('rate-form-5').style.display='block'" style="width:auto;">Đánh giá</a>
-                                                    </div>
-                                                </li>
-                                                <div class="od-xacnhan">
-                                                    <p class="od-price">Thành tiền: <span>15.000.000 VNĐ</span></p>
                                                 </div>
-                                            </ul>
-                                        </li>
-                                        <!--Hết 1 order-->
+                                            </div>
+                                        }
                                     </ul>
 
                                     <!--Đánh giá sản phẩm-->
@@ -533,44 +590,64 @@
                                 <!--Các đơn đã hủy-->
                                 <div class="tab-pane fade" id="v-pills-6" role="tabpanel" aria-labelledby="v-pills-6-tab">
                                     <ul class="orders">
-
-                                        <!--Một đơn hàng gồm nhiều loại sản phẩm-->
-                                        <li class="order">
-                                            <div class="info-order">
-                                                <p class="id-order">Mã đơn hàng: 2184674641</p>|
-                                                <p class="status-order">Đang giao</p>
-                                            </div>
-                                            <!--Danh sách sản phẩm-->
-                                            <ul class="products-od">
-                                                <li class="product-od">
-                                                    <div class="prd-od-left">
-                                                        <a><img src="images/product12.png"></a>
+                                        @if (ViewBag.donHangsDH != null && ViewBag.donHangsDH.Count > 0)
+                                        {
+                                            @foreach (var item in ViewBag.donHangsDH)
+                                            {
+                                                <li class="order">
+                                                    <div class="info-order">
+                                                        <p class="id-order">Mã đơn hàng: @item.MaDh</p>
+                                                        <p class="status-order">Tình trạng: <span style="color: #7FAD39">@item.TrangThaiDh</span></p>
                                                     </div>
-                                                    <div class="prd-od-center">
-                                                        <h5>Tên sản phẩm</h5>
-                                                        <p>x3</p>
-                                                        <p class="prd-od-price">5.000.000 VNĐ</p>
-                                                    </div>
+                                                    <ul class="products-od">
+                                                        @{
+                                                            decimal totalPrice = 0; // Initialize total price variable
+                                                        }
+                                                        @foreach (var ct in item.ChiTietDonHangs)
+                                                        {
+                                                            <li class="product-od">
+                                                                <div class="prd-od-left">
+                                                                    @foreach (var image in ct.MaMhNavigation.HinhAnhMatHangs)
+                                                                    {
+                                                                        <a><img src="@Url.Content($"../assets/img/myproducts/{image.DuongDanHinhAnh}")"></a>
+                                                                    }
+                                                                </div>
+                                                                <div class="prd-od-center">
+                                                                    <h5>@ct.MaMhNavigation.TenMh</h5>
+                                                                </div>
+                                                                <div class="prd-od-center">
+                                                                    <p>x @ct.SoLuongDat</p>
+                                                                </div>
+                                                                <div class="prd-od-center">
+                                                                    <p class="prd-od-price">@ct.DonGia.ToString("#,##0") VNĐ</p>
+                                                                </div>
+                                                            </li>
+                                                            decimal subtotal = ct.SoLuongDat * ct.DonGia;
+                                                            totalPrice += subtotal;
+                                                        }
+                                                        <div class="od-xacnhan">
+                                                            <p class="od-day-order">Thời gian đặt hàng: <span>@item.TgtaoDon.ToString("h:mm tt dd/MM/yyyy")</span></p>
+                                                            <p class="od-price">Thành tiền: <span>@totalPrice.ToString("#,##0") VNĐ</span></p>
+                                                            <div class="od-danhgia">
+                                                                <a href="#" onclick="document.getElementById('rate-form-6').style.display='block'" style="width:auto;">Mua lại</a>
+                                                            </div>
+                                                        </div>
+                                                    </ul>
                                                 </li>
-                                                <li class="product-od">
-                                                    <div class="prd-od-left">
-                                                        <a><img src="images/product12.png"></a>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <div class="hero-wrap">
+                                                <div class="container">
+                                                    <div class="row no-gutters slider-text align-items-center justify-content-center">
+                                                        <div class="col-md-9 ftco-animate text-center">
+                                                            <h6 class="mb-0 bread">Chưa có đơn hàng nào</h6>
+                                                        </div>
                                                     </div>
-                                                    <div class="prd-od-center">
-                                                        <h5>Tên sản phẩm</h5>
-                                                        <p>x3</p>
-                                                        <p class="prd-od-price">5.000.000 VNĐ</p>
-                                                    </div>
-                                                    <div class="btn-danhgia">
-                                                        <a href="#" onclick="document.getElementById('rate-form-6').style.display='block'" style="width:auto;">Đánh giá</a>
-                                                    </div>
-                                                </li>
-                                                <div class="od-xacnhan">
-                                                    <p class="od-price">Thành tiền: <span>15.000.000 VNĐ</span></p>
                                                 </div>
-                                            </ul>
-                                        </li>
-                                        <!--Hết 1 order-->
+                                            </div>
+                                        }
                                     </ul>
 
                                     <!--Đánh giá sản phẩm-->

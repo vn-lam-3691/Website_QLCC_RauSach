@@ -22,41 +22,43 @@
         </div>
     </div>
 </div>
-@{
-    foreach (var chiTietDonHang in Model)
-    {
-        <div class="border-2 border-success p-4 my-4 position-relative flex rounded">
-            <img class="img-fluid img-thumbnail" src="@chiTietDonHang.DuongDanHinhAnh" />
-            <div>
-                <div class="flex gap-3 ml-10 mt-3 mb-3" style="font-size: 20px;">
-                    <div> Mã Đơn Hàng:</div>
-                    <div> @chiTietDonHang.MaDh </div>
-                </div>
-                <div class="flex gap-3 ml-10 mt-3 mb-3" style="font-size: 20px;">
-                    <div> Mã Mặt Hàng:</div>
-                    <div> @chiTietDonHang.Mamh</div>
-                </div>
-                <div class="flex gap-3 ml-10 mt-3 mb-3" style="font-size: 20px;">
-                    <div> Tên Mặt Hàng: </div>
-                    <div> @chiTietDonHang.TenMatHang</div>
-                </div>
-                <div class="flex gap-3 ml-10 mt-3 mb-3" style="font-size: 20px;">
-                    <div> Mô Tả: </div>
-                    <div> @chiTietDonHang.MoTa</div>
-                </div>
-                <div class="flex gap-3 ml-10 mt-3 mb-3" style="font-size: 20px;">
-                    <div> Đv Tính: </div>
-                    <div> @chiTietDonHang.DonViTinh</div>
-                </div>
-                <div class="flex gap-3 ml-10 mb-3" style="font-size: 20px;">
-                    <div> Số Lượng Đặt: </div>
-                    <div> @chiTietDonHang.SoLuongDat</div>
-                </div>
-                <div class="flex gap-3 ml-10 mb-3" style="font-size: 20px;">
-                    <div> Đơn Giá: </div>
-                    <div> @chiTietDonHang.DonGia</div>
+<div class="border-2 border-success p-4 my-4 position-relative flex rounded">
+    <div class="flex gap-3 ml-10 mt-3 mb-3" style="font-size: 20px;">
+        <div> Mã Đơn Hàng:</div>
+        <div> @Model.FirstOrDefault()?.MaDh </div>
+    </div>
+    <div class="ml-10">
+        @foreach (var chiTietDonHang in Model)
+        {
+            <div class="border-2 border-primary p-4 my-4 position-relative flex rounded">
+                <img class="img-fluid img-thumbnail" src="@chiTietDonHang.DuongDanHinhAnh" />
+                <div>
+                    <div class="flex gap-3 ml-10 mt-3 mb-3" style="font-size: 20px;">
+                        <div> Mã Mặt Hàng:</div>
+                        <div> @chiTietDonHang.Mamh</div>
+                    </div>
+                    <div class="flex gap-3 ml-10 mt-3 mb-3" style="font-size: 20px;">
+                        <div> Tên Mặt Hàng: </div>
+                        <div> @chiTietDonHang.TenMatHang</div>
+                    </div>
+                    <div class="flex gap-3 ml-10 mt-3 mb-3" style="font-size: 20px;">
+                        <div> Mô Tả: </div>
+                        <div> @chiTietDonHang.MoTa</div>
+                    </div>
+                    <div class="flex gap-3 ml-10 mt-3 mb-3" style="font-size: 20px;">
+                        <div> Đv Tính: </div>
+                        <div> @chiTietDonHang.DonViTinh</div>
+                    </div>
+                    <div class="flex gap-3 ml-10 mb-3" style="font-size: 20px;">
+                        <div> Số Lượng Đặt: </div>
+                        <div> @chiTietDonHang.SoLuongDat</div>
+                    </div>
+                    <div class="flex gap-3 ml-10 mb-3" style="font-size: 20px;">
+                        <div> Đơn Giá: </div>
+                        <div> @chiTietDonHang.DonGia</div>
+                    </div>
                 </div>
             </div>
-        </div>
-    }
-}
+        }
+    </div>
+</div>

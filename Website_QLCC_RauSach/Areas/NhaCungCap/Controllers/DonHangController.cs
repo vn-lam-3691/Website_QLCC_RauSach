@@ -71,10 +71,11 @@ namespace Website_QLCC_RauSach.Areas.NhaCungCap.Controllers
 			switch(donHang.TrangThaiDh)
 			{
 				case "0":
-					currentDonHang.TrangThaiDh = "Đang Giao Hàng";
-					break;
-				case "1":
 					currentDonHang.TrangThaiDh = "Chờ xác nhận";
+
+                    break;
+				case "1":
+					currentDonHang.TrangThaiDh = "Đang Giao Hàng";
 					break;
 				case "2":
 					currentDonHang.TrangThaiDh = "Đã giao hàng";

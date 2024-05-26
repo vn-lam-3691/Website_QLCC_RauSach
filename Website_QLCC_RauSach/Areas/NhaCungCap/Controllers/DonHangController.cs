@@ -20,9 +20,11 @@ namespace Website_QLCC_RauSach.Areas.NhaCungCap.Controllers
 
 			var donHangDangChoXacNhan = await dbContext.DonHangs.Where(dh => dh.TrangThaiDh == "Chờ xác nhận").ToListAsync();
 
-			var donHangDangGiao = await dbContext.DonHangs.Where(dh => dh.TrangThaiDh == "Đang giao hàng").ToListAsync();
+			var donHangDangXuLy = await dbContext.DonHangs.Where(dh => dh.TrangThaiDh == "Đang xử lý").ToListAsync();
 
-			var donHangDaGiao = await dbContext.DonHangs.Where(dh => dh.TrangThaiDh == "Đã giao hàng").ToListAsync();
+			var donHangDangVanChuyen = await dbContext.DonHangs.Where(dh => dh.TrangThaiDh == "Đang vận chuyển").ToListAsync();
+
+            var donHangDaHoanThanh = await dbContext.DonHangs.Where(dh => dh.TrangThaiDh == "Hoàn thành").ToListAsync();
 
 			var donHangDaHuy = await dbContext.DonHangs.Where(dh => dh.TrangThaiDh == "Đã hủy").ToListAsync();
 
@@ -30,8 +32,9 @@ namespace Website_QLCC_RauSach.Areas.NhaCungCap.Controllers
 			{
 				TatCaDonHang = tatCaDonHang,
 				ChoXacNhanDonHang = donHangDangChoXacNhan,
-				DangGiaoDonHang = donHangDangGiao,
-				DaGiaoDonHang = donHangDaGiao,
+				DangXuLyDonHang = donHangDangXuLy,
+				DangVanChuyenDonHang = donHangDangVanChuyen,
+				DaHoanThanhDonHang = donHangDaHoanThanh,
 				DaHuyDonHang = donHangDaHuy
 			};
 
@@ -74,13 +77,16 @@ namespace Website_QLCC_RauSach.Areas.NhaCungCap.Controllers
 					currentDonHang.TrangThaiDh = "Chờ xác nhận";
 
                     break;
-				case "1":
-					currentDonHang.TrangThaiDh = "Đang Giao Hàng";
-					break;
-				case "2":
-					currentDonHang.TrangThaiDh = "Đã giao hàng";
+                case "1":
+                    currentDonHang.TrangThaiDh = "Đang Xử Lý";
+                    break;
+                case "2":
+					currentDonHang.TrangThaiDh = "Đang Vận Chuyển";
 					break;
 				case "3":
+					currentDonHang.TrangThaiDh = "Hoàn thành";
+					break;
+				case "4":
 					currentDonHang.TrangThaiDh = "Đã hủy";
 					break;
 			}

@@ -17,8 +17,9 @@
     public enum TrangThaiDonHang
     {
         ChoXacNhan,
-        DangGiaoHang,
-        DaGiaoHang,
+        DangXuLy,
+        DangVanChuyen,
+        DaHoanThanh,
         DaHuy
     }
 }

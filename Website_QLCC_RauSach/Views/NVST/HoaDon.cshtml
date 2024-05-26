@@ -1,0 +1,79 @@
+﻿@model IEnumerable<Website_QLCC_RauSach.Models.HoaDon>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>HoaDon</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 20px;
+        }
+        .table {
+            background-color: #ffffff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .btn-custom {
+            margin-right: 5px;
+        }
+        .table thead {
+            background-color: #007bff;
+            color: white;
+        }
+        .table-striped tbody tr:nth-of-type(odd) {
+            background-color: #f2f2f2;
+        }
+        h2 {
+            color: #343a40;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h2>Hóa Đơn</h2>
+            <a asp-action="Create" class="btn btn-primary">Thêm Mới</a>
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.MaHd)</th>
+                    <th>@Html.DisplayNameFor(model => model.MaDh)</th>
+                    <th>@Html.DisplayNameFor(model => model.MaNvgh)</th>
+                    <th>@Html.DisplayNameFor(model => model.TongTien)</th>
+                    <th>@Html.DisplayNameFor(model => model.PhuongThucThanhToan)</th>
+                    <th>@Html.DisplayNameFor(model => model.GhiChu)</th>
+                    <th>Hành động</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model) {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.MaHd)</td>
+                        <td>@Html.DisplayFor(modelItem => item.MaDh)</td>
+                        <td>@Html.DisplayFor(modelItem => item.MaNvgh)</td>
+                        <td>@Html.DisplayFor(modelItem => item.TongTien)</td>
+                        <td>@Html.DisplayFor(modelItem => item.PhuongThucThanhToan)</td>
+                        <td>@Html.DisplayFor(modelItem => item.GhiChu)</td>
+                        <td>
+                            <a asp-action="Edit" asp-route-MaHd="@item.MaHd" class="btn btn-sm btn-info btn-custom">Sửa</a>
+                            <a asp-action="Delete" asp-route-MaHd="@item.MaHd" class="btn btn-sm btn-danger">Xóa</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

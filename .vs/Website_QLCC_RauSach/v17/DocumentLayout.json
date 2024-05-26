@@ -1,0 +1,248 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Website_QLCC_RauSach\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{DB20A633-C35B-4FC4-8A83-62FEFCFD23D9}|Website_QLCC_RauSach\\Website_QLCC_RauSach.csproj|c:\\website_qlcc_rausach\\website_qlcc_rausach\\controllers\\nvst.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DB20A633-C35B-4FC4-8A83-62FEFCFD23D9}|Website_QLCC_RauSach\\Website_QLCC_RauSach.csproj|solutionrelative:website_qlcc_rausach\\controllers\\nvst.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DB20A633-C35B-4FC4-8A83-62FEFCFD23D9}|Website_QLCC_RauSach\\Website_QLCC_RauSach.csproj|c:\\website_qlcc_rausach\\website_qlcc_rausach\\views\\account\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{DB20A633-C35B-4FC4-8A83-62FEFCFD23D9}|Website_QLCC_RauSach\\Website_QLCC_RauSach.csproj|solutionrelative:website_qlcc_rausach\\views\\account\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DB20A633-C35B-4FC4-8A83-62FEFCFD23D9}|Website_QLCC_RauSach\\Website_QLCC_RauSach.csproj|c:\\website_qlcc_rausach\\website_qlcc_rausach\\views\\nvst\\hoadon.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{DB20A633-C35B-4FC4-8A83-62FEFCFD23D9}|Website_QLCC_RauSach\\Website_QLCC_RauSach.csproj|solutionrelative:website_qlcc_rausach\\views\\nvst\\hoadon.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DB20A633-C35B-4FC4-8A83-62FEFCFD23D9}|Website_QLCC_RauSach\\Website_QLCC_RauSach.csproj|c:\\website_qlcc_rausach\\website_qlcc_rausach\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{DB20A633-C35B-4FC4-8A83-62FEFCFD23D9}|Website_QLCC_RauSach\\Website_QLCC_RauSach.csproj|solutionrelative:website_qlcc_rausach\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DB20A633-C35B-4FC4-8A83-62FEFCFD23D9}|Website_QLCC_RauSach\\Website_QLCC_RauSach.csproj|c:\\website_qlcc_rausach\\website_qlcc_rausach\\views\\nvst\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{DB20A633-C35B-4FC4-8A83-62FEFCFD23D9}|Website_QLCC_RauSach\\Website_QLCC_RauSach.csproj|solutionrelative:website_qlcc_rausach\\views\\nvst\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DB20A633-C35B-4FC4-8A83-62FEFCFD23D9}|Website_QLCC_RauSach\\Website_QLCC_RauSach.csproj|c:\\website_qlcc_rausach\\website_qlcc_rausach\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DB20A633-C35B-4FC4-8A83-62FEFCFD23D9}|Website_QLCC_RauSach\\Website_QLCC_RauSach.csproj|solutionrelative:website_qlcc_rausach\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DB20A633-C35B-4FC4-8A83-62FEFCFD23D9}|Website_QLCC_RauSach\\Website_QLCC_RauSach.csproj|c:\\website_qlcc_rausach\\website_qlcc_rausach\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DB20A633-C35B-4FC4-8A83-62FEFCFD23D9}|Website_QLCC_RauSach\\Website_QLCC_RauSach.csproj|solutionrelative:website_qlcc_rausach\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DB20A633-C35B-4FC4-8A83-62FEFCFD23D9}|Website_QLCC_RauSach\\Website_QLCC_RauSach.csproj|c:\\website_qlcc_rausach\\website_qlcc_rausach\\areas\\nhacungcap\\shared\\_layoutcontainer.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{DB20A633-C35B-4FC4-8A83-62FEFCFD23D9}|Website_QLCC_RauSach\\Website_QLCC_RauSach.csproj|solutionrelative:website_qlcc_rausach\\areas\\nhacungcap\\shared\\_layoutcontainer.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DB20A633-C35B-4FC4-8A83-62FEFCFD23D9}|Website_QLCC_RauSach\\Website_QLCC_RauSach.csproj|c:\\website_qlcc_rausach\\website_qlcc_rausach\\areas\\admin\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{DB20A633-C35B-4FC4-8A83-62FEFCFD23D9}|Website_QLCC_RauSach\\Website_QLCC_RauSach.csproj|solutionrelative:website_qlcc_rausach\\areas\\admin\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DB20A633-C35B-4FC4-8A83-62FEFCFD23D9}|Website_QLCC_RauSach\\Website_QLCC_RauSach.csproj|c:\\website_qlcc_rausach\\website_qlcc_rausach\\areas\\admin\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DB20A633-C35B-4FC4-8A83-62FEFCFD23D9}|Website_QLCC_RauSach\\Website_QLCC_RauSach.csproj|solutionrelative:website_qlcc_rausach\\areas\\admin\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DB20A633-C35B-4FC4-8A83-62FEFCFD23D9}|Website_QLCC_RauSach\\Website_QLCC_RauSach.csproj|c:\\website_qlcc_rausach\\website_qlcc_rausach\\areas\\nhacungcap\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{DB20A633-C35B-4FC4-8A83-62FEFCFD23D9}|Website_QLCC_RauSach\\Website_QLCC_RauSach.csproj|solutionrelative:website_qlcc_rausach\\areas\\nhacungcap\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DB20A633-C35B-4FC4-8A83-62FEFCFD23D9}|Website_QLCC_RauSach\\Website_QLCC_RauSach.csproj|c:\\website_qlcc_rausach\\website_qlcc_rausach\\areas\\nhacungcap\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{DB20A633-C35B-4FC4-8A83-62FEFCFD23D9}|Website_QLCC_RauSach\\Website_QLCC_RauSach.csproj|solutionrelative:website_qlcc_rausach\\areas\\nhacungcap\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DB20A633-C35B-4FC4-8A83-62FEFCFD23D9}|Website_QLCC_RauSach\\Website_QLCC_RauSach.csproj|c:\\website_qlcc_rausach\\website_qlcc_rausach\\areas\\nhacungcap\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DB20A633-C35B-4FC4-8A83-62FEFCFD23D9}|Website_QLCC_RauSach\\Website_QLCC_RauSach.csproj|solutionrelative:website_qlcc_rausach\\areas\\nhacungcap\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DB20A633-C35B-4FC4-8A83-62FEFCFD23D9}|Website_QLCC_RauSach\\Website_QLCC_RauSach.csproj|c:\\website_qlcc_rausach\\website_qlcc_rausach\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DB20A633-C35B-4FC4-8A83-62FEFCFD23D9}|Website_QLCC_RauSach\\Website_QLCC_RauSach.csproj|solutionrelative:website_qlcc_rausach\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Website_QLCC_RauSach\\Website_QLCC_RauSach\\Views\\Account\\Index.cshtml",
+              "RelativeDocumentMoniker": "Website_QLCC_RauSach\\Views\\Account\\Index.cshtml",
+              "ToolTip": "C:\\Website_QLCC_RauSach\\Website_QLCC_RauSach\\Views\\Account\\Index.cshtml",
+              "RelativeToolTip": "Website_QLCC_RauSach\\Views\\Account\\Index.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-26T14:00:59.507Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "HoaDon.cshtml",
+              "DocumentMoniker": "C:\\Website_QLCC_RauSach\\Website_QLCC_RauSach\\Views\\NVST\\HoaDon.cshtml",
+              "RelativeDocumentMoniker": "Website_QLCC_RauSach\\Views\\NVST\\HoaDon.cshtml",
+              "ToolTip": "C:\\Website_QLCC_RauSach\\Website_QLCC_RauSach\\Views\\NVST\\HoaDon.cshtml",
+              "RelativeToolTip": "Website_QLCC_RauSach\\Views\\NVST\\HoaDon.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-26T13:46:02.334Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "C:\\Website_QLCC_RauSach\\Website_QLCC_RauSach\\Views\\NVST\\Create.cshtml",
+              "RelativeDocumentMoniker": "Website_QLCC_RauSach\\Views\\NVST\\Create.cshtml",
+              "ToolTip": "C:\\Website_QLCC_RauSach\\Website_QLCC_RauSach\\Views\\NVST\\Create.cshtml",
+              "RelativeToolTip": "Website_QLCC_RauSach\\Views\\NVST\\Create.cshtml",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-26T13:24:12.932Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "NVST.cs",
+              "DocumentMoniker": "C:\\Website_QLCC_RauSach\\Website_QLCC_RauSach\\Controllers\\NVST.cs",
+              "RelativeDocumentMoniker": "Website_QLCC_RauSach\\Controllers\\NVST.cs",
+              "ToolTip": "C:\\Website_QLCC_RauSach\\Website_QLCC_RauSach\\Controllers\\NVST.cs",
+              "RelativeToolTip": "Website_QLCC_RauSach\\Controllers\\NVST.cs",
+              "ViewState": "AQIAAEcAAAAAAAAAAAAAAEcAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-25T11:15:27.082Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Website_QLCC_RauSach\\Website_QLCC_RauSach\\Areas\\Admin\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "Website_QLCC_RauSach\\Areas\\Admin\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Website_QLCC_RauSach\\Website_QLCC_RauSach\\Areas\\Admin\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "Website_QLCC_RauSach\\Areas\\Admin\\Controllers\\HomeController.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-24T02:31:50.402Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "_LayoutContainer.cshtml",
+              "DocumentMoniker": "C:\\Website_QLCC_RauSach\\Website_QLCC_RauSach\\Areas\\NhaCungCap\\Shared\\_LayoutContainer.cshtml",
+              "RelativeDocumentMoniker": "Website_QLCC_RauSach\\Areas\\NhaCungCap\\Shared\\_LayoutContainer.cshtml",
+              "ToolTip": "C:\\Website_QLCC_RauSach\\Website_QLCC_RauSach\\Areas\\NhaCungCap\\Shared\\_LayoutContainer.cshtml",
+              "RelativeToolTip": "Website_QLCC_RauSach\\Areas\\NhaCungCap\\Shared\\_LayoutContainer.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-24T02:28:08.084Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "_ViewImports.cshtml",
+              "DocumentMoniker": "C:\\Website_QLCC_RauSach\\Website_QLCC_RauSach\\Areas\\NhaCungCap\\Views\\_ViewImports.cshtml",
+              "RelativeDocumentMoniker": "Website_QLCC_RauSach\\Areas\\NhaCungCap\\Views\\_ViewImports.cshtml",
+              "ToolTip": "C:\\Website_QLCC_RauSach\\Website_QLCC_RauSach\\Areas\\NhaCungCap\\Views\\_ViewImports.cshtml",
+              "RelativeToolTip": "Website_QLCC_RauSach\\Areas\\NhaCungCap\\Views\\_ViewImports.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-24T02:20:28.705Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "_ViewImports.cshtml",
+              "DocumentMoniker": "C:\\Website_QLCC_RauSach\\Website_QLCC_RauSach\\Views\\_ViewImports.cshtml",
+              "RelativeDocumentMoniker": "Website_QLCC_RauSach\\Views\\_ViewImports.cshtml",
+              "ToolTip": "C:\\Website_QLCC_RauSach\\Website_QLCC_RauSach\\Views\\_ViewImports.cshtml",
+              "RelativeToolTip": "Website_QLCC_RauSach\\Views\\_ViewImports.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAA0AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-24T02:19:27.202Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Website_QLCC_RauSach\\Website_QLCC_RauSach\\Areas\\NhaCungCap\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "Website_QLCC_RauSach\\Areas\\NhaCungCap\\Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\Website_QLCC_RauSach\\Website_QLCC_RauSach\\Areas\\NhaCungCap\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "Website_QLCC_RauSach\\Areas\\NhaCungCap\\Views\\Home\\Index.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAvAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-24T02:09:18.649Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Website_QLCC_RauSach\\Website_QLCC_RauSach\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "Website_QLCC_RauSach\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Website_QLCC_RauSach\\Website_QLCC_RauSach\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "Website_QLCC_RauSach\\Controllers\\HomeController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAEsAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-24T02:04:51.1Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Website_QLCC_RauSach\\Website_QLCC_RauSach\\Areas\\Admin\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "Website_QLCC_RauSach\\Areas\\Admin\\Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\Website_QLCC_RauSach\\Website_QLCC_RauSach\\Areas\\Admin\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "Website_QLCC_RauSach\\Areas\\Admin\\Views\\Home\\Index.cshtml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-24T02:32:00.276Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "C:\\Website_QLCC_RauSach\\Website_QLCC_RauSach\\Controllers\\AccountController.cs",
+              "RelativeDocumentMoniker": "Website_QLCC_RauSach\\Controllers\\AccountController.cs",
+              "ToolTip": "C:\\Website_QLCC_RauSach\\Website_QLCC_RauSach\\Controllers\\AccountController.cs",
+              "RelativeToolTip": "Website_QLCC_RauSach\\Controllers\\AccountController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAA1AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-24T02:08:24.271Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Website_QLCC_RauSach\\Website_QLCC_RauSach\\Areas\\NhaCungCap\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "Website_QLCC_RauSach\\Areas\\NhaCungCap\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Website_QLCC_RauSach\\Website_QLCC_RauSach\\Areas\\NhaCungCap\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "Website_QLCC_RauSach\\Areas\\NhaCungCap\\Controllers\\HomeController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-24T02:04:44.658Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Website_QLCC_RauSach\\Website_QLCC_RauSach\\Program.cs",
+              "RelativeDocumentMoniker": "Website_QLCC_RauSach\\Program.cs",
+              "ToolTip": "C:\\Website_QLCC_RauSach\\Website_QLCC_RauSach\\Program.cs",
+              "RelativeToolTip": "Website_QLCC_RauSach\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-24T02:02:10.314Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

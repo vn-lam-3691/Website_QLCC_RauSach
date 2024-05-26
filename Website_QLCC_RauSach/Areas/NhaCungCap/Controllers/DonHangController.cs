@@ -38,6 +38,8 @@ namespace Website_QLCC_RauSach.Areas.NhaCungCap.Controllers
 				DaHuyDonHang = donHangDaHuy
 			};
 
+			ViewBag.DsNhanVienNcc = donHangViewModel.GetSelectListItems(await dbContext.NhanVienNccs.ToListAsync());
+
 			return View("~/Areas/NhaCungCap/Views/Home/Index.cshtml", donHangViewModel);
 		}
 
@@ -67,34 +69,34 @@ namespace Website_QLCC_RauSach.Areas.NhaCungCap.Controllers
 		}
 
         [HttpPost]
-        public async Task<IActionResult> CapNhatTrangThaiDonHang(int id, DonHang donHang)
+        public async Task<IActionResult> CapNhatTrangThaiDonHang(int id, string? maNvGh)
         {
             var currentDonHang = await dbContext.DonHangs.FindAsync(id);
 
-			switch(donHang.TrangThaiDh)
+			switch (currentDonHang.TrangThaiDh)
 			{
-				case "0":
-					currentDonHang.TrangThaiDh = "Chờ xác nhận";
+				case "Chờ xác nhận":
+					currentDonHang.TrangThaiDh = "Đang xử lý";
+					break;
+				case "Đang xử lý":
+					currentDonHang.TrangThaiDh = "Đang vận chuyển";
+					break;
+			}
 
-                    break;
-                case "1":
-                    currentDonHang.TrangThaiDh = "Đang Xử Lý";
-                    break;
-                case "2":
-					currentDonHang.TrangThaiDh = "Đang Vận Chuyển";
-					break;
-				case "3":
-					currentDonHang.TrangThaiDh = "Hoàn thành";
-					break;
-				case "4":
-					currentDonHang.TrangThaiDh = "Đã hủy";
-					break;
+			var currentNvncc = HttpContext.Session.GetString("MaNv");
+			currentDonHang.MaNvncc = currentNvncc;
+
+			var hoadon = dbContext.HoaDons.Where(hd => hd.MaDh == id).FirstOrDefault();
+			if (hoadon.MaNvgh == null)
+			{
+				hoadon.MaNvgh = maNvGh;
+				dbContext.Update(hoadon);
 			}
 
 			dbContext.Update(currentDonHang);
 			await dbContext.SaveChangesAsync();
 
-            return RedirectToAction("Index"); // Trả về view với model nếu có lỗi
+            return RedirectToAction("Index");
         }
     } 
 }

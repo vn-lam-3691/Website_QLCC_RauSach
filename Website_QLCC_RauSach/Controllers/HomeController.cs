@@ -69,7 +69,7 @@ namespace Website_QLCC_RauSach.Controllers
                     case 3:
                         var tennvncc = _context.NhanVienNccs.FirstOrDefault(x => x.MaTk == user.MaTk).TenNv;
                         HttpContext.Session.SetString("TenNv", tennvncc);
-                        return Redirect("/NhaCungCap/Home/Index");
+                        return Redirect("/NhaCungCap/DonHang");
                     default:
                         return RedirectToAction("Index", "Home");
                 }

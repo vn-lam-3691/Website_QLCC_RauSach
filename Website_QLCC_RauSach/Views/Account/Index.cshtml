@@ -90,7 +90,7 @@
                                                     </div>
                                                     <ul class="products-od">
                                                         @{
-                                                            decimal totalPrice = 0; // Initialize total price variable
+                                                            decimal totalPrice = 0;
                                                         }
                                                         @foreach (var ct in item.ChiTietDonHangs)
                                                         {
@@ -117,9 +117,36 @@
                                                         <div class="od-xacnhan">
                                                             <p class="od-day-order">Thời gian đặt hàng: <span>@item.TgtaoDon.ToString("h:mm tt dd/MM/yyyy")</span></p>
                                                             <p class="od-price">Thành tiền: <span>@totalPrice.ToString("#,##0") VNĐ</span></p>
-                                                            <div class="od-danhgia">
-                                                                <a href="#" onclick="document.getElementById('rate-form').style.display='block'" style="width:auto;">Đánh giá</a>
-                                                            </div>
+                                                            @if (item.TrangThaiDh == "Chờ xác nhận")
+                                                            {
+                                                                <div class="od-danhgia">
+                                                                    <a href="#" onclick="document.getElementById('rate-form-huydon').style.display='block'" style="width:auto; background-color:orangered">Hủy đơn hàng</a>
+                                                                </div>
+                                                            }
+                                                            else if (item.TrangThaiDh == "Đang xử lý")
+                                                            {
+
+                                                            }
+                                                            else if (item.TrangThaiDh == "Đang vận chuyển")
+                                                            {
+                                                                <div class="od-danhgia">
+                                                                    <a href="#" onclick="document.getElementById('rate-form-4').style.display='block'" style="width:auto; background-color:orangered">Đổi hàng</a>
+                                                                    <a href="#" onclick="showConfirmationModal('@item.MaDh')" style="width:auto;">Xác nhận nhập hàng</a>
+                                                                </div>
+                                                            }
+                                                            else if (item.TrangThaiDh == "Hoàn thành")
+                                                            {
+                                                                <div class="od-danhgia">
+                                                                    <a href="#" onclick="document.getElementById('rate-form-5').style.display='block'" style="width:auto; background-color:#6f87d5">Đánh giá</a>
+                                                                    <a href="#" onclick="document.getElementById('rate-form-5').style.display='block'" style="width:auto;">Mua lại</a>
+                                                                </div>
+                                                            }
+                                                            else if (item.TrangThaiDh == "Đã hủy")
+                                                            {
+                                                                <div class="od-danhgia">
+                                                                    <a href="#" onclick="document.getElementById('rate-form-5').style.display='block'" style="width:auto;">Mua lại</a>
+                                                                </div>
+                                                            }
                                                         </div>
                                                     </ul>
                                                 </li>
@@ -138,53 +165,6 @@
                                             </div>
                                         }
                                     </ul>
-
-                                    <!--Đánh giá sản phẩm-->
-                                    <div class="modal" id="rate-form">
-                                        <form class="rate-product animate">
-                                            <div class="close-rate" href="#">
-                                                <a href="#">
-                                                    <i class="fa-solid fa-circle-xmark fa-2xl" onclick="document.getElementById('rate-form').style.display='none'" class="close"></i>
-                                                </a>
-                                            </div>
-                                            <div class="product-rate-info">
-                                                <img src="images/product22.png">
-                                                <div class="prd-info">
-                                                    <h4>Tên sản phẩm</h4>
-                                                    <p>5.000.000 VNĐ</p>
-                                                </div>
-                                            </div>
-                                            <div class="rate-star">
-                                                <div class="rating large star-icon direction-rtl value-1 half color-default label-top">
-                                                    <div id="rating">
-                                                        <input type="radio" id="star5" name="rating" value="5" />
-                                                        <label class="full" for="star5" title="Awesome - 5 stars"></label>
-
-                                                        <input type="radio" id="star4" name="rating" value="4" />
-                                                        <label class="full" for="star4" title="Pretty good - 4 stars"></label>
-
-                                                        <input type="radio" id="star3" name="rating" value="3" />
-                                                        <label class="full" for="star3" title="Meh - 3 stars"></label>
-
-                                                        <input type="radio" id="star2" name="rating" value="2" />
-                                                        <label class="full" for="star2" title="Kinda bad - 2 stars"></label>
-
-                                                        <input type="radio" id="star1" name="rating" value="1" />
-                                                        <label class="full" for="star1" title="Sucks big time - 1 star"></label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="rate-comment">
-                                                <h5>Đánh giá về sản phẩm</h5>
-                                                <textarea></textarea>
-                                            </div>
-                                            <div class="btn-rate">
-                                                <a class="huy" href="#">HỦY</a>
-                                                <a class="hoanthanh" href="#">HOÀN THÀNH</a>
-                                            </div>
-                                        </form>
-                                    </div>
-                                    <!--Hết đánh giá sản phẩm-->
                                 </div>
 
                                 <!--Các đơn chờ xác nhận-->
@@ -201,7 +181,7 @@
                                                     </div>
                                                     <ul class="products-od">
                                                         @{
-                                                            decimal totalPrice = 0; // Initialize total price variable
+                                                            decimal totalPrice = 0;
                                                         }
                                                         @foreach (var ct in item.ChiTietDonHangs)
                                                         {
@@ -229,7 +209,7 @@
                                                             <p class="od-day-order">Thời gian đặt hàng: <span>@item.TgtaoDon.ToString("h:mm tt dd/MM/yyyy")</span></p>
                                                             <p class="od-price">Thành tiền: <span>@totalPrice.ToString("#,##0") VNĐ</span></p>
                                                             <div class="od-danhgia">
-                                                                <a href="#" onclick="document.getElementById('rate-form-2').style.display='block'" style="width:auto;">Hủy đơn hàng</a>
+                                                                <a href="#" onclick="showCanCelOrderModal('@item.MaDh')" style="width:auto; background-color:orangered">Hủy đơn hàng</a>
                                                             </div>
                                                         </div>
                                                     </ul>
@@ -249,53 +229,6 @@
                                             </div>
                                         }
                                     </ul>
-
-                                    <!--Đánh giá sản phẩm-->
-                                    <div class="modal" id="rate-form-2">
-                                        <form class="rate-product animate">
-                                            <div class="close-rate" href="#">
-                                                <a href="#">
-                                                    <i class="fa-solid fa-circle-xmark fa-2xl" onclick="document.getElementById('rate-form-2').style.display='none'" class="close"></i>
-                                                </a>
-                                            </div>
-                                            <div class="product-rate-info">
-                                                <img src="images/product22.png">
-                                                <div class="prd-info">
-                                                    <h4>Tên sản phẩm</h4>
-                                                    <p>5.000.000 VNĐ</p>
-                                                </div>
-                                            </div>
-                                            <div class="rate-star">
-                                                <div class="rating large star-icon direction-rtl value-1 half color-default label-top">
-                                                    <div id="rating">
-                                                        <input type="radio" id="star5" name="rating" value="5" />
-                                                        <label class="full" for="star5" title="Awesome - 5 stars"></label>
-
-                                                        <input type="radio" id="star4" name="rating" value="4" />
-                                                        <label class="full" for="star4" title="Pretty good - 4 stars"></label>
-
-                                                        <input type="radio" id="star3" name="rating" value="3" />
-                                                        <label class="full" for="star3" title="Meh - 3 stars"></label>
-
-                                                        <input type="radio" id="star2" name="rating" value="2" />
-                                                        <label class="full" for="star2" title="Kinda bad - 2 stars"></label>
-
-                                                        <input type="radio" id="star1" name="rating" value="1" />
-                                                        <label class="full" for="star1" title="Sucks big time - 1 star"></label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="rate-comment">
-                                                <h5>Đánh giá về sản phẩm</h5>
-                                                <textarea></textarea>
-                                            </div>
-                                            <div class="btn-rate">
-                                                <a class="huy" href="#">HỦY</a>
-                                                <a class="hoanthanh" href="#">HOÀN THÀNH</a>
-                                            </div>
-                                        </form>
-                                    </div>
-                                    <!--Hết đánh giá sản phẩm-->
                                 </div>
 
                                 <!--Các đơn đang xử lý-->
@@ -312,7 +245,7 @@
                                                     </div>
                                                     <ul class="products-od">
                                                         @{
-                                                            decimal totalPrice = 0; // Initialize total price variable
+                                                            decimal totalPrice = 0;
                                                         }
                                                         @foreach (var ct in item.ChiTietDonHangs)
                                                         {
@@ -373,7 +306,7 @@
                                                     </div>
                                                     <ul class="products-od">
                                                         @{
-                                                            decimal totalPrice = 0; // Initialize total price variable
+                                                            decimal totalPrice = 0;
                                                         }
                                                         @foreach (var ct in item.ChiTietDonHangs)
                                                         {
@@ -402,9 +335,7 @@
                                                             <p class="od-price">Thành tiền: <span>@totalPrice.ToString("#,##0") VNĐ</span></p>
                                                             <div class="od-danhgia">
                                                                 <a href="#" onclick="document.getElementById('rate-form-4').style.display='block'" style="width:auto; background-color:orangered">Đổi hàng</a>
-                                                            </div>
-                                                            <div class="od-danhgia">
-                                                                <a href="#" onclick="document.getElementById('rate-form-4').style.display='block'" style="width:auto;">Xác nhận nhập hàng</a>
+                                                                <a href="#" onclick="showConfirmationModal('@item.MaDh')" style="width:auto;">Xác nhận nhập hàng</a>
                                                             </div>
                                                         </div>
                                                     </ul>
@@ -424,53 +355,6 @@
                                             </div>
                                         }
                                     </ul>
-
-                                    <!--Đánh giá sản phẩm-->
-                                    <div class="modal" id="rate-form-4">
-                                        <form class="rate-product animate">
-                                            <div class="close-rate" href="#">
-                                                <a href="#">
-                                                    <i class="fa-solid fa-circle-xmark fa-2xl" onclick="document.getElementById('rate-form-4').style.display='none'" class="close"></i>
-                                                </a>
-                                            </div>
-                                            <div class="product-rate-info">
-                                                <img src="images/product22.png">
-                                                <div class="prd-info">
-                                                    <h4>Tên sản phẩm</h4>
-                                                    <p>5.000.000 VNĐ</p>
-                                                </div>
-                                            </div>
-                                            <div class="rate-star">
-                                                <div class="rating large star-icon direction-rtl value-1 half color-default label-top">
-                                                    <div id="rating">
-                                                        <input type="radio" id="star5" name="rating" value="5" />
-                                                        <label class="full" for="star5" title="Awesome - 5 stars"></label>
-
-                                                        <input type="radio" id="star4" name="rating" value="4" />
-                                                        <label class="full" for="star4" title="Pretty good - 4 stars"></label>
-
-                                                        <input type="radio" id="star3" name="rating" value="3" />
-                                                        <label class="full" for="star3" title="Meh - 3 stars"></label>
-
-                                                        <input type="radio" id="star2" name="rating" value="2" />
-                                                        <label class="full" for="star2" title="Kinda bad - 2 stars"></label>
-
-                                                        <input type="radio" id="star1" name="rating" value="1" />
-                                                        <label class="full" for="star1" title="Sucks big time - 1 star"></label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="rate-comment">
-                                                <h5>Đánh giá về sản phẩm</h5>
-                                                <textarea></textarea>
-                                            </div>
-                                            <div class="btn-rate">
-                                                <a class="huy" href="#">HỦY</a>
-                                                <a class="hoanthanh" href="#">HOÀN THÀNH</a>
-                                            </div>
-                                        </form>
-                                    </div>
-                                    <!--Hết đánh giá sản phẩm-->
                                 </div>
 
                                 <!--Các đơn đã hoàn thành-->
@@ -487,7 +371,7 @@
                                                     </div>
                                                     <ul class="products-od">
                                                         @{
-                                                            decimal totalPrice = 0; // Initialize total price variable
+                                                            decimal totalPrice = 0;
                                                         }
                                                         @foreach (var ct in item.ChiTietDonHangs)
                                                         {
@@ -515,9 +399,7 @@
                                                             <p class="od-day-order">Thời gian đặt hàng: <span>@item.TgtaoDon.ToString("h:mm tt dd/MM/yyyy")</span></p>
                                                             <p class="od-price">Thành tiền: <span>@totalPrice.ToString("#,##0") VNĐ</span></p>
                                                             <div class="od-danhgia">
-                                                                <a href="#" onclick="document.getElementById('rate-form-5').style.display='block'" style="width:auto;">Đánh giá</a>
-                                                            </div>
-                                                            <div class="od-danhgia">
+                                                                <a href="#" onclick="document.getElementById('rate-form-5').style.display='block'" style="width:auto; background-color:#6f87d5">Đánh giá</a>
                                                                 <a href="#" onclick="document.getElementById('rate-form-5').style.display='block'" style="width:auto;">Mua lại</a>
                                                             </div>
                                                         </div>
@@ -538,53 +420,6 @@
                                             </div>
                                         }
                                     </ul>
-
-                                    <!--Đánh giá sản phẩm-->
-                                    <div class="modal" id="rate-form-5">
-                                        <form class="rate-product animate">
-                                            <div class="close-rate" href="#">
-                                                <a href="#">
-                                                    <i class="fa-solid fa-circle-xmark fa-2xl" onclick="document.getElementById('rate-form-5').style.display='none'" class="close"></i>
-                                                </a>
-                                            </div>
-                                            <div class="product-rate-info">
-                                                <img src="images/product22.png">
-                                                <div class="prd-info">
-                                                    <h4>Tên sản phẩm</h4>
-                                                    <p>5.000.000 VNĐ</p>
-                                                </div>
-                                            </div>
-                                            <div class="rate-star">
-                                                <div class="rating large star-icon direction-rtl value-1 half color-default label-top">
-                                                    <div id="rating">
-                                                        <input type="radio" id="star5" name="rating" value="5" />
-                                                        <label class="full" for="star5" title="Awesome - 5 stars"></label>
-
-                                                        <input type="radio" id="star4" name="rating" value="4" />
-                                                        <label class="full" for="star4" title="Pretty good - 4 stars"></label>
-
-                                                        <input type="radio" id="star3" name="rating" value="3" />
-                                                        <label class="full" for="star3" title="Meh - 3 stars"></label>
-
-                                                        <input type="radio" id="star2" name="rating" value="2" />
-                                                        <label class="full" for="star2" title="Kinda bad - 2 stars"></label>
-
-                                                        <input type="radio" id="star1" name="rating" value="1" />
-                                                        <label class="full" for="star1" title="Sucks big time - 1 star"></label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="rate-comment">
-                                                <h5>Đánh giá về sản phẩm</h5>
-                                                <textarea></textarea>
-                                            </div>
-                                            <div class="btn-rate">
-                                                <a class="huy" href="#">HỦY</a>
-                                                <a class="hoanthanh" href="#">HOÀN THÀNH</a>
-                                            </div>
-                                        </form>
-                                    </div>
-                                    <!--Hết đánh giá sản phẩm-->
                                 </div>
 
                                 <!--Các đơn đã hủy-->
@@ -601,7 +436,7 @@
                                                     </div>
                                                     <ul class="products-od">
                                                         @{
-                                                            decimal totalPrice = 0; // Initialize total price variable
+                                                            decimal totalPrice = 0;
                                                         }
                                                         @foreach (var ct in item.ChiTietDonHangs)
                                                         {
@@ -649,59 +484,59 @@
                                             </div>
                                         }
                                     </ul>
-
-                                    <!--Đánh giá sản phẩm-->
-                                    <div class="modal" id="rate-form-6">
-                                        <form class="rate-product animate">
-                                            <div class="close-rate" href="#">
-                                                <a href="#">
-                                                    <i class="fa-solid fa-circle-xmark fa-2xl" onclick="document.getElementById('rate-form-6').style.display='none'" class="close"></i>
-                                                </a>
-                                            </div>
-                                            <div class="product-rate-info">
-                                                <img src="images/product22.png">
-                                                <div class="prd-info">
-                                                    <h4>Tên sản phẩm</h4>
-                                                    <p>5.000.000 VNĐ</p>
-                                                </div>
-                                            </div>
-                                            <div class="rate-star">
-                                                <div class="rating large star-icon direction-rtl value-1 half color-default label-top">
-                                                    <div id="rating">
-                                                        <input type="radio" id="star5" name="rating" value="5" />
-                                                        <label class="full" for="star5" title="Awesome - 5 stars"></label>
-
-                                                        <input type="radio" id="star4" name="rating" value="4" />
-                                                        <label class="full" for="star4" title="Pretty good - 4 stars"></label>
-
-                                                        <input type="radio" id="star3" name="rating" value="3" />
-                                                        <label class="full" for="star3" title="Meh - 3 stars"></label>
-
-                                                        <input type="radio" id="star2" name="rating" value="2" />
-                                                        <label class="full" for="star2" title="Kinda bad - 2 stars"></label>
-
-                                                        <input type="radio" id="star1" name="rating" value="1" />
-                                                        <label class="full" for="star1" title="Sucks big time - 1 star"></label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="rate-comment">
-                                                <h5>Đánh giá về sản phẩm</h5>
-                                                <textarea></textarea>
-                                            </div>
-                                            <div class="btn-rate">
-                                                <a class="huy" href="#">HỦY</a>
-                                                <a class="hoanthanh" href="#">HOÀN THÀNH</a>
-                                            </div>
-                                        </form>
-                                    </div>
-                                    <!--Hết đánh giá sản phẩm-->
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
+
+            <!--Modal xác nhận nhập hàng-->
+            <div class="modal" id="rate-form-xacnhan">
+                <form class="rate-product animate" asp-action="NhapHang" method="post">
+                    <input type="hidden" id="ma-dh-input" name="maDH">
+                    <div class="modal-header justify-content-center">
+                        <h2 class="modal-title" id="deleteSinhVienLabel">Xác nhận nhập hàng</h2>
+                    </div>
+                    <div class="hero-wrap">
+                        <div class="container">
+                            <div class="row no-gutters slider-text align-items-center justify-content-center">
+                                <div class="col-md-9 ftco-animate text-center">
+                                    <h3 style="color: #7FAD39;">Đơn hàng đã giao thành công. Vui lòng kiểm hàng trước khi xác nhận nhập hàng!!!</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btn-rate">
+                        <a class="huy" href="#" onclick="document.getElementById('rate-form-xacnhan').style.display='none'" class="close">Hủy</a>
+                        <input type="submit" class="hoanthanh" value="Xác nhận">
+                    </div>
+                </form>
+            </div>
+
+            <!--Modal hủy đơn hàng-->
+            <div class="modal" id="rate-form-huydon">
+                <form class="rate-product animate" asp-action="HuyDon" method="post">
+                    <input type="hidden" id="ma-dh-input-huy" name="maDHHuy">
+                    <div class="modal-header justify-content-center">
+                        <h2 class="modal-title" id="deleteSinhVienLabel">Hủy đơn hàng</h2>
+                    </div>
+                    <div class="hero-wrap">
+                        <div class="container">
+                            <div class="row no-gutters slider-text align-items-center justify-content-center">
+                                <div class="rate-comment">
+                                    <textarea placeholder="Nhập lý do hủy đơn" name="GhiChu"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btn-rate">
+                        <a class="huy" href="#" onclick="document.getElementById('rate-form-huydon').style.display='none'" class="close">Hủy</a>
+                        <input type="submit" class="hoanthanh" value="Xác nhận">
+                    </div>
+                </form>
+            </div>
+
         </div>
     </section>
 </body>
@@ -729,3 +564,14 @@
 <script src="~/assets/js/mixitup.min.js"></script>
 <script src="~/assets/js/owl.carousel.min.js"></script>
 <script src="~/assets/js/main.js"></script>
+
+<script>
+    function showConfirmationModal(maDh) {
+        document.getElementById('rate-form-xacnhan').style.display = 'block';
+        document.getElementById('ma-dh-input').value = maDh;
+    }
+    function showCanCelOrderModal(maDh) {
+        document.getElementById('rate-form-huydon').style.display = 'block';
+        document.getElementById('ma-dh-input-huy').value = maDh;
+    }
+</script>

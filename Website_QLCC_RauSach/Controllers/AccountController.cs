@@ -64,6 +64,32 @@ namespace Website_QLCC_RauSach.Controllers
             return View();
         }
 
+        [HttpPost]
+        public IActionResult NhapHang(int maDH)
+        {
+            var donhang = _context.DonHangs.FirstOrDefault(dh => dh.MaDh == maDH);
+            if(donhang != null)
+            {
+                donhang.TrangThaiDh = "Hoàn thành";
+                _context.SaveChanges();
+            }
+            return RedirectToAction("Index", "Account");
+        }
+
+        [HttpPost]
+        public IActionResult HuyDon(int maDHHuy, String GhiChu)
+        {
+            Console.WriteLine(maDHHuy);
+            var donhang = _context.DonHangs.FirstOrDefault(dh => dh.MaDh == maDHHuy);
+            if (donhang != null)
+            {
+                donhang.TrangThaiDh = "Đã hủy";
+                donhang.GhiChu = GhiChu;
+                _context.SaveChanges();
+            }
+            return RedirectToAction("Index", "Account");
+        }
+
         public IActionResult Logout()
         {
             HttpContext.Session.Clear();

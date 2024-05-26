@@ -1,13 +1,577 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model IEnumerable<Website_QLCC_RauSach.Models.DonHang>
+
 @{
+    //Layout = null;
 }
 
-<section class="featured spad">
-    <div class="container">
-        <h1>Đây là trang quản lý đơn đặt hàng của NVST</h1>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        <a asp-controller="Account" asp-action="Logout">Đăng xuất</a>
-    </div>
-</section>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+
+<link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
+<link rel="stylesheet" href="css/all.min.css">
+<link rel="stylesheet" href="css/animate.css">
+
+<link rel="stylesheet" href="css/owl.carousel.min.css">
+<link rel="stylesheet" href="css/owl.theme.default.min.css">
+<link rel="stylesheet" href="css/magnific-popup.css">
+
+<link rel="stylesheet" href="css/aos.css">
+
+<link rel="stylesheet" href="css/ionicons.min.css">
+
+<link rel="stylesheet" href="css/bootstrap-datepicker.css">
+<link rel="stylesheet" href="css/jquery.timepicker.css">
+
+<link rel="stylesheet" href="css/flaticon.css">
+<link rel="stylesheet" href="css/icomoon.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/styles.css">
+
+<link rel="stylesheet" href="~/assets/css/bootstrap.min.css" type="text/css">
+<link rel="stylesheet" href="~/assets/css/font-awesome.min.css" type="text/css">
+<link rel="stylesheet" href="~/assets/css/elegant-icons.css" type="text/css">
+<link rel="stylesheet" href="~/assets/css/nice-select.css" type="text/css">
+<link rel="stylesheet" href="~/assets/css/jquery-ui.min.css" type="text/css">
+<link rel="stylesheet" href="~/assets/css/owl.carousel.min.css" type="text/css">
+<link rel="stylesheet" href="~/assets/css/slicknav.min.css" type="text/css">
+<link rel="stylesheet" href="~/assets/css/style.css" type="text/css">
+
+<body class="goto-here">
+    <section class="featured spad">
+        <div class="container">
+            <div class="hero-wrap">
+                <div class="container">
+                    <div class="row no-gutters slider-text align-items-center justify-content-center">
+                        <div class="col-md-9 ftco-animate text-center">
+                            <p class="breadcrumbs"><span class="mr-2"><a href="index.html"></a></span> <span>Order</span></p>
+                            <h4 class="mb-0 bread">Đơn hàng của tôi</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <section class="ftco-section">
+                <div class="container">
+                    <div class="row mt-5">
+                        <div class="col-md-12 nav-link-wrap">
+                            <div class="nav nav-pills d-flex text-center" id="v-pills-tab" role="tablist"
+                                 aria-orientation="vertical">
+                                <a class="nav-link nav-link-t ftco-animate active mr-lg-1" id="v-pills-1-tab" data-toggle="pill" href="#v-pills-1"
+                                   role="tab" aria-controls="v-pills-1" aria-selected="true"><h6>Tất cả</h6></a>
+                                <a class="nav-link nav-link-t ftco-animate mr-lg-1" id="v-pills-2-tab" data-toggle="pill" href="#v-pills-2"
+                                   role="tab" aria-controls="v-pills-2" aria-selected="false"><h6>Chờ xác nhận</h6></a>
+                                <a class="nav-link nav-link-t ftco-animate" id="v-pills-3-tab" data-toggle="pill" href="#v-pills-3"
+                                   role="tab" aria-controls="v-pills-3" aria-selected="false"><h6>Đang xử lý</h6></a>
+                                <a class="nav-link nav-link-t ftco-animate" id="v-pills-4-tab" data-toggle="pill" href="#v-pills-4"
+                                   role="tab" aria-controls="v-pills-4" aria-selected="false"><h6>Đang giao</h6></a>
+                                <a class="nav-link nav-link-t ftco-animate" id="v-pills-5-tab" data-toggle="pill" href="#v-pills-5"
+                                   role="tab" aria-controls="v-pills-5" aria-selected="false"><h6>Đã hoàn thành</h6></a>
+                                <a class="nav-link nav-link-t ftco-animate" id="v-pills-6-tab" data-toggle="pill" href="#v-pills-6"
+                                   role="tab" aria-controls="v-pills-6" aria-selected="false"><h6>Đã hủy</h6></a>
+                            </div>
+                        </div>
+                        <div class="col-md-12 tab-wrap">
+
+                            <div class="tab-content bg-light" id="v-pills-tabContent">
+
+                                <!--Tất cả các đơn-->
+                                <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel" aria-labelledby="v-pills-1-tab">
+                                    <ul class="orders">
+                                        @if (ViewBag.donHangsAll != null && ViewBag.donHangsAll.Count > 0)
+                                        {
+                                            @foreach (var item in ViewBag.donHangsAll)
+                                            {
+                                                <li class="order">
+                                                    <div class="info-order">
+                                                        <p class="id-order">Mã đơn hàng: @item.MaDh</p>
+                                                        <p class="status-order">Tình trạng: <span style="color: #7FAD39">@item.TrangThaiDh</span></p>
+                                                    </div>
+                                                    <ul class="products-od">
+                                                        @{
+                                                            decimal totalPrice = 0;
+                                                        }
+                                                        @foreach (var ct in item.ChiTietDonHangs)
+                                                        {
+                                                            <li class="product-od">
+                                                                <div class="prd-od-left">
+                                                                    @foreach (var image in ct.MaMhNavigation.HinhAnhMatHangs)
+                                                                    {
+                                                                        <a><img src="@Url.Content($"../assets/img/myproducts/{image.DuongDanHinhAnh}")"></a>
+                                                                    }
+                                                                </div>
+                                                                <div class="prd-od-center">
+                                                                    <h5>@ct.MaMhNavigation.TenMh</h5>
+                                                                </div>
+                                                                <div class="prd-od-center">
+                                                                    <p>x @ct.SoLuongDat</p>
+                                                                </div>
+                                                                <div class="prd-od-center">
+                                                                    <p class="prd-od-price">@ct.DonGia.ToString("#,##0") VNĐ</p>
+                                                                </div>
+                                                            </li>
+                                                            decimal subtotal = ct.SoLuongDat * ct.DonGia;
+                                                            totalPrice += subtotal;
+                                                        }
+                                                        <div class="od-xacnhan">
+                                                            <p class="od-day-order">Thời gian đặt hàng: <span>@item.TgtaoDon.ToString("h:mm tt dd/MM/yyyy")</span></p>
+                                                            <p class="od-price">Thành tiền: <span>@totalPrice.ToString("#,##0") VNĐ</span></p>
+                                                            @if (item.TrangThaiDh == "Chờ xác nhận")
+                                                            {
+                                                                <div class="od-danhgia">
+                                                                    <a href="#" onclick="document.getElementById('rate-form-huydon').style.display='block'" style="width:auto; background-color:orangered">Hủy đơn hàng</a>
+                                                                </div>
+                                                            }
+                                                            else if (item.TrangThaiDh == "Đang xử lý")
+                                                            {
+
+                                                            }
+                                                            else if (item.TrangThaiDh == "Đang vận chuyển")
+                                                            {
+                                                                <div class="od-danhgia">
+                                                                    <a href="#" onclick="document.getElementById('rate-form-4').style.display='block'" style="width:auto; background-color:orangered">Đổi hàng</a>
+                                                                    <a href="#" onclick="showConfirmationModal('@item.MaDh')" style="width:auto;">Xác nhận nhập hàng</a>
+                                                                </div>
+                                                            }
+                                                            else if (item.TrangThaiDh == "Hoàn thành")
+                                                            {
+                                                                <div class="od-danhgia">
+                                                                    <a href="#" onclick="document.getElementById('rate-form-5').style.display='block'" style="width:auto; background-color:#6f87d5">Đánh giá</a>
+                                                                    <a href="#" onclick="document.getElementById('rate-form-5').style.display='block'" style="width:auto;">Mua lại</a>
+                                                                </div>
+                                                            }
+                                                            else if (item.TrangThaiDh == "Đã hủy")
+                                                            {
+                                                                <div class="od-danhgia">
+                                                                    <a href="#" onclick="document.getElementById('rate-form-5').style.display='block'" style="width:auto;">Mua lại</a>
+                                                                </div>
+                                                            }
+                                                        </div>
+                                                    </ul>
+                                                </li>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <div class="hero-wrap">
+                                                <div class="container">
+                                                    <div class="row no-gutters slider-text align-items-center justify-content-center">
+                                                        <div class="col-md-9 ftco-animate text-center">
+                                                            <h6 class="mb-0 bread">Chưa có đơn hàng nào</h6>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                    </ul>
+                                </div>
+
+                                <!--Các đơn chờ xác nhận-->
+                                <div class="tab-pane fade" id="v-pills-2" role="tabpanel" aria-labelledby="v-pills-2-tab">
+                                    <ul class="orders">
+                                        @if (ViewBag.donHangsCXN != null && ViewBag.donHangsCXN.Count > 0)
+                                        {
+                                            @foreach (var item in ViewBag.donHangsCXN)
+                                            {
+                                                <li class="order">
+                                                    <div class="info-order">
+                                                        <p class="id-order">Mã đơn hàng: @item.MaDh</p>
+                                                        <p class="status-order">Tình trạng: <span style="color: #7FAD39">@item.TrangThaiDh</span></p>
+                                                    </div>
+                                                    <ul class="products-od">
+                                                        @{
+                                                            decimal totalPrice = 0;
+                                                        }
+                                                        @foreach (var ct in item.ChiTietDonHangs)
+                                                        {
+                                                            <li class="product-od">
+                                                                <div class="prd-od-left">
+                                                                    @foreach (var image in ct.MaMhNavigation.HinhAnhMatHangs)
+                                                                    {
+                                                                        <a><img src="@Url.Content($"../assets/img/myproducts/{image.DuongDanHinhAnh}")"></a>
+                                                                    }
+                                                                </div>
+                                                                <div class="prd-od-center">
+                                                                    <h5>@ct.MaMhNavigation.TenMh</h5>
+                                                                </div>
+                                                                <div class="prd-od-center">
+                                                                    <p>x @ct.SoLuongDat</p>
+                                                                </div>
+                                                                <div class="prd-od-center">
+                                                                    <p class="prd-od-price">@ct.DonGia.ToString("#,##0") VNĐ</p>
+                                                                </div>
+                                                            </li>
+                                                            decimal subtotal = ct.SoLuongDat * ct.DonGia;
+                                                            totalPrice += subtotal;
+                                                        }
+                                                        <div class="od-xacnhan">
+                                                            <p class="od-day-order">Thời gian đặt hàng: <span>@item.TgtaoDon.ToString("h:mm tt dd/MM/yyyy")</span></p>
+                                                            <p class="od-price">Thành tiền: <span>@totalPrice.ToString("#,##0") VNĐ</span></p>
+                                                            <div class="od-danhgia">
+                                                                <a href="#" onclick="showCanCelOrderModal('@item.MaDh')" style="width:auto; background-color:orangered">Hủy đơn hàng</a>
+                                                            </div>
+                                                        </div>
+                                                    </ul>
+                                                </li>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <div class="hero-wrap">
+                                                <div class="container">
+                                                    <div class="row no-gutters slider-text align-items-center justify-content-center">
+                                                        <div class="col-md-9 ftco-animate text-center">
+                                                            <h6 class="mb-0 bread">Chưa có đơn hàng nào</h6>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                    </ul>
+                                </div>
+
+                                <!--Các đơn đang xử lý-->
+                                <div class="tab-pane fade" id="v-pills-3" role="tabpanel" aria-labelledby="v-pills-3-tab">
+                                    <ul class="orders">
+                                        @if (ViewBag.donHangsDXL != null && ViewBag.donHangsDXL.Count > 0)
+                                        {
+                                            @foreach (var item in ViewBag.donHangsDXL)
+                                            {
+                                                <li class="order">
+                                                    <div class="info-order">
+                                                        <p class="id-order">Mã đơn hàng: @item.MaDh</p>
+                                                        <p class="status-order">Tình trạng: <span style="color: #7FAD39">@item.TrangThaiDh</span></p>
+                                                    </div>
+                                                    <ul class="products-od">
+                                                        @{
+                                                            decimal totalPrice = 0;
+                                                        }
+                                                        @foreach (var ct in item.ChiTietDonHangs)
+                                                        {
+                                                            <li class="product-od">
+                                                                <div class="prd-od-left">
+                                                                    @foreach (var image in ct.MaMhNavigation.HinhAnhMatHangs)
+                                                                    {
+                                                                        <a><img src="@Url.Content($"../assets/img/myproducts/{image.DuongDanHinhAnh}")"></a>
+                                                                    }
+                                                                </div>
+                                                                <div class="prd-od-center">
+                                                                    <h5>@ct.MaMhNavigation.TenMh</h5>
+                                                                </div>
+                                                                <div class="prd-od-center">
+                                                                    <p>x @ct.SoLuongDat</p>
+                                                                </div>
+                                                                <div class="prd-od-center">
+                                                                    <p class="prd-od-price">@ct.DonGia.ToString("#,##0") VNĐ</p>
+                                                                </div>
+                                                            </li>
+                                                            decimal subtotal = ct.SoLuongDat * ct.DonGia;
+                                                            totalPrice += subtotal;
+                                                        }
+                                                        <div class="od-xacnhan">
+                                                            <p class="od-day-order">Thời gian đặt hàng: <span>@item.TgtaoDon.ToString("h:mm tt dd/MM/yyyy")</span></p>
+                                                            <p class="od-price">Thành tiền: <span>@totalPrice.ToString("#,##0") VNĐ</span></p>
+                                                        </div>
+                                                    </ul>
+                                                </li>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <div class="hero-wrap">
+                                                <div class="container">
+                                                    <div class="row no-gutters slider-text align-items-center justify-content-center">
+                                                        <div class="col-md-9 ftco-animate text-center">
+                                                            <h6 class="mb-0 bread">Chưa có đơn hàng nào</h6>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                    </ul>
+                                </div>
+
+                                <!--Các đơn đang giao-->
+                                <div class="tab-pane fade" id="v-pills-4" role="tabpanel" aria-labelledby="v-pills-4-tab">
+                                    <ul class="orders">
+                                        @if (ViewBag.donHangsDG != null && ViewBag.donHangsDG.Count > 0)
+                                        {
+                                            @foreach (var item in ViewBag.donHangsDG)
+                                            {
+                                                <li class="order">
+                                                    <div class="info-order">
+                                                        <p class="id-order">Mã đơn hàng: @item.MaDh</p>
+                                                        <p class="status-order">Tình trạng: <span style="color: #7FAD39">@item.TrangThaiDh</span></p>
+                                                    </div>
+                                                    <ul class="products-od">
+                                                        @{
+                                                            decimal totalPrice = 0;
+                                                        }
+                                                        @foreach (var ct in item.ChiTietDonHangs)
+                                                        {
+                                                            <li class="product-od">
+                                                                <div class="prd-od-left">
+                                                                    @foreach (var image in ct.MaMhNavigation.HinhAnhMatHangs)
+                                                                    {
+                                                                        <a><img src="@Url.Content($"../assets/img/myproducts/{image.DuongDanHinhAnh}")"></a>
+                                                                    }
+                                                                </div>
+                                                                <div class="prd-od-center">
+                                                                    <h5>@ct.MaMhNavigation.TenMh</h5>
+                                                                </div>
+                                                                <div class="prd-od-center">
+                                                                    <p>x @ct.SoLuongDat</p>
+                                                                </div>
+                                                                <div class="prd-od-center">
+                                                                    <p class="prd-od-price">@ct.DonGia.ToString("#,##0") VNĐ</p>
+                                                                </div>
+                                                            </li>
+                                                            decimal subtotal = ct.SoLuongDat * ct.DonGia;
+                                                            totalPrice += subtotal;
+                                                        }
+                                                        <div class="od-xacnhan">
+                                                            <p class="od-day-order">Thời gian đặt hàng: <span>@item.TgtaoDon.ToString("h:mm tt dd/MM/yyyy")</span></p>
+                                                            <p class="od-price">Thành tiền: <span>@totalPrice.ToString("#,##0") VNĐ</span></p>
+                                                            <div class="od-danhgia">
+                                                                <a href="#" onclick="document.getElementById('rate-form-4').style.display='block'" style="width:auto; background-color:orangered">Đổi hàng</a>
+                                                                <a href="#" onclick="showConfirmationModal('@item.MaDh')" style="width:auto;">Xác nhận nhập hàng</a>
+                                                            </div>
+                                                        </div>
+                                                    </ul>
+                                                </li>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <div class="hero-wrap">
+                                                <div class="container">
+                                                    <div class="row no-gutters slider-text align-items-center justify-content-center">
+                                                        <div class="col-md-9 ftco-animate text-center">
+                                                            <h6 class="mb-0 bread">Chưa có đơn hàng nào</h6>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                    </ul>
+                                </div>
+
+                                <!--Các đơn đã hoàn thành-->
+                                <div class="tab-pane fade" id="v-pills-5" role="tabpanel" aria-labelledby="v-pills-5-tab">
+                                    <ul class="orders">
+                                        @if (ViewBag.donHangsHT != null && ViewBag.donHangsHT.Count > 0)
+                                        {
+                                            @foreach (var item in ViewBag.donHangsHT)
+                                            {
+                                                <li class="order">
+                                                    <div class="info-order">
+                                                        <p class="id-order">Mã đơn hàng: @item.MaDh</p>
+                                                        <p class="status-order">Tình trạng: <span style="color: #7FAD39">@item.TrangThaiDh</span></p>
+                                                    </div>
+                                                    <ul class="products-od">
+                                                        @{
+                                                            decimal totalPrice = 0;
+                                                        }
+                                                        @foreach (var ct in item.ChiTietDonHangs)
+                                                        {
+                                                            <li class="product-od">
+                                                                <div class="prd-od-left">
+                                                                    @foreach (var image in ct.MaMhNavigation.HinhAnhMatHangs)
+                                                                    {
+                                                                        <a><img src="@Url.Content($"../assets/img/myproducts/{image.DuongDanHinhAnh}")"></a>
+                                                                    }
+                                                                </div>
+                                                                <div class="prd-od-center">
+                                                                    <h5>@ct.MaMhNavigation.TenMh</h5>
+                                                                </div>
+                                                                <div class="prd-od-center">
+                                                                    <p>x @ct.SoLuongDat</p>
+                                                                </div>
+                                                                <div class="prd-od-center">
+                                                                    <p class="prd-od-price">@ct.DonGia.ToString("#,##0") VNĐ</p>
+                                                                </div>
+                                                            </li>
+                                                            decimal subtotal = ct.SoLuongDat * ct.DonGia;
+                                                            totalPrice += subtotal;
+                                                        }
+                                                        <div class="od-xacnhan">
+                                                            <p class="od-day-order">Thời gian đặt hàng: <span>@item.TgtaoDon.ToString("h:mm tt dd/MM/yyyy")</span></p>
+                                                            <p class="od-price">Thành tiền: <span>@totalPrice.ToString("#,##0") VNĐ</span></p>
+                                                            <div class="od-danhgia">
+                                                                <a href="#" onclick="document.getElementById('rate-form-5').style.display='block'" style="width:auto; background-color:#6f87d5">Đánh giá</a>
+                                                                <a href="#" onclick="document.getElementById('rate-form-5').style.display='block'" style="width:auto;">Mua lại</a>
+                                                            </div>
+                                                        </div>
+                                                    </ul>
+                                                </li>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <div class="hero-wrap">
+                                                <div class="container">
+                                                    <div class="row no-gutters slider-text align-items-center justify-content-center">
+                                                        <div class="col-md-9 ftco-animate text-center">
+                                                            <h6 class="mb-0 bread">Chưa có đơn hàng nào</h6>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                    </ul>
+                                </div>
+
+                                <!--Các đơn đã hủy-->
+                                <div class="tab-pane fade" id="v-pills-6" role="tabpanel" aria-labelledby="v-pills-6-tab">
+                                    <ul class="orders">
+                                        @if (ViewBag.donHangsDH != null && ViewBag.donHangsDH.Count > 0)
+                                        {
+                                            @foreach (var item in ViewBag.donHangsDH)
+                                            {
+                                                <li class="order">
+                                                    <div class="info-order">
+                                                        <p class="id-order">Mã đơn hàng: @item.MaDh</p>
+                                                        <p class="status-order">Tình trạng: <span style="color: #7FAD39">@item.TrangThaiDh</span></p>
+                                                    </div>
+                                                    <ul class="products-od">
+                                                        @{
+                                                            decimal totalPrice = 0;
+                                                        }
+                                                        @foreach (var ct in item.ChiTietDonHangs)
+                                                        {
+                                                            <li class="product-od">
+                                                                <div class="prd-od-left">
+                                                                    @foreach (var image in ct.MaMhNavigation.HinhAnhMatHangs)
+                                                                    {
+                                                                        <a><img src="@Url.Content($"../assets/img/myproducts/{image.DuongDanHinhAnh}")"></a>
+                                                                    }
+                                                                </div>
+                                                                <div class="prd-od-center">
+                                                                    <h5>@ct.MaMhNavigation.TenMh</h5>
+                                                                </div>
+                                                                <div class="prd-od-center">
+                                                                    <p>x @ct.SoLuongDat</p>
+                                                                </div>
+                                                                <div class="prd-od-center">
+                                                                    <p class="prd-od-price">@ct.DonGia.ToString("#,##0") VNĐ</p>
+                                                                </div>
+                                                            </li>
+                                                            decimal subtotal = ct.SoLuongDat * ct.DonGia;
+                                                            totalPrice += subtotal;
+                                                        }
+                                                        <div class="od-xacnhan">
+                                                            <p class="od-day-order">Thời gian đặt hàng: <span>@item.TgtaoDon.ToString("h:mm tt dd/MM/yyyy")</span></p>
+                                                            <p class="od-price">Thành tiền: <span>@totalPrice.ToString("#,##0") VNĐ</span></p>
+                                                            <div class="od-danhgia">
+                                                                <a href="#" onclick="document.getElementById('rate-form-6').style.display='block'" style="width:auto;">Mua lại</a>
+                                                            </div>
+                                                        </div>
+                                                    </ul>
+                                                </li>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <div class="hero-wrap">
+                                                <div class="container">
+                                                    <div class="row no-gutters slider-text align-items-center justify-content-center">
+                                                        <div class="col-md-9 ftco-animate text-center">
+                                                            <h6 class="mb-0 bread">Chưa có đơn hàng nào</h6>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!--Modal xác nhận nhập hàng-->
+            <div class="modal" id="rate-form-xacnhan">
+                <form class="rate-product animate" asp-action="NhapHang" method="post">
+                    <input type="hidden" id="ma-dh-input" name="maDH">
+                    <div class="modal-header justify-content-center">
+                        <h2 class="modal-title" id="deleteSinhVienLabel">Xác nhận nhập hàng</h2>
+                    </div>
+                    <div class="hero-wrap">
+                        <div class="container">
+                            <div class="row no-gutters slider-text align-items-center justify-content-center">
+                                <div class="col-md-9 ftco-animate text-center">
+                                    <h3 style="color: #7FAD39;">Đơn hàng đã giao thành công. Vui lòng kiểm hàng trước khi xác nhận nhập hàng!!!</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btn-rate">
+                        <a class="huy" href="#" onclick="document.getElementById('rate-form-xacnhan').style.display='none'" class="close">Hủy</a>
+                        <input type="submit" class="hoanthanh" value="Xác nhận">
+                    </div>
+                </form>
+            </div>
+
+            <!--Modal hủy đơn hàng-->
+            <div class="modal" id="rate-form-huydon">
+                <form class="rate-product animate" asp-action="HuyDon" method="post">
+                    <input type="hidden" id="ma-dh-input-huy" name="maDHHuy">
+                    <div class="modal-header justify-content-center">
+                        <h2 class="modal-title" id="deleteSinhVienLabel">Hủy đơn hàng</h2>
+                    </div>
+                    <div class="hero-wrap">
+                        <div class="container">
+                            <div class="row no-gutters slider-text align-items-center justify-content-center">
+                                <div class="rate-comment">
+                                    <textarea placeholder="Nhập lý do hủy đơn" name="GhiChu"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btn-rate">
+                        <a class="huy" href="#" onclick="document.getElementById('rate-form-huydon').style.display='none'" class="close">Hủy</a>
+                        <input type="submit" class="hoanthanh" value="Xác nhận">
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </section>
+</body>
+
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery-migrate-3.0.1.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.easing.1.3.js"></script>
+<script src="js/jquery.waypoints.min.js"></script>
+<script src="js/jquery.stellar.min.js"></script>
+<script src="js/owl.carousel.min.js"></script>
+<script src="js/jquery.magnific-popup.min.js"></script>
+<script src="js/aos.js"></script>
+<script src="js/jquery.animateNumber.min.js"></script>
+<script src="js/bootstrap-datepicker.js"></script>
+<script src="js/scrollax.min.js"></script>
+<script src="js/main.js"></script>
+
+<script src="~/assets/js/jquery-3.3.1.min.js"></script>
+<script src="~/assets/js/bootstrap.min.js"></script>
+<script src="~/assets/js/jquery.nice-select.min.js"></script>
+<script src="~/assets/js/jquery-ui.min.js"></script>
+<script src="~/assets/js/jquery.slicknav.js"></script>
+<script src="~/assets/js/mixitup.min.js"></script>
+<script src="~/assets/js/owl.carousel.min.js"></script>
+<script src="~/assets/js/main.js"></script>
+
+<script>
+    function showConfirmationModal(maDh) {
+        document.getElementById('rate-form-xacnhan').style.display = 'block';
+        document.getElementById('ma-dh-input').value = maDh;
+    }
+    function showCanCelOrderModal(maDh) {
+        document.getElementById('rate-form-huydon').style.display = 'block';
+        document.getElementById('ma-dh-input-huy').value = maDh;
+    }
+</script>

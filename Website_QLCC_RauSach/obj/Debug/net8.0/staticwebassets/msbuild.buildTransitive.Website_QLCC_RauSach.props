@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\buildMultiTargeting\Website_QLCC_RauSach.props" />
-</Project>

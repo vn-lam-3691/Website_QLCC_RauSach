@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using QuestPDF.Fluent;
+using QuestPDF.Previewer;
 using Website_QLCC_RauSach.Models;
 
 namespace Website_QLCC_RauSach.Areas.NhaCungCap.Controllers

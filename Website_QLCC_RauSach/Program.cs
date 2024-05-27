@@ -17,6 +17,8 @@ builder.Services.AddSession(options =>
     options.Cookie.IsEssential = true;
 });
 
+builder.Services.AddScoped<HoaDonService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -47,5 +49,7 @@ app.UseEndpoints(endpoints =>
         pattern: "{controller=Home}/{action=Index}/{id?}"
     );
 });
+
+QuestPDF.Settings.License = QuestPDF.Infrastructure.LicenseType.Community;
 
 app.Run();

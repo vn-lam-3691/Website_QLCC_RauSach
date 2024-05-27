@@ -286,7 +286,6 @@
 
 														<button type="submit" class="btn btn-primary">Bắt đầu vận chuyển</button>
 													</form>
-													<a asp-controller="" asp-action="" class="btn btn-primary bg-lime-600" style="width:auto; margin-left:12px;">In hóa đơn</a>
 													<a asp-controller="DonHang" asp-action="ChiTietDonHang" asp-route-id="@donHang.MaDh" onclick="document.getElementById('rate-form').style.display='block'" class="btn btn-primary bg-lime-600" style="width:auto; margin-left:12px;">Xem chi tiết</a>
 												</div>
 											</div>
@@ -341,7 +340,8 @@
 													</div>
 													<div class="btn-danhgia position-absolute bottom-0 right-0" style="display: flex; margin-bottom: 16px; margin-right:20px;">
 														<a href="#" class="btn btn-primary" style="width:auto; margin-left:12px;">Theo dõi đơn hàng</a>
-														<a asp-controller="" asp-action="" class="btn btn-primary bg-lime-600" style="width:auto; margin-left:12px;">In hóa đơn</a>
+
+														<a class="btn btn-primary" asp-controller="Bill" asp-action="ExportBill" asp-route-id="@donHang.MaDh" style="width:auto; margin-left:12px;">In hóa đơn</a>
 														<a asp-controller="DonHang" asp-action="ChiTietDonHang" asp-route-id="@donHang.MaDh" onclick="document.getElementById('rate-form').style.display='block'" class="btn btn-primary bg-lime-600" style="width:auto; margin-left:12px;">Xem chi tiết</a>
 													</div>
 												</div>
@@ -396,7 +396,8 @@
 														<div>@donHang.TrangThaiDh</div>
 													</div>
 													<div class="btn-danhgia position-absolute bottom-0 right-0" style="display: flex; margin-bottom: 16px; margin-right:20px;">
-														<a asp-controller="" asp-action="" class="btn btn-primary bg-lime-600" style="width:auto; margin-left:12px;">In hóa đơn</a>
+
+														<a class="btn btn-primary" asp-controller="Bill" asp-action="ExportBill" asp-route-id="@donHang.MaDh">In hóa đơn</a>
 														<a asp-controller="DonHang" asp-action="ChiTietDonHang" asp-route-id="@donHang.MaDh" onclick="document.getElementById('rate-form').style.display='block'" class="btn btn-primary bg-lime-600" style="width:auto; margin-left:12px;">Xem chi tiết</a>
 													</div>
 												</div>

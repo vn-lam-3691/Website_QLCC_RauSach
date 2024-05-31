@@ -5,7 +5,7 @@ namespace Website_QLCC_RauSach.Models;
 
 public partial class MatHang
 {
-    public string MaMh { get; set; } = null!;
+    public string? MaMh { get; set; } = null!;
 
     public int MaDm { get; set; }
 
@@ -22,7 +22,6 @@ public partial class MatHang
     public string TgbaoQuan { get; set; } = null!;
 
     public int TinhTrang { get; set; }
-
     public virtual ICollection<ChiTietCungUng> ChiTietCungUngs { get; set; } = new List<ChiTietCungUng>();
 
     public virtual ICollection<ChiTietDonHang> ChiTietDonHangs { get; set; } = new List<ChiTietDonHang>();
@@ -30,4 +29,5 @@ public partial class MatHang
     public virtual ICollection<HinhAnhMatHang> HinhAnhMatHangs { get; set; } = new List<HinhAnhMatHang>();
 
     public virtual DanhMuc MaDmNavigation { get; set; } = null!;
+   
 }

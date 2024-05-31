@@ -117,13 +117,16 @@ CREATE TABLE MatHang (
     FOREIGN KEY (MaDM) REFERENCES DanhMuc(MaDanhMuc)
 );
 
-CREATE TABLE HinhAnhMatHang (
-    MaHAMH INTEGER IDENTITY NOT NULL,
-    DuongDanHinhAnh TEXT,
-    MaMH VARCHAR(10) NOT NULL,
-    PRIMARY KEY (MaHAMH),
-    FOREIGN KEY (MaMH) REFERENCES MatHang(MaMH)
-);
+CREATE TABLE [dbo].[HinhAnhMatHang](
+	[MaHAMH] [int] IDENTITY(1,1) NOT NULL,
+	[DuongDanHinhAnh] [text] NULL,
+	[MaMH] [varchar](10) NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[MaHAMH] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
 
 CREATE TABLE ChiTietCungUng (
     MaNVNCC VARCHAR(10) NOT NULL,
@@ -273,15 +276,25 @@ values
 	('MH003', 2, N'Củ cải trắng', null, N'Kg', 70000, 500, '5 ngày', 1),
 	('MH004', 2, N'Khoai tây hữu cơ', null, N'Kg', 30000, 500, '5 ngày', 1),
 	('MH005', 4, N'Súp lơ xanh hữu cơ', null, N'Bịch', 85000, 400, '4 ngày', 1)
+	select * from DanhMuc
 
-insert into HinhAnhMatHang
-values
-	(null, 'MH001'),
-	(null, 'MH002'),
-	(null, 'MH003'),
-	(null, 'MH004'),
-	(null, 'MH005')
 
+	
+
+	SET IDENTITY_INSERT [dbo].[HinhAnhMatHang] ON 
+
+INSERT [dbo].[HinhAnhMatHang] ([MaHAMH], [DuongDanHinhAnh], [MaMH]) VALUES (1, N'~/assets/img/myproducts/cai-ngong-1.jpg', N'MH001')
+INSERT [dbo].[HinhAnhMatHang] ([MaHAMH], [DuongDanHinhAnh], [MaMH]) VALUES (2, N'~/assets/img/myproducts/rau-muong-5.jpg', N'MH002')
+INSERT [dbo].[HinhAnhMatHang] ([MaHAMH], [DuongDanHinhAnh], [MaMH]) VALUES (3, N'~/assets/img/myproducts/cua-cai-trang-9.jpg', N'MH003')
+INSERT [dbo].[HinhAnhMatHang] ([MaHAMH], [DuongDanHinhAnh], [MaMH]) VALUES (4, N'~/assets/img/myproducts/khoai-tay-huu-co-7.jpg', N'MH004')
+INSERT [dbo].[HinhAnhMatHang] ([MaHAMH], [DuongDanHinhAnh], [MaMH]) VALUES (5, N'~/assets/img/myproducts/sup-lo-xanh.jpg', N'MH005')
+INSERT [dbo].[HinhAnhMatHang] ([MaHAMH], [DuongDanHinhAnh], [MaMH]) VALUES (6, N'~/assets/img/myproducts/cai-kale-8.jpg', N'MH006')
+INSERT [dbo].[HinhAnhMatHang] ([MaHAMH], [DuongDanHinhAnh], [MaMH]) VALUES (7, N'~/assets/img/myproducts/can-tay-5.jpg', N'MH007')
+INSERT [dbo].[HinhAnhMatHang] ([MaHAMH], [DuongDanHinhAnh], [MaMH]) VALUES (8, N'~/assets/img/myproducts/khoai-lang-mat-6.jpg', N'MH008')
+INSERT [dbo].[HinhAnhMatHang] ([MaHAMH], [DuongDanHinhAnh], [MaMH]) VALUES (9, N'~/assets/img/myproducts/bi-do-3.jpg', N'MH009')
+INSERT [dbo].[HinhAnhMatHang] ([MaHAMH], [DuongDanHinhAnh], [MaMH]) VALUES (10, N'~/assets/img/myproducts/bap-su-tim-8.jpg', N'MH010')
+INSERT [dbo].[HinhAnhMatHang] ([MaHAMH], [DuongDanHinhAnh], [MaMH]) VALUES (11, N'~/assets/img/myproducts/thanh-long-ruot-trang-5.jpg', N'MH011')
+	select * from HinhAnhMatHang
 insert into ChiTietCungUng
 values
 	('NVNC001', 'MH001', 400),
@@ -322,3 +335,12 @@ values
 	(3, null, '22/05/2024', 5070000, N'Thanh toán khi nhận hàng', null),
 	(4, null, '21/05/2024', 3950000, N'Thanh toán khi nhận hàng', null),
 	(5, null, '22/05/2024', 6560000, N'Thanh toán khi nhận hàng', null)
+	
+	insert into MatHang
+values
+	('MH006', 1, N'Cải ngồng hữu cơ', null, N'Bịch', 54000, 400, '5 ngày', 1),
+	('MH007', 1, N'Rau muống', null, N'Bó', 10000, 400, '2 ngày', 1),
+	('MH008', 2, N'Củ cải trắng', null, N'Kg', 70000, 500, '5 ngày', 1),
+	('MH009', 2, N'Khoai tây hữu cơ', null, N'Kg', 30000, 500, '5 ngày', 1),
+	('MH010', 4, N'Súp lơ xanh hữu cơ', null, N'Bịch', 85000, 400, '4 ngày', 1)
+	

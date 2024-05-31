@@ -81,8 +81,11 @@
                 <div class="col-lg-6">
                     <nav class="header__menu">
                         <ul>
-                            <li class="active"><a href="./index.html">Trang chủ</a></li>
-                            <li><a href="./shop-grid.html">Cửa hàng</a></li>
+                            <li class="active">
+                                <a href="@Url.Action("Index", "Home")">Trang chủ</a>
+                                </li>
+                            <li>
+                                <a href="@Url.Action("Index", "MatHangs")">Cửa hàng</a>
                             <li>
                                 <a href="#">Page</a>
                                 <ul class="header__menu__dropdown">
@@ -114,50 +117,7 @@
     </header>
     <!-- Header Section End -->
     <!-- Hero Section Begin -->
-    <section class="hero hero-normal">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3">
-                    <div class="hero__categories">
-                        <div class="hero__categories__all">
-                            <i class="fa fa-bars"></i>
-                            <span>Danh mục</span>
-                        </div>
-                        <ul>
-                            <li><a href="#">Nhóm Rau lá</a></li>
-                            <li><a href="#">Nhóm Củ</a></li>
-                            <li><a href="#">Nhóm Trái cây</a></li>
-                            <li><a href="#">Nhóm Mầm</a></li>
-                            <li><a href="#">Nhóm Hoa</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-9">
-                    <div class="hero__search">
-                        <div class="hero__search__form">
-                            <form action="#">
-                                <div class="hero__search__categories">
-                                    Tất cả
-                                    <span class="arrow_carrot-down"></span>
-                                </div>
-                                <input type="text" placeholder="Bạn muốn tìm kiếm gì?">
-                                <button type="submit" class="site-btn">SEARCH</button>
-                            </form>
-                        </div>
-                        <div class="hero__search__phone">
-                            <div class="hero__search__phone__icon">
-                                <i class="fa fa-phone"></i>
-                            </div>
-                            <div class="hero__search__phone__text">
-                                <h5>0987654321</h5>
-                                <span>Hỗ trợ 24/7</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    
     <!-- Hero Section End -->
 
     @RenderBody()

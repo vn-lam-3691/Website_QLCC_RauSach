@@ -262,7 +262,6 @@ public partial class QuanLyRauSachContext : DbContext
             entity.Property(e => e.TgbaoQuan)
                 .HasMaxLength(50)
                 .HasColumnName("TGBaoQuan");
-
             entity.HasOne(d => d.MaDmNavigation).WithMany(p => p.MatHangs)
                 .HasForeignKey(d => d.MaDm)
                 .OnDelete(DeleteBehavior.ClientSetNull)

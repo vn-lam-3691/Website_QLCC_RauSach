@@ -22,12 +22,14 @@ public partial class MatHang
     public string TgbaoQuan { get; set; } = null!;
 
     public int TinhTrang { get; set; }
+
     public virtual ICollection<ChiTietCungUng> ChiTietCungUngs { get; set; } = new List<ChiTietCungUng>();
 
     public virtual ICollection<ChiTietDonHang> ChiTietDonHangs { get; set; } = new List<ChiTietDonHang>();
 
     public virtual ICollection<HinhAnhMatHang> HinhAnhMatHangs { get; set; } = new List<HinhAnhMatHang>();
 
+    public virtual ICollection<GioHang> GioHangs { get; set; } = new List<GioHang>();
+
     public virtual DanhMuc MaDmNavigation { get; set; } = null!;
-   
 }

@@ -29,7 +29,7 @@
 <body>
     <!-- Page Preloder -->
     @* <div id="preloder">
-        <div class="loader"></div>
+    <div class="loader"></div>
     </div> *@
     <!-- Header Section Begin -->
     <header class="header">
@@ -52,7 +52,7 @@
                                 @if (HttpContextAccessor.HttpContext.Session.GetInt32("MaTaiKhoan") == null)
                                 {
                                     <a asp-controller="Home" asp-action="Login">Đăng ký / Đăng nhập</a>
-                                } 
+                                }
                                 else if (HttpContextAccessor.HttpContext.Session.GetInt32("MaPhanQuyen") == 2)
                                 {
                                     <div class="header__top__right__language">
@@ -83,18 +83,9 @@
                         <ul>
                             <li class="active">
                                 <a href="@Url.Action("Index", "Home")">Trang chủ</a>
-                                </li>
+                            </li>
                             <li>
                                 <a href="@Url.Action("Index", "MatHangs")">Cửa hàng</a>
-                            <li>
-                                <a href="#">Page</a>
-                                <ul class="header__menu__dropdown">
-                                    <li><a href="./shop-details.html">Shop Details</a></li>
-                                    <li><a href="./shoping-cart.html">Shoping Cart</a></li>
-                                    <li><a href="./checkout.html">Check Out</a></li>
-                                    <li><a href="./blog-details.html">Blog Details</a></li>
-                                </ul>
-                            </li>
                             <li><a href="./blog.html">Blog</a></li>
                             <li><a href="./contact.html">Liên hệ</a></li>
                         </ul>
@@ -104,7 +95,7 @@
                     <div class="header__cart">
                         <ul>
                             <li><a href="#"><i class="fa fa-heart"></i> <span>0</span></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>0</span></a></li>
+                            <li><a asp-controller="Cart" asp-action="Index"><i class="fa fa-shopping-bag"></i> <span>0</span></a></li>
                         </ul>
                         <div class="header__cart__price">Sản phẩm: <span>0 VNĐ</span></div>
                     </div>
@@ -117,11 +108,9 @@
     </header>
     <!-- Header Section End -->
     <!-- Hero Section Begin -->
-    
     <!-- Hero Section End -->
-
     @RenderBody()
-    
+
     <!-- Footer Section Begin -->
     <footer class="footer spad">
         <div class="container">
@@ -160,7 +149,7 @@
                         <div class="footer__copyright__text">
                             <p>
                                 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                                Copyright &copy; Tháng 5 Năm 2024 | Nhóm 5 Đồ Án Phần Mềm - UTE thực hiện 
+                                Copyright &copy; Tháng 5 Năm 2024 | Nhóm 5 Đồ Án Phần Mềm - UTE thực hiện
                                 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                             </p>
                         </div>

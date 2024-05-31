@@ -17,6 +17,8 @@ public partial class NhanVienSt
 
     public virtual ICollection<DonHang> DonHangs { get; set; } = new List<DonHang>();
 
+    public virtual ICollection<GioHang> GioHangs { get; set; } = new List<GioHang>();
+
     public virtual SieuThi MaStNavigation { get; set; } = null!;
 
     public virtual TaiKhoan MaTkNavigation { get; set; } = null!;

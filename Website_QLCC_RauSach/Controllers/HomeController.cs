@@ -24,6 +24,9 @@ namespace Website_QLCC_RauSach.Controllers
             ViewData["MatHangLastest"] = _context.HinhAnhMatHangs.Include(m => m.MaMhNavigation).OrderByDescending(m => m.MaMh).Take(3).ToList();
             var quanLyRauSachContext = _context.HinhAnhMatHangs.Include(m => m.MaMhNavigation);
             ViewBag.Count = quanLyRauSachContext.ToList().Count();
+
+            ViewBag.CartCount = _context.GioHangs.Count();
+
             return View(await quanLyRauSachContext.ToListAsync());
         }
 

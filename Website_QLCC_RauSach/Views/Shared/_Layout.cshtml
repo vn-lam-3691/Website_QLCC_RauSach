@@ -95,7 +95,7 @@
                     <div class="header__cart">
                         <ul>
                             <li><a href="#"><i class="fa fa-heart"></i> <span>0</span></a></li>
-                            <li><a asp-controller="Cart" asp-action="Index"><i class="fa fa-shopping-bag"></i> <span>0</span></a></li>
+                            <li><a asp-controller="Cart" asp-action="Index"><i class="fa fa-shopping-bag"></i> <span>@ViewBag.CartCount</span></a></li>
                         </ul>
                         <div class="header__cart__price">Sản phẩm: <span>0 VNĐ</span></div>
                     </div>
@@ -160,6 +160,7 @@
     </footer>
     <!-- Footer Section End -->
     <!-- Js Plugins -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="~/assets/js/jquery-3.3.1.min.js"></script>
     <script src="~/assets/js/bootstrap.min.js"></script>
     <script src="~/assets/js/jquery.nice-select.min.js"></script>
@@ -169,7 +170,20 @@
     <script src="~/assets/js/owl.carousel.min.js"></script>
     <script src="~/assets/js/main.js"></script>
 
+    @if (TempData["PaymentSuccess"] == "success")
+    {
+        <script>
+            import Swal from 'sweetalert2'
 
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Đặt hàng thành công",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        </script>
+    }
 
 </body>
 

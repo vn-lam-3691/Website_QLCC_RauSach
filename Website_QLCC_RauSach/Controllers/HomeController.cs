@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 using Website_QLCC_RauSach.Models;
 
@@ -15,9 +16,15 @@ namespace Website_QLCC_RauSach.Controllers
             _context = context;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            ViewBag.MaxGia = _context.MatHangs.Max(sp => sp.Dongia);
+            ViewBag.MinGia = _context.MatHangs.Min(sp => sp.Dongia);
+            ViewData["DanhMuc"] = _context.DanhMucs.ToList();
+            ViewData["MatHangLastest"] = _context.HinhAnhMatHangs.Include(m => m.MaMhNavigation).OrderByDescending(m => m.MaMh).Take(3).ToList();
+            var quanLyRauSachContext = _context.HinhAnhMatHangs.Include(m => m.MaMhNavigation);
+            ViewBag.Count = quanLyRauSachContext.ToList().Count();
+            return View(await quanLyRauSachContext.ToListAsync());
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

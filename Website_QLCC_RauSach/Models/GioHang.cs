@@ -9,7 +9,7 @@ public class GioHang
     public string MaNvst { get; set; } = null!;
 
     public string MaMh { get; set; } = null!;
-
+    
     public int SoLuong { get; set; }
 
     public virtual NhanVienSt MaNvstNavigation { get; set; } = null!;

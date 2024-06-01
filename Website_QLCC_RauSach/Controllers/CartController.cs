@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Primitives;
 using Website_QLCC_RauSach.Models;
 
 namespace Website_QLCC_RauSach.Controllers
@@ -53,6 +54,30 @@ namespace Website_QLCC_RauSach.Controllers
                 _context.SaveChanges();
             }
             return RedirectToAction("Index", "Cart");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UpdateCart([FromQuery] string mnvst, [FromForm] List<string> maMh, [FromForm] List<int> soLuongDat)
+        {
+            for (var index = 0; index < maMh.Count; index++)
+            {
+                var item = await _context.GioHangs.FirstOrDefaultAsync(gh => gh.MaNvst == mnvst && gh.MaMh == maMh[index]);
+                item.SoLuong = soLuongDat[index];
+            }
+            
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Index");
+        }
+        
+        [HttpGet]
+        public async Task<IActionResult> DeleteCartItem([FromQuery] string mnvst, [FromQuery] string maMh)
+        {
+            var item = await _context.GioHangs.FirstOrDefaultAsync(gh => gh.MaNvst == mnvst && gh.MaMh == maMh);
+            _context.GioHangs.Remove(item);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Index");
         }
     }
 }

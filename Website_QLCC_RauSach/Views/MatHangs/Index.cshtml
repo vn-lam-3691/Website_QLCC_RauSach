@@ -5,7 +5,6 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
 <section class="hero hero-normal">
     <div class="container">
         <div class="row">
@@ -228,12 +227,19 @@
                                     <ul class="product__item__pic__hover">
                                         <li><a href="#"><i class="fa fa-heart"></i></a></li>
                                         <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                                        <li>
+                                            @using (Html.BeginForm("AddToCart", "Cart", new { maMH = item.MaMh, slg = 1 }, FormMethod.Post))
+                                            {
+                                                <button type="submit">
+                                                    <i class="fa fa-shopping-cart"></i>
+                                                </button>
+                                            }
+                                        </li>
                                     </ul>
                                 </div>
                                 <div class="product__item__text">
                                     <h6> <a asp-action="Details" asp-route-id="@item.MaMh"> @item.MaMhNavigation.TenMh</a></h6>
-                                    <h5>@item.MaMhNavigation.Dongia VND</h5>
+                                    <h5>@string.Format("{0:0,0 VND}", item.MaMhNavigation.Dongia)</h5>
                                 </div>
                             </div>
                         </div>

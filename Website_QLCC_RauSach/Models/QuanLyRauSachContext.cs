@@ -47,9 +47,11 @@ public partial class QuanLyRauSachContext : DbContext
 
     public virtual DbSet<TknganHang> TknganHangs { get; set; }
 
-//    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-//        => optionsBuilder.UseSqlServer("Data Source=MSI\\SQLEXPRESS;Initial Catalog=QuanLyRauSach;User ID=sa;Password=10302003;Connect Timeout=30;Encrypt=True;Trust Server Certificate=True;Application Intent=ReadWrite;Multi Subnet Failover=False");
+    public virtual DbSet<GioHang> GioHangs { get; set; }
+
+    //    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
+    //        => optionsBuilder.UseSqlServer("Data Source=MSI\\SQLEXPRESS;Initial Catalog=QuanLyRauSach;User ID=sa;Password=10302003;Connect Timeout=30;Encrypt=True;Trust Server Certificate=True;Application Intent=ReadWrite;Multi Subnet Failover=False");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -262,6 +264,7 @@ public partial class QuanLyRauSachContext : DbContext
             entity.Property(e => e.TgbaoQuan)
                 .HasMaxLength(50)
                 .HasColumnName("TGBaoQuan");
+
             entity.HasOne(d => d.MaDmNavigation).WithMany(p => p.MatHangs)
                 .HasForeignKey(d => d.MaDm)
                 .OnDelete(DeleteBehavior.ClientSetNull)
@@ -433,6 +436,29 @@ public partial class QuanLyRauSachContext : DbContext
                 .HasForeignKey(d => d.MaTk)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__TKNganHang__MaTK__3B75D760");
+        });;
+
+        modelBuilder.Entity<GioHang>(entity =>
+        {
+            entity.HasKey(e => new { e.MaNvst, e.MaMh }).HasName("PK__GioHang__A5127BB19989F0FA");
+
+            entity.ToTable("GioHang");
+
+            entity.Property(e => e.MaNvst).HasColumnName("MaNVST");
+            entity.Property(e => e.MaMh)
+                .HasMaxLength(10)
+                .IsUnicode(false)
+                .HasColumnName("MaMH");
+
+            entity.HasOne(d => d.MaNvstNavigation).WithMany(p => p.GioHangs)
+                .HasForeignKey(d => d.MaNvst)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__GioHang__MaNVST__18EBB532");
+
+            entity.HasOne(d => d.MaMhNavigation).WithMany(p => p.GioHangs)
+                .HasForeignKey(d => d.MaMh)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__GioHang__MaMH__19DFD96B");
         });
 
         OnModelCreatingPartial(modelBuilder);

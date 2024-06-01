@@ -87,7 +87,41 @@
             }
         }
 
+        
+        &:hover {
+
+            button {
+                background: $primary-color;
+                border-color: $primary-color;
+
+                i {
+                    color: $white-color;
+                    transform: rotate(360deg);
+                }
+            }
+        }
+
         a {
+            font-size: 16px;
+            color: $normal-color;
+            height: 40px;
+            width: 40px;
+            line-height: 40px;
+            text-align: center;
+            border: 1px solid $border;
+            background: $white-color;
+            display: block;
+            border-radius: 50%;
+            @include transition(all, .5s);
+
+            i {
+                position: relative;
+                transform: rotate(0);
+                @include transition(all, .3s);
+            }
+        }
+
+        button {
             font-size: 16px;
             color: $normal-color;
             height: 40px;
@@ -324,9 +358,39 @@
                     transform: rotate(360deg);
                 }
             }
+
+            button {
+                background: $primary-color;
+                border-color: $primary-color;
+
+                i {
+                    color: $white-color;
+                    transform: rotate(360deg);
+                }
+            }
         }
 
         a {
+            font-size: 16px;
+            color: $normal-color;
+            height: 40px;
+            width: 40px;
+            line-height: 40px;
+            text-align: center;
+            border: 1px solid $border;
+            background: $white-color;
+            display: block;
+            border-radius: 50%;
+            @include transition(all, .5s);
+
+            i {
+                position: relative;
+                transform: rotate(0);
+                @include transition(all, .3s);
+            }
+        }
+
+        button {
             font-size: 16px;
             color: $normal-color;
             height: 40px;

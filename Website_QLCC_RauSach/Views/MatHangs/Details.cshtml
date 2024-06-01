@@ -81,6 +81,8 @@
                              src="@Url.Content(Model.DuongDanHinhAnh)" alt="">
                     </div>
                     <div class="product__details__pic__slider owl-carousel">
+                        <img data-imgbigurl="@Url.Content(Model.DuongDanHinhAnh)"
+                             src="@Url.Content(Model.DuongDanHinhAnh)" alt="">
                         <img data-imgbigurl="/assets/img/product/details/product-details-2.jpg"
                              src="~/assets/img/product/details/thumb-1.jpg" alt="">
                         <img data-imgbigurl="/assets/img/product/details/product-details-3.jpg"
@@ -103,19 +105,23 @@
                         <i class="fa fa-star-half-o"></i>
                         <span>(18 đánh giá)</span>
                     </div>
-                    <div class="product__details__price">@Model.MaMhNavigation.Dongia  VND</div>
+                    <div class="product__details__price">@string.Format("{0:0,0 VND}", Model.MaMhNavigation.Dongia)</div>
                     <p>
                         @Model.MaMhNavigation.MoTa
                     </p>
-                    <div class="product__details__quantity">
-                        <div class="quantity">
-                            <div class="pro-qty">
-                                <input type="text" value="1">
+                    @using (Html.BeginForm("AddToCart", "Cart", new { maMH = Model.MaMh }, FormMethod.Post))
+                    {
+                        <div class="product__details__quantity">
+                            <div class="quantity">
+                                <div class="pro-qty">
+                                    <input type="text" value="1" name="slg">
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <a href="#" class="primary-btn">THÊM VÀO GIỎ HÀNG</a>
-                    <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
+                        <input type="submit" class="primary-btn" value="THÊM VÀO GIỎ HÀNG">
+
+                        <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
+                    }
                     <ul>
                         <li><b>Có sẵn</b> <span>Trong kho</span></li>
                         <li><b>Vận chuyển</b> <span>01 ngày di chuyển. <samp>Miễn phí trong ngày</samp></span></li>
@@ -238,7 +244,14 @@
                             <ul class="product__item__pic__hover">
                                 <li><a href="#"><i class="fa fa-heart"></i></a></li>
                                 <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                                <li>
+                                    @using (Html.BeginForm("AddToCart", "Cart", new { maMH = item.MaMh, slg = 1 }, FormMethod.Post))
+                                    {
+                                        <button type="submit" class="cart-button">
+                                            <i class="fa fa-shopping-cart"></i>
+                                        </button>
+                                    }
+                                </li>
                             </ul>
                         </div>
                         <div class="product__item__text">

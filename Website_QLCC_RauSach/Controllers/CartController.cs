@@ -29,25 +29,15 @@ namespace Website_QLCC_RauSach.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddToCart(GioHang gioHang, String maMH, int slg)
+        public IActionResult AddToCart(String maMH, int slg)
         {
-            int quantity;
-            if (slg == 0)
-            {
-                quantity = 1;
-            }
-            else
-            {
-                quantity = slg;
-            }
-
             var maNV = HttpContext.Session.GetString("MaNv");
             if (maNV != null)
             {
                 var sp = _context.GioHangs.FirstOrDefault(gh => gh.MaNvst.Equals(maNV) && gh.MaMh.Equals(maMH));
                 if (sp != null)
                 {
-                    gioHang.SoLuong += quantity;
+                    sp.SoLuong += slg;
                 }
                 else
                 {
@@ -55,7 +45,7 @@ namespace Website_QLCC_RauSach.Controllers
                     {
                         MaNvst = maNV,
                         MaMh = maMH,
-                        SoLuong = quantity
+                        SoLuong = slg
                     };
 
                     _context.Add(newCartItem);

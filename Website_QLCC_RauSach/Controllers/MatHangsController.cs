@@ -19,14 +19,31 @@ namespace Website_QLCC_RauSach.Controllers
             _context = context;
         }
 
-        // GET: MatHangs
-        public async Task<IActionResult> Index()
+        
+        public async Task<IActionResult> Index(string keywords, int maDm)
         {
             ViewBag.MaxGia = _context.MatHangs.Max(sp => sp.Dongia);
             ViewBag.MinGia = _context.MatHangs.Min(sp => sp.Dongia);
             ViewData["DanhMuc"] = _context.DanhMucs.ToList();
-            ViewData["MatHangLastest"] = _context.HinhAnhMatHangs.Include(m => m.MaMhNavigation).OrderByDescending(m => m.MaMh).Skip(1).Take(3).ToList(); 
-            var quanLyRauSachContext = _context.HinhAnhMatHangs.Include(m => m.MaMhNavigation);
+            ViewData["MatHangLastest"] = _context.HinhAnhMatHangs.Include(m => m.MaMhNavigation).OrderByDescending(m => m.MaMh).Skip(1).Take(3).ToList();
+
+            var quanLyRauSachContext = _context.HinhAnhMatHangs
+                .Include(m => m.MaMhNavigation)
+                .Include(m => m.MaMhNavigation.MaDmNavigation)
+                .AsQueryable();
+
+            if (!string.IsNullOrEmpty(keywords))
+            {
+                quanLyRauSachContext = quanLyRauSachContext
+                    .Where(m => m.MaMhNavigation.TenMh.Contains(keywords));
+            }
+
+            if (maDm > 0)
+            {
+                quanLyRauSachContext = quanLyRauSachContext
+                    .Where(m => m.MaMhNavigation.MaDm == maDm);
+            }
+
             ViewBag.Count = quanLyRauSachContext.ToList().Count();
 
             var maNV = HttpContext.Session.GetString("MaNv");

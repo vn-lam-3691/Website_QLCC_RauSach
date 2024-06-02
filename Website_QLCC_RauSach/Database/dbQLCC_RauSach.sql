@@ -346,3 +346,35 @@ CREATE TABLE GioHang (
     FOREIGN KEY (MaNVST) REFERENCES NhanVienST(MaNV),
     FOREIGN KEY (MaMH) REFERENCES MatHang(MaMH)
 );
+
+
+-- Insert thêm sản phẩm
+insert into MatHang
+values
+	('MH006', 1, N'Cải Kale', null, N'Bịch', 18000, 700, '2 ngày', 1),
+	('MH007', 5, N'Bắp su tím', null, N'Bịch', 62000, 500, '2 ngày', 1),
+	('MH008', 4, N'Bí đỏ', null, N'Kg', 16000, 200, '7 ngày', 1),
+	('MH009', 1, N'Cải ngọt', null, N'Bịch', 48000, 100, '4 ngày', 1),
+	('MH010', 4, N'Cà tím', null, N'Kg', 32000, 150, '3 ngày', 1),
+	('MH011', 2, N'Khoai lang mật', null, N'Kg', 50000, 270, '7 ngày', 1),
+	('MH012', 1, N'Cần tây', null, N'Bịch', 15000, 400, '2 ngày', 1)
+
+insert into HinhAnhMatHang
+values
+	(N'/assets/img/myproducts/cai-kale-8.jpg', 'MH006'),
+	(N'/assets/img/myproducts/bap-su-tim-8.jpg', 'MH007'),
+	(N'/assets/img/myproducts/bi-do-3.jpg', 'MH008'),
+	(N'/assets/img/myproducts/cai-ngot-1.jpg', 'MH009'),
+	(N'/assets/img/myproducts/ca-tim-9.jpg', 'MH010'),
+	(N'/assets/img/myproducts/khoai-lang-mat-6.jpg', 'MH011'),
+	(N'/assets/img/myproducts/can-tay-5.jpg', 'MH012')
+
+insert into ChiTietCungUng
+values
+	('NVNC001', 'MH006', 700),
+	('NVNC001', 'MH007', 500),
+	('NVNC004', 'MH008', 200),
+	('NVNC004', 'MH009', 100),
+	('NVNC004', 'MH010', 150),
+	('NVNC004', 'MH011', 270),
+	('NVNC001', 'MH012', 400)

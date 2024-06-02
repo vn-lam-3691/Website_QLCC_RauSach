@@ -25,7 +25,7 @@ namespace Website_QLCC_RauSach.Controllers
             ViewBag.MaxGia = _context.MatHangs.Max(sp => sp.Dongia);
             ViewBag.MinGia = _context.MatHangs.Min(sp => sp.Dongia);
             ViewData["DanhMuc"] = _context.DanhMucs.ToList();
-            ViewData["MatHangLastest"] = _context.HinhAnhMatHangs.Include(m => m.MaMhNavigation).OrderByDescending(m => m.MaMh).Take(3).ToList(); 
+            ViewData["MatHangLastest"] = _context.HinhAnhMatHangs.Include(m => m.MaMhNavigation).OrderByDescending(m => m.MaMh).Skip(1).Take(3).ToList(); 
             var quanLyRauSachContext = _context.HinhAnhMatHangs.Include(m => m.MaMhNavigation);
             ViewBag.Count = quanLyRauSachContext.ToList().Count();
 
@@ -53,7 +53,22 @@ namespace Website_QLCC_RauSach.Controllers
             {
                 return NotFound();
             }
+
             ViewData["MatHangRelated"] = _context.HinhAnhMatHangs.Include(m => m.MaMhNavigation).OrderByDescending(m => m.MaMh).Take(4).ToList();
+
+            var query = from mh in _context.MatHangs
+                        join ctu in _context.ChiTietCungUngs on mh.MaMh equals ctu.MaMh
+                        join nv in _context.NhanVienNccs on ctu.MaNvncc equals nv.MaNv
+                        join ncc in _context.NhaCungCaps on nv.MaNcc equals ncc.MaNcc
+                        where mh.MaMh == id
+                        select new
+                        {
+                            MaNcc = ncc.MaNcc,
+                            TenNcc = ncc.TenNcc
+                        };
+            var ttNcc = query.FirstOrDefault();
+            ViewData["TTNcc"] = ttNcc;
+
             return View(matHang);
         }
 

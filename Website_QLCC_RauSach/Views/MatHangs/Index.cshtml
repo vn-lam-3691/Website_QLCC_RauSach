@@ -87,7 +87,7 @@
                         </ul>
                     </div>
                     <div class="sidebar__item">
-                        <h4>Price</h4>
+                        <h4>Khoảng giá</h4>
                         <div class="price-range-wrap">
                             <div class="price-range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"
                                  data-min="@ViewBag.MinGia" data-max="@ViewBag.MaxGia">
@@ -103,47 +103,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="sidebar__item sidebar__item__color--option">
-                        <h4>Colors</h4>
-                        <div class="sidebar__item__color sidebar__item__color--white">
-                            <label for="white">
-                                Trắng
-                                <input type="radio" id="white">
-                            </label>
-                        </div>
-                        <div class="sidebar__item__color sidebar__item__color--gray">
-                            <label for="gray">
-                                Xám
-                                <input type="radio" id="gray">
-                            </label>
-                        </div>
-                        <div class="sidebar__item__color sidebar__item__color--red">
-                            <label for="red">
-                                Đỏ
-                                <input type="radio" id="red">
-                            </label>
-                        </div>
-                        <div class="sidebar__item__color sidebar__item__color--black">
-                            <label for="black">
-                                Đen
-                                <input type="radio" id="black">
-                            </label>
-                        </div>
-                        <div class="sidebar__item__color sidebar__item__color--blue">
-                            <label for="blue">
-                                Blue
-                                <input type="radio" id="blue">
-                            </label>
-                        </div>
-                        <div class="sidebar__item__color sidebar__item__color--green">
-                            <label for="green">
-                                Green
-                                <input type="radio" id="green">
-                            </label>
-                        </div>
-                    </div>
                     <div class="sidebar__item">
-                        <h4>Popular Size</h4>
+                        <h4>Đơn vị tính</h4>
                         <div class="sidebar__item__size">
                             <label for="large">
                                 Lớn
@@ -158,13 +119,13 @@
                         </div>
                         <div class="sidebar__item__size">
                             <label for="small">
-                                Nhỏ Vừa
+                                Bịch
                                 <input type="radio" id="small">
                             </label>
                         </div>
                         <div class="sidebar__item__size">
                             <label for="tiny">
-                                Nhỏ 
+                                Kilogram
                                 <input type="radio" id="tiny">
                             </label>
                         </div>
@@ -183,7 +144,7 @@
                                             </div>
                                             <div class="latest-product__item__text">
                                                 <h6>@item.MaMhNavigation.TenMh</h6>
-                                                <span>@item.MaMhNavigation.Dongia VND</span>
+                                                <span>@string.Format("{0:0,0 VND}", item.MaMhNavigation.Dongia)</span>
                                             </div>
                                         </a>
                                     }
@@ -198,10 +159,9 @@
                     <div class="row">
                         <div class="col-lg-4 col-md-5">
                             <div class="filter__sort">
-                                <span>Sort By</span>
+                                <span>Sắp xếp theo</span>
                                 <select>
-                                    <option value="0">Default</option>
-                                    <option value="0">Default</option>
+                                    <option value="0">Mặc định</option>
                                 </select>
                             </div>
                         </div>
@@ -245,7 +205,7 @@
                         </div>
                     }
                 </div>
-                <div class="product__pagination">
+                <div class="product__pagination" style="text-align:center;">
                     <a href="#">1</a>
                     <a href="#">2</a>
                     <a href="#">3</a>

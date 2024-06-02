@@ -31,7 +31,7 @@
         @foreach (var chiTietDonHang in Model)
         {
             <div class="border-2 border-primary p-4 my-4 position-relative flex rounded">
-                <img class="img-fluid img-thumbnail" src="@chiTietDonHang.DuongDanHinhAnh" />
+                <img class="img-fluid img-thumbnail" src="@chiTietDonHang.DuongDanHinhAnh" style="width: 300px; height: 300px;"/>
                 <div>
                     <div class="flex gap-3 ml-10 mt-3 mb-3" style="font-size: 20px;">
                         <div> Mã Mặt Hàng:</div>
@@ -55,7 +55,7 @@
                     </div>
                     <div class="flex gap-3 ml-10 mb-3" style="font-size: 20px;">
                         <div> Đơn Giá: </div>
-                        <div> @chiTietDonHang.DonGia</div>
+                        <div>  @string.Format("{0:0,0 VND}", @chiTietDonHang.DonGia)</div>
                     </div>
                 </div>
             </div>

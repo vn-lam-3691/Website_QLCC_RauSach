@@ -81,11 +81,11 @@
                                 @foreach(var item in Model)
                                 {
                                     totalPrice += item.MaMhNavigation.Dongia * item.SoLuong;
-                                    <li>@item.MaMhNavigation.TenMh <span>@string.Format("{0:0,0 đ}", item.MaMhNavigation.Dongia * item.SoLuong)</span></li>
+                                    <li>@item.MaMhNavigation.TenMh <span>@string.Format("{0:0,0 VND}", item.MaMhNavigation.Dongia * item.SoLuong)</span></li>
                                 }
                             </ul>
-                            <div class="checkout__order__subtotal">Phí vận chuyển <span>0 đ</span></div>
-                            <div class="checkout__order__total">Tổng thanh toán <span>@string.Format("{0:0,0 đ}", totalPrice)</span></div>
+                            <div class="checkout__order__subtotal">Phí vận chuyển <span>0 VND</span></div>
+                            <div class="checkout__order__total">Tổng thanh toán <span>@string.Format("{0:0,0 VND}", totalPrice)</span></div>
                             
                             <input type="hidden" name="tongtien" value="@totalPrice">
 

@@ -19,6 +19,8 @@ namespace Website_QLCC_RauSach.Controllers
         public IActionResult Index()
         {
             var maNV = HttpContext.Session.GetString("MaNv");
+
+            ViewBag.CartCount = _context.GioHangs.Where(gh => gh.MaNvst.Equals(maNV)).Count();
             // tat ca don hang
             var donHangsAll = _context.DonHangs.Include(dh => dh.ChiTietDonHangs)
                             .ThenInclude(ct => ct.MaMhNavigation)

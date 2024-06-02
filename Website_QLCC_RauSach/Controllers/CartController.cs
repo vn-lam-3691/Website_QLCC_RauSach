@@ -16,8 +16,6 @@ namespace Website_QLCC_RauSach.Controllers
 
         public IActionResult Index()
         {
-            ViewBag.CartCount = _context.GioHangs.Count();
-
             if (HttpContext.Session.GetInt32("MaTaiKhoan") == null)
                 return RedirectToAction("Login", "Home");
             else
@@ -27,6 +25,9 @@ namespace Website_QLCC_RauSach.Controllers
                 var gioHangs = _context.GioHangs.Include(gh => gh.MaMhNavigation)
                             .ThenInclude(mh => mh.HinhAnhMatHangs)
                             .Where(gh => gh.MaNvst.Equals(maNV)).ToList();
+
+                ViewBag.CartCount = _context.GioHangs.Where(gh => gh.MaNvst.Equals(maNV)).Count();
+
                 return View(gioHangs);
             }
         }

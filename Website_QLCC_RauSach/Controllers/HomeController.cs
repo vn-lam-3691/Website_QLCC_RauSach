@@ -25,7 +25,8 @@ namespace Website_QLCC_RauSach.Controllers
             var quanLyRauSachContext = _context.HinhAnhMatHangs.Include(m => m.MaMhNavigation);
             ViewBag.Count = quanLyRauSachContext.ToList().Count();
 
-            ViewBag.CartCount = _context.GioHangs.Count();
+            var maNV = HttpContext.Session.GetString("MaNv");
+            ViewBag.CartCount = _context.GioHangs.Where(gh => gh.MaNvst.Equals(maNV)).Count();
 
             return View(await quanLyRauSachContext.ToListAsync());
         }

@@ -84,7 +84,7 @@
                                             </div>
                                         </td>
                                         <td class="shoping__cart__total">
-                                            @string.Format("{0:0,0 đ}", item.MaMhNavigation.Dongia * item.SoLuong)
+                                            @string.Format("{0:0,0 VND}", item.MaMhNavigation.Dongia * item.SoLuong)
                                         </td>
                                         <td class="shoping__cart__item__close">
                                             <a asp-controller="Cart" asp-action="DeleteCartItem" asp-route-mnvst="@Model.First().MaNvst" asp-route-maMh="@item.MaMh">
@@ -132,10 +132,10 @@
                     <div class="shoping__checkout">
                         <h5>Giỏ hàng</h5>
                         <ul>
-                            <li>Tổng tiền <span>@string.Format("{0:0,0 đ}", totalPrice)</span></li>
-                            <li>Phí vận chuyển <span>0 đ</span></li>
-                            <li style="border-bottom: 1px solid #ebebeb;">Giảm giá <span>0 đ</span></li>
-                            <li>Thành tiền <span>@string.Format("{0:0,0 đ}", totalPrice)</span></li>
+                            <li>Tổng tiền <span>@string.Format("{0:0,0 VND}", totalPrice)</span></li>
+                            <li>Phí vận chuyển <span>0 VND</span></li>
+                            <li style="border-bottom: 1px solid #ebebeb;">Giảm giá <span>0 VND</span></li>
+                            <li>Thành tiền <span>@string.Format("{0:0,0 VND}", totalPrice)</span></li>
                         </ul>
                         <a asp-controller="Checkout" asp-action="Index" class="primary-btn">Đặt hàng</a>
                     </div>

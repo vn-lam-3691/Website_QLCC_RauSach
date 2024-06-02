@@ -88,15 +88,15 @@ namespace Website_QLCC_RauSach.Areas.NhaCungCap.Controllers
 							{
 								table.Cell().Element(CellStyle).Text(item.TenMh);
 								table.Cell().Element(CellStyle).Text(item.SoLuongDat.ToString());
-								table.Cell().Element(CellStyle).Text(item.DonGia.ToString("N0"));
-							}
+                                table.Cell().Element(CellStyle).Text(item.DonGia.ToString("N0") + " VND");
+                            }
 						});
 
 						column.Item().Row(row =>
 						{
 							row.RelativeColumn().Column(col =>
 							{
-								col.Item().Text($"Tổng thanh toán:            {donHang.order1.Tongtien:N0}").Bold();
+								col.Item().Text($"Tổng thanh toán:            {donHang.order1.Tongtien:N0}"+" VND").Bold();
 								col.Item().Text($"Hình thức thanh toán:     {donHang.order1.Pttt}");
 								if (!donHang.order1.Ghichu.IsNullOrEmpty())
 								{

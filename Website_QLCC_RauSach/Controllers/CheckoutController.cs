@@ -15,6 +15,7 @@ namespace Website_QLCC_RauSach.Controllers
 
 		public IActionResult Index()
 		{
+
             if (HttpContext.Session.GetInt32("MaTaiKhoan") == null)
                 return RedirectToAction("Login", "Home");
             else
@@ -31,6 +32,7 @@ namespace Website_QLCC_RauSach.Controllers
                     .Include(nv => nv.MaStNavigation.DiaChiSts)
                     .FirstOrDefault(nv => nv.MaNv.Equals(maNV));
 
+                ViewBag.CartCount = _context.GioHangs.Where(gh => gh.MaNvst.Equals(maNV)).Count();
 
                 return View(items);
             }

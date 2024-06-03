@@ -58,7 +58,13 @@
                                     <div class="header__top__right__language">
                                         <a>@HttpContextAccessor.HttpContext.Session.GetString("TenNv")</a>
                                         <ul>
-                                            <li><a class="dropdown-item" href="#">Tài khoản</a></li>
+                                            @if (HttpContextAccessor.HttpContext.Session.GetInt32("MaTaiKhoan") == 2 || HttpContextAccessor.HttpContext.Session.GetInt32("MaTaiKhoan") == 5)
+                                            {
+                                                <li><a class="dropdown-item" asp-controller="Account" asp-action="StaffManagement">Quản lý NV</a></li>
+                                            } else
+                                            {
+                                                <li><a class="dropdown-item" href="#">Tài khoản</a></li>
+                                            }
                                             <li><a class="dropdown-item" asp-controller="Account" asp-action="Index">Đơn mua</a></li>
                                             <li><a class="dropdown-item" asp-controller="Account" asp-action="Logout">Đăng xuất</a></li>
                                         </ul>

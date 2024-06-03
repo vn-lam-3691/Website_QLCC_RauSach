@@ -1,0 +1,98 @@
+﻿@model IEnumerable<Website_QLCC_RauSach.Models.NhanVienSt>
+
+@{
+    ViewData["Title"] = "Quản lý nhân viên";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<section class="featured spad">
+    <div class="container">
+        <div class="hero-wrap">
+            <div class="container">
+                <div class="row no-gutters slider-text align-items-center justify-content-center">
+                    <div class="col-md-9 ftco-animate text-center">
+                        <h4 class="mb-0 bread">QUẢN LÝ NHÂN VIÊN SIÊU THỊ</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <p>
+            <a class="btn btn-primary" asp-action="AddStaff">Thêm nhân viên mới</a>
+        </p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Mã nhân viên
+                    </th>
+                    <th>
+                        Họ và tên
+                    </th>
+                    <th>
+                        Chức vụ
+                    </th>
+                    <th>
+                        Mã tài khoản
+                    </th>
+                    <th>
+                        Số điện thoại
+                    </th>
+                    <th>
+                        Email
+                    </th>
+                    <th>
+                        Trạng thái
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MaNv)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TenNv)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ChucVu)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MaTk)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MaTkNavigation.Sdt)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MaTkNavigation.Email)
+                        </td>
+                        <td>
+                            @if (item.MaTkNavigation.IsActive == 1)
+                            {
+                                <span class="badge badge-success">Đang làm việc</span>
+                            }
+                            else
+                            {
+                                <span class="badge badge-danger">Đã nghỉ việc</span>
+                            }
+                        </td>
+                        <td>
+                            <a asp-action="StaffDetail" asp-route-id="@item.MaNv" class="btn btn-primary btn-sm">
+                                Chi tiết
+                            </a>
+                            <form asp-action="Delete" method="post" style="display:inline-block;">
+                                <input type="hidden" name="id" value="@item.MaNv" />
+                                <button type="submit" class="btn btn-danger btn-sm">Xóa</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</section>
+

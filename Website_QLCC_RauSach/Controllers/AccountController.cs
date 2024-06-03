@@ -97,5 +97,118 @@ namespace Website_QLCC_RauSach.Controllers
             HttpContext.Session.Clear();
             return RedirectToAction("Index", "Home");
         }
+
+        public IActionResult StaffManagement()
+        {
+            var maNV = HttpContext.Session.GetString("MaNv");
+
+            var currentSt = _context.NhanVienSts
+                .Include(st => st.MaStNavigation)
+                .Where(st => st.MaNv == maNV)
+                .Select(st => st.MaStNavigation.MaSt)
+                .FirstOrDefault();
+
+            var nhanviens = _context.NhanVienSts
+                .Include(n => n.MaTkNavigation)
+                .Where(n => n.MaSt == currentSt)
+                .ToList();
+
+            return View(nhanviens);
+        }
+
+        public IActionResult AddStaff()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddStaff(NhanVienSt nv, string sdt, string email, string username, string password)
+        {
+            var maNV = HttpContext.Session.GetString("MaNv");
+            var currentSt = _context.NhanVienSts
+                .Include(st => st.MaStNavigation)
+                .Where(st => st.MaNv == maNV)
+                .Select(st => st.MaStNavigation.MaSt)
+                .FirstOrDefault();
+
+
+            using (var transaction = await _context.Database.BeginTransactionAsync())
+            {
+                try
+                {
+                    var taikhoan = new TaiKhoan
+                    {
+                        TenDangNhap = username,
+                        Matkhau = password,
+                        Email = email,
+                        Sdt = sdt,
+                        AnhDaiDien = null,
+                        IsActive = 1,
+                        MaPhanQuyen = 2
+                    };
+                    _context.Add(taikhoan);
+                    await _context.SaveChangesAsync();
+
+
+                    var nhanvienst = new NhanVienSt
+                    {
+                        MaNv = nv.MaNv,
+                        TenNv = nv.TenNv,
+                        ChucVu = nv.ChucVu,
+                        MaSt = currentSt,
+                        MaTk = taikhoan.MaTk
+                    };
+                    _context.Add(nhanvienst);
+                    await _context.SaveChangesAsync();
+
+                    await transaction.CommitAsync();
+                }
+                catch (Exception e)
+                {
+                    await transaction.RollbackAsync();
+                    return RedirectToAction("AddStaff", "Account");
+                }
+            }
+
+
+            return RedirectToAction("StaffManagement", "Account");
+        }
+
+        public async Task<IActionResult> StaffDetail(string id)
+        {
+            var nhanvienst = _context.NhanVienSts
+                .Include(n => n.MaTkNavigation)
+                .Where(n => n.MaNv == id)
+                .FirstOrDefault();
+
+            return View(nhanvienst);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(string id)
+        {
+            var nhanvienst = _context.NhanVienSts
+                .Where(n => n.MaNv == id)
+                .FirstOrDefault();
+
+            if (nhanvienst != null)
+            {
+                _context.NhanVienSts.Remove(nhanvienst);
+                await _context.SaveChangesAsync();
+            }
+
+
+            var taikhoannv = _context.TaiKhoans
+                .Where(tk => tk.MaTk == nhanvienst.MaTk)
+                .FirstOrDefault();
+
+            if (taikhoannv != null)
+            {
+                _context.TaiKhoans.Remove(taikhoannv);
+                await _context.SaveChangesAsync();
+            }
+
+            return RedirectToAction("StaffManagement", "Account");
+        }
     }
 }

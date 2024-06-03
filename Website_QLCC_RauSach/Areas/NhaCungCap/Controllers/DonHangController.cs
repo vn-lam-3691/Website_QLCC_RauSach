@@ -42,7 +42,7 @@ namespace Website_QLCC_RauSach.Areas.NhaCungCap.Controllers
 
 			ViewBag.DsNhanVienNcc = donHangViewModel.GetSelectListItems(await dbContext.NhanVienNccs.ToListAsync());
 
-			return View("~/Areas/NhaCungCap/Views/Home/Index.cshtml", donHangViewModel);
+			return View(donHangViewModel);
 		}
 
 		public async Task<IActionResult> ChiTietDonHang(int id)

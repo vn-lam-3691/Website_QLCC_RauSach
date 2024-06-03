@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Website_QLCC_RauSach.Models.NhanVienNcc>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TenNv)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ChucVu)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaNccNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaTkNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenNv)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ChucVu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaNccNavigation.MaNcc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaTkNavigation.MaTk)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.MaNv">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.MaNv">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.MaNv">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

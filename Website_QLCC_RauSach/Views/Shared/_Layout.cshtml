@@ -77,7 +77,10 @@
                                         <a>@HttpContextAccessor.HttpContext.Session.GetString("TenNv")</a>
                                         <ul>
                                             <li><a class="dropdown-item" href="#">Tài khoản</a></li>
-                                            <li><a class="dropdown-item" asp-controller="QuanLyNvncc" asp-action="Index">Nhân viên</a></li>
+                                            @if (HttpContextAccessor.HttpContext.Session.GetString("ChucVuNvncc").Equals("Quản lý"))
+                                            {
+                                                <li><a class="dropdown-item" asp-controller="QuanLyNvncc" asp-action="Index">Nhân viên</a></li>
+                                            }
                                             <li><a class="dropdown-item" asp-controller="DonHang" asp-action="Index">Đơn mua</a></li>
                                             <li><a class="dropdown-item" asp-controller="Home" asp-action="Logout">Đăng xuất</a></li>
                                         </ul>

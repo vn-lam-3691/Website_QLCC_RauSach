@@ -4,6 +4,11 @@
     ViewData["Title"] = "Quản lý nhân viên";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<style>
+    th, td {
+        text-align: center;
+    }
+</style>
 
 <section class="hero hero-normal">
     <div class="container">
@@ -60,9 +65,10 @@
             </div>
         </div>
         <div class="row featured__filter">
-            <p>
-                <a asp-action="Create">Create New</a>
-            </p>
+                <button type="submit" class="site-btn-add">Thêm nhân viên mới</button>
+            <div class="col d-flex align-items-center justify-content-end">
+                <h5 style="color: #7fad39">@ViewBag.NCC</h5>
+            </div>
             <table class="table">
                 <thead>
                     <tr>
@@ -76,10 +82,10 @@
                             Chức vụ
                         </th>
                         <th>
-                            Nhà cung cấp
+                            Mã tài khoản
                         </th>
                         <th>
-                            Mã tài khoản
+                            Tên đăng nhập
                         </th>
                         <th>
                             Thao tác
@@ -100,15 +106,18 @@
                                 @Html.DisplayFor(modelItem => item.ChucVu)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.MaNccNavigation.TenNcc)
-                            </td>
-                            <td>
                                 @Html.DisplayFor(modelItem => item.MaTkNavigation.MaTk)
                             </td>
                             <td>
-                                <a asp-action="Edit" asp-route-id="@item.MaNv">Edit</a> |
-                                <a asp-action="Details" asp-route-id="@item.MaNv">Details</a> |
-                                <a asp-action="Delete" asp-route-id="@item.MaNv">Delete</a>
+                                @Html.DisplayFor(modelItem => item.MaTkNavigation.TenDangNhap)
+                            </td>
+                            <td>
+                                <button type="submit" class="site-btn-edit">Sửa</button> |
+                                <button type="submit" class="site-btn-detail">Chi tiết</button> |
+                                <button type="submit" class="site-btn-delete">Xóa</button>
+                                @*  <a asp-action="Edit" asp-route-id="@item.MaNv">Edit</a> |
+                            <a asp-action="Details" asp-route-id="@item.MaNv">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@item.MaNv">Delete</a> *@
                             </td>
                         </tr>
                     }

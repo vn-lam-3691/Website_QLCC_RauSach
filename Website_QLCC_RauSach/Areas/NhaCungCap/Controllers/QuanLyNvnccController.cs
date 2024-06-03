@@ -19,6 +19,9 @@ namespace Website_QLCC_RauSach.Areas.NhaCungCap.Controllers
             var maNCC = HttpContext.Session.GetString("MaNcc");
             var nhanVienNccs = await _context.NhanVienNccs.Include(nv => nv.MaTkNavigation)
                             .Where(nv => nv.MaNcc.Equals(maNCC)).ToListAsync();
+
+            ViewBag.NCC = _context.NhaCungCaps.Where(ncc => ncc.MaNcc.Equals(maNCC)).Select(ncc => ncc.TenNcc).FirstOrDefault();
+
             return View(nhanVienNccs);
         }
 

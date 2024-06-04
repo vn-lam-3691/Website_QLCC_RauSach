@@ -81,9 +81,15 @@ namespace Website_QLCC_RauSach.Controllers
                         var tennvncc = _context.NhanVienNccs.FirstOrDefault(x => x.MaTk == user.MaTk).TenNv;
                         HttpContext.Session.SetString("TenNv", tennvncc);
 
+                        var chucvunvncc = _context.NhanVienNccs.FirstOrDefault(x => x.MaTk == user.MaTk).ChucVu;
+                        HttpContext.Session.SetString("ChucVuNvncc", chucvunvncc);
+
+                        var mancc = _context.NhanVienNccs.FirstOrDefault(x => x.MaTk == user.MaTk).MaNcc;
+                        HttpContext.Session.SetString("MaNcc", mancc);
+
                         var maNVNCC = _context.NhanVienNccs.FirstOrDefault(x => x.MaTk == user.MaTk).MaNv;
                         HttpContext.Session.SetString("MaNv", maNVNCC);
-                        return Redirect("/NhaCungCap/DonHang");
+                        return Redirect("/NhaCungCap/Home");
                     default:
                         return RedirectToAction("Index", "Home");
                 }

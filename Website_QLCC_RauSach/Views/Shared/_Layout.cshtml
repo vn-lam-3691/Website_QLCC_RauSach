@@ -71,6 +71,21 @@
                                     </div>
                                     //<a asp-controller="Account" asp-action="Index">@HttpContextAccessor.HttpContext.Session.GetString("TenNv")</a>
                                 }
+                                else if (HttpContextAccessor.HttpContext.Session.GetInt32("MaPhanQuyen") == 3)
+                                {
+                                    <div class="header__top__right__language">
+                                        <a>@HttpContextAccessor.HttpContext.Session.GetString("TenNv")</a>
+                                        <ul>
+                                            <li><a class="dropdown-item" href="#">Tài khoản</a></li>
+                                            @if (HttpContextAccessor.HttpContext.Session.GetString("ChucVuNvncc").Equals("Quản lý"))
+                                            {
+                                                <li><a class="dropdown-item" asp-controller="QuanLyNvncc" asp-action="Index">Nhân viên</a></li>
+                                            }
+                                            <li><a class="dropdown-item" asp-controller="DonHang" asp-action="Index">Đơn mua</a></li>
+                                            <li><a class="dropdown-item" asp-controller="Home" asp-action="Logout">Đăng xuất</a></li>
+                                        </ul>
+                                    </div>
+                                }
                             </div>
                         </div>
                     </div>

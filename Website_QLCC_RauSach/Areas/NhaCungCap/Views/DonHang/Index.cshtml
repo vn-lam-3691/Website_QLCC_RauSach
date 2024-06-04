@@ -1,0 +1,512 @@
+﻿@model DonHangViewModel
+@{
+	ViewData["Title"] = "Quản lý đơn hàng";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+	.custom-hover-navbar:hover {
+		background: #edede9;
+		color: black;
+	}
+
+	.custom-navbar-background {
+		background: #fefae0;
+		color: black;
+		border: 2px solid #e9edc9;
+	}
+
+	.nav-pills .nav-link.active {
+		color: #fff !important;
+		background-color: #80ed99 !important;
+	}
+
+</style>
+
+<section class="hero hero-normal">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-3">
+				<div class="hero__categories">
+					<div class="hero__categories__all">
+						<i class="fa fa-bars"></i>
+						<span>Danh mục</span>
+					</div>
+					<ul>
+						<li><a href="#">Nhóm Rau lá</a></li>
+						<li><a href="#">Nhóm Củ</a></li>
+						<li><a href="#">Nhóm Trái cây</a></li>
+						<li><a href="#">Nhóm Mầm</a></li>
+						<li><a href="#">Nhóm Hoa</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="col-lg-9">
+				<div class="hero__search">
+					<div class="hero__search__form">
+						<form action="Search">
+							<div class="hero__search__categories">
+								Tất cả
+								<span class="arrow_carrot-down"></span>
+							</div>
+							<input type="text" placeholder="Bạn muốn tìm kiếm gì?">
+							<button type="submit" class="site-btn">SEARCH</button>
+						</form>
+					</div>
+					<div class="hero__search__phone">
+						<div class="hero__search__phone__icon">
+							<i class="fa fa-phone"></i>
+						</div>
+						<div class="hero__search__phone__text">
+							<h5>0987654321</h5>
+							<span>Hỗ trợ 24/7</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="featured spad">
+	<div class="container">
+		<div class="hero-wrap">
+			<div class="container">
+				<div class="row no-gutters slider-text align-items-center justify-content-center">
+					<div class="col-md-9 ftco-animate text-center">
+						<p class="breadcrumbs"></p>
+						<h1 style="font-size:38px; font-weight: 800px;">DANH SÁCH ĐƠN HÀNG</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<section class="ftco-section">
+			<div class="container">
+				<div class="row mt-5">
+					<div class="col-md-12 nav-link-wrap px-4 py-6">
+						<div class="nav nav-pills d-flex text-center" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+							<a class="nav-link nav-link-t ftco-animate active flex-fill mr-lg-1 btn custom-hover-navbar custom-navbar-background" id="v-pills-1-tab" data-toggle="pill"
+							   href="#v-pills-1" role="tab" aria-controls="v-pills-1" aria-selected="true"
+							   style="font-size: 20px;">Tất cả</a>
+
+							<a class="nav-link nav-link-t ftco-animate flex-fill mr-lg-1 btn  custom-hover-navbar custom-navbar-background" id="v-pills-2-tab" data-toggle="pill"
+							   href="#v-pills-2" role="tab" aria-controls="v-pills-2" aria-selected="false" style="font-size: 20px;">Chờ xác nhận</a>
+
+							<a class="nav-link nav-link-t ftco-animate flex-fill mr-lg-1 btn  custom-hover-navbar custom-navbar-background" id="v-pills-3-tab" data-toggle="pill"
+							   href="#v-pills-3" role="tab" aria-controls="v-pills-3" aria-selected="false" style="font-size: 20px;">Đang xử lý</a>
+
+							<a class="nav-link nav-link-t ftco-animate flex-fill mr-lg-1 btn  custom-hover-navbar custom-navbar-background" id="v-pills-4-tab" data-toggle="pill"
+							   href="#v-pills-4" role="tab" aria-controls="v-pills-4" aria-selected="false" style="font-size: 20px;">Đang vận chuyển</a>
+
+							<a class="nav-link nav-link-t ftco-animate flex-fill btn  custom-hover-navbar custom-navbar-background" id="v-pills-5-tab" data-toggle="pill"
+							   href="#v-pills-5" role="tab" aria-controls="v-pills-5" aria-selected="false" style="font-size: 20px;">Hoàn thành</a>
+
+							<a class="nav-link nav-link-t ftco-animate flex-fill btn  custom-hover-navbar custom-navbar-background" id="v-pills-6-tab" data-toggle="pill"
+							   href="#v-pills-6" role="tab" aria-controls="v-pills-6" aria-selected="false" style="font-size: 20px;">Đã hủy</a>
+						</div>
+					</div>
+					<div class="col-md-12 tab-wrap">
+
+						<div class="tab-content bg-light" id="v-pills-tabContent">
+
+							<!--Tất cả các đơn-->
+							<div class="tab-pane fade show active" id="v-pills-1" role="tabpanel"
+								 aria-labelledby="day-1-tab">
+								<ul class="orders">
+									<!--Một đơn hàng gồm nhiều loại sản phẩm-->
+									<li class="order">
+										<div class="info-order">
+											@{
+												foreach (var donHang in Model.TatCaDonHang)
+												{
+													<div class="border-2 border-black p-4 my-4 position-relative">
+														<div class="flex">
+															<p class="id-order font-normal">Mã đơn hàng:</p>
+															<p>@donHang.MaDh</p>
+														</div>
+														<div class="flex">
+															<p class="id-nvst">Mã NVST:</p>
+															<div>@donHang.MaNvst</div>
+														</div>
+														<div class="flex">
+															<p class="id-nvncc">Mã NVNCC: </p>
+															<div>@donHang.MaNvncc</div>
+														</div>
+														<div class="flex">
+															<p class="od-date">Ngày đặt: </p>
+															<div>@donHang.NgayDat</div>
+														</div>
+														<div class="flex">
+															<p class="deliver-date">Ngày giao hàng: </p>
+															<div>@donHang.NgayGiaoHang</div>
+														</div>
+														<div class="flex">
+															<p class="od-made-date">Thời gian tạo đơn hàng: </p>
+															<div>@donHang.TgtaoDon</div>
+														</div>
+														<div class="flex">
+															<p class="deliver-address">Địa chỉ nhận: </p>
+															<div>@donHang.DiaChiNhan</div>
+														</div>
+														<div class="flex">
+															<p class="payment-method">Hình thức thanh toán: </p>
+															<div>@donHang.HinhThucThanhToan</div>
+														</div>
+														<div class="flex flex-col">
+															<div class="flex">
+																<p class="od-status">Trạng thái đơn hàng: </p>
+																<div>@donHang.TrangThaiDh</div>
+															</div>
+														</div>
+														<div class="btn-danhgia position-absolute bottom-0 right-0" style="display: flex; margin-bottom: 16px; margin-right:20px;">
+															<form asp-action="CapNhatTrangThaiDonHang" asp-route-id="@donHang.MaDh" method="post" class="flex gap-4">
+																@if (donHang.TrangThaiDh == "Chờ xác nhận")
+																{
+																	<input type="hidden" value="@donHang.MaDh" />
+																	<button type="submit" class="btn btn-primary">Xác nhận đơn</button>
+																}
+																else if (donHang.TrangThaiDh == "Đang xử lý")
+																{
+																	<input type="hidden" value="@donHang.MaDh" name="id" />
+
+																	<select class="form-control" name="maNvGh">
+																		<option value="">Chọn nhân viên giao hàng</option>
+																		@foreach (var item in ViewBag.DsNhanVienNcc as SelectList)
+																		{
+																			<option value="@item.Value">@item.Text</option>
+																		}
+																	</select>
+
+																	<button type="submit" class="btn btn-primary">Bắt đầu vận chuyển</button>
+																}
+																else if (donHang.TrangThaiDh == "Đang vận chuyển")
+																{
+																	<a href="#" class="btn btn-primary" style="width:auto; margin-left:12px;">Theo dõi đơn hàng</a>
+																}
+																else if (donHang.TrangThaiDh == "Đã hoàn thành")
+																{
+																	<input type="hidden" value="@donHang.MaDh" />
+																	<button type="submit" class="btn btn-primary">Xuất hóa đơn</button>
+																}
+																else
+																{
+
+																}
+															</form>
+															<a asp-controller="DonHang" asp-action="ChiTietDonHang" asp-route-id="@donHang.MaDh" onclick="document.getElementById('rate-form').style.display='block'" class="btn btn-primary bg-lime-600" style="width:auto; margin-left:12px;">Xem chi tiết</a>
+														</div>
+													</div>
+												}
+											}
+										</div>
+									</li>
+								</ul>
+							</div>
+
+							<!--Các đơn chờ xác nhận-->
+							<div class="tab-pane fade" id="v-pills-2" role="tabpanel" aria-labelledby="v-pills-day-2-tab">
+								<div class="p-4">
+									<ul class="orders">
+										<!--Một đơn hàng gồm nhiều loại sản phẩm-->
+										<li class="order">
+											<div class="info-order">
+												@{
+													foreach (var donHang in Model.ChoXacNhanDonHang)
+													{
+														<div class="border-2 border-black p-4 my-4 position-relative">
+															<div class="flex">
+																<p class="id-order">Mã đơn hàng:</p>
+																<p>@donHang.MaDh</p>
+															</div>
+															<div class="flex">
+																<p class="id-nvst">Mã NVST:</p>
+																<div>@donHang.MaNvst</div>
+															</div>
+															<div class="flex">
+																<p class="id-nvncc">Mã NVNCC: </p>
+																<div>@donHang.MaNvncc</div>
+															</div>
+															<div class="flex">
+																<p class="od-date">Ngày đặt: </p>
+																<div>@donHang.NgayDat</div>
+															</div>
+															<div class="flex">
+																<p class="deliver-date">Ngày giao hàng: </p>
+																<div>@donHang.NgayGiaoHang</div>
+															</div>
+															<div class="flex">
+																<p class="od-made-date">Thời gian tạo đơn hàng: </p>
+																<div>@donHang.TgtaoDon</div>
+															</div>
+															<div class="flex">
+																<p class="deliver-address">Địa chỉ nhận: </p>
+																<div>@donHang.DiaChiNhan</div>
+															</div>
+															<div class="flex">
+																<p class="payment-method">Hình thức thanh toán: </p>
+																<div>@donHang.HinhThucThanhToan</div>
+															</div>
+															<div class="flex">
+																<p class="od-status">Trạng thái đơn hàng: </p>
+																<div>@donHang.TrangThaiDh</div>
+															</div>
+
+															<div class="btn-danhgia position-absolute bottom-0 right-0" style="display: flex; margin-bottom: 16px; margin-right:20px;">
+																<form asp-action="CapNhatTrangThaiDonHang" asp-route-id="@donHang.MaDh" method="post" class="flex gap-4">
+																	<input type="hidden" value="@donHang.MaDh" />
+																	<button type="submit" class="btn btn-primary">Xác nhận đơn</button>
+																</form>
+																<a asp-controller="DonHang" asp-action="ChiTietDonHang" asp-route-id="@donHang.MaDh" onclick="document.getElementById('rate-form').style.display='block'" class="btn btn-primary bg-lime-600" style="width:auto; margin-left:12px;">Xem chi tiết</a>
+															</div>
+														</div>
+													}
+												}
+											</div>
+										</li>
+									</ul>
+								</div>
+							</div>
+
+							<!--Các đơn đang xử lý-->
+							<div class="tab-pane fade" id="v-pills-3" role="tabpanel" aria-labelledby="v-pills-day-3-tab">
+								<div class="p-4">
+									<div class="info-order order">
+										@foreach (var donHang in Model.DangXuLyDonHang)
+										{
+											<div class="border-2 border-black p-4 my-4 position-relative">
+												<div class="flex">
+													<p class="id-order">Mã đơn hàng:</p>
+													<p>@donHang.MaDh</p>
+												</div>
+												<div class="flex">
+													<p class="id-nvst">Mã NVST:</p>
+													<div>@donHang.MaNvst</div>
+												</div>
+												<div class="flex">
+													<p class="id-nvncc">Mã NVNCC: </p>
+													<div>@donHang.MaNvncc</div>
+												</div>
+												<div class="flex">
+													<p class="od-date">Ngày đặt: </p>
+													<div>@donHang.NgayDat</div>
+												</div>
+												<div class="flex">
+													<p class="deliver-date">Ngày giao hàng: </p>
+													<div>@donHang.NgayGiaoHang</div>
+												</div>
+												<div class="flex">
+													<p class="od-made-date">Thời gian tạo đơn hàng: </p>
+													<div>@donHang.TgtaoDon</div>
+												</div>
+												<div class="flex">
+													<p class="deliver-address">Địa chỉ nhận: </p>
+													<div>@donHang.DiaChiNhan</div>
+												</div>
+												<div class="flex">
+													<p class="payment-method">Hình thức thanh toán: </p>
+													<div>@donHang.HinhThucThanhToan</div>
+												</div>
+												<div class="flex">
+													<p class="od-status">Trạng thái đơn hàng: </p>
+													<div>@donHang.TrangThaiDh</div>
+												</div>
+
+												<div class="btn-danhgia position-absolute bottom-0 right-0" style="display: flex; margin-bottom: 16px; margin-right:20px;">
+													<form asp-action="CapNhatTrangThaiDonHang" method="post" class="flex gap-4">
+														<input type="hidden" value="@donHang.MaDh" name="id" />
+
+														<select class="form-control" name="maNvGh">
+															<option value="">Chọn nhân viên giao hàng</option>
+															@foreach (var item in ViewBag.DsNhanVienNcc as SelectList)
+															{
+																<option value="@item.Value">@item.Text</option>
+															}
+														</select>
+
+														<button type="submit" class="btn btn-primary">Bắt đầu vận chuyển</button>
+													</form>
+													<a asp-controller="DonHang" asp-action="ChiTietDonHang" asp-route-id="@donHang.MaDh" onclick="document.getElementById('rate-form').style.display='block'" class="btn btn-primary bg-lime-600" style="width:auto; margin-left:12px;">Xem chi tiết</a>
+												</div>
+											</div>
+										}
+									</div>
+								</div>
+							</div>
+
+							<!--Các đơn đang vận chuyển-->
+							<div class="tab-pane fade" id="v-pills-4" role="tabpanel" aria-labelledby="v-pills-day-4-tab">
+								<div class="p-4">
+									<div class="info-order order">
+										@{
+											foreach (var donHang in Model.DangVanChuyenDonHang)
+											{
+												<div class="border-2 border-black p-4 my-4 position-relative">
+													<div class="flex">
+														<p class="id-order">Mã đơn hàng:</p>
+														<p>@donHang.MaDh</p>
+													</div>
+													<div class="flex">
+														<p class="id-nvst">Mã NVST:</p>
+														<div>@donHang.MaNvst</div>
+													</div>
+													<div class="flex">
+														<p class="id-nvncc">Mã NVNCC: </p>
+														<div>@donHang.MaNvncc</div>
+													</div>
+													<div class="flex">
+														<p class="od-date">Ngày đặt: </p>
+														<div>@donHang.NgayDat</div>
+													</div>
+													<div class="flex">
+														<p class="deliver-date">Ngày giao hàng: </p>
+														<div>@donHang.NgayGiaoHang</div>
+													</div>
+													<div class="flex">
+														<p class="od-made-date">Thời gian tạo đơn hàng: </p>
+														<div>@donHang.TgtaoDon</div>
+													</div>
+													<div class="flex">
+														<p class="deliver-address">Địa chỉ nhận: </p>
+														<div>@donHang.DiaChiNhan</div>
+													</div>
+													<div class="flex">
+														<p class="payment-method">Hình thức thanh toán: </p>
+														<div>@donHang.HinhThucThanhToan</div>
+													</div>
+													<div class="flex">
+														<p class="od-status">Trạng thái đơn hàng: </p>
+														<div>@donHang.TrangThaiDh</div>
+													</div>
+													<div class="btn-danhgia position-absolute bottom-0 right-0" style="display: flex; margin-bottom: 16px; margin-right:20px;">
+														<a href="#" class="btn btn-primary" style="width:auto; margin-left:12px;">Theo dõi đơn hàng</a>
+
+														<a class="btn btn-primary" asp-controller="Bill" asp-action="ExportBill" asp-route-id="@donHang.MaDh" style="width:auto; margin-left:12px;">In hóa đơn</a>
+														<a asp-controller="DonHang" asp-action="ChiTietDonHang" asp-route-id="@donHang.MaDh" onclick="document.getElementById('rate-form').style.display='block'" class="btn btn-primary bg-lime-600" style="width:auto; margin-left:12px;">Xem chi tiết</a>
+													</div>
+												</div>
+											}
+										}
+									</div>
+								</div>
+							</div>
+
+							<!--Các đơn đã hoàn thành-->
+							<div class="tab-pane fade" id="v-pills-5" role="tabpanel" aria-labelledby="v-pills-day-5-tab">
+								<div class="p-4">
+									<div class="info-order order">
+										@{
+											foreach (var donHang in Model.DaHoanThanhDonHang)
+											{
+												<div class="border-2 border-black p-4 my-4 position-relative">
+													<div class="flex">
+														<p class="id-order">Mã đơn hàng:</p>
+														<p>@donHang.MaDh</p>
+													</div>
+													<div class="flex">
+														<p class="id-nvst">Mã NVST:</p>
+														<div>@donHang.MaNvst</div>
+													</div>
+													<div class="flex">
+														<p class="id-nvncc">Mã NVNCC: </p>
+														<div>@donHang.MaNvncc</div>
+													</div>
+													<div class="flex">
+														<p class="od-date">Ngày đặt: </p>
+														<div>@donHang.NgayDat</div>
+													</div>
+													<div class="flex">
+														<p class="deliver-date">Ngày giao hàng: </p>
+														<div>@donHang.NgayGiaoHang</div>
+													</div>
+													<div class="flex">
+														<p class="od-made-date">Thời gian tạo đơn hàng: </p>
+														<div>@donHang.TgtaoDon</div>
+													</div>
+													<div class="flex">
+														<p class="deliver-address">Địa chỉ nhận: </p>
+														<div>@donHang.DiaChiNhan</div>
+													</div>
+													<div class="flex">
+														<p class="payment-method">Hình thức thanh toán: </p>
+														<div>@donHang.HinhThucThanhToan</div>
+													</div>
+													<div class="flex">
+														<p class="od-status">Trạng thái đơn hàng: </p>
+														<div>@donHang.TrangThaiDh</div>
+													</div>
+													<div class="btn-danhgia position-absolute bottom-0 right-0" style="display: flex; margin-bottom: 16px; margin-right:20px;">
+
+														<a class="btn btn-primary" asp-controller="Bill" asp-action="ExportBill" asp-route-id="@donHang.MaDh">In hóa đơn</a>
+														<a asp-controller="DonHang" asp-action="ChiTietDonHang" asp-route-id="@donHang.MaDh" onclick="document.getElementById('rate-form').style.display='block'" class="btn btn-primary bg-lime-600" style="width:auto; margin-left:12px;">Xem chi tiết</a>
+													</div>
+												</div>
+											}
+										}
+									</div>
+								</div>
+							</div>
+
+							<!--Các đơn đã hủy-->
+							<div class="tab-pane fade" id="v-pills-6" role="tabpanel" aria-labelledby="v-pills-day-6-tab">
+								<div class="p-4">
+									<div class="info-order order">
+										@{
+											foreach (var donHang in Model.DaHuyDonHang)
+											{
+												<div class="border-2 border-black p-4 my-4 position-relative">
+													<div class="flex">
+														<p class="id-order">Mã đơn hàng:</p>
+														<p>@donHang.MaDh</p>
+													</div>
+													<div class="flex">
+														<p class="id-nvst">Mã NVST:</p>
+														<div>@donHang.MaNvst</div>
+													</div>
+													<div class="flex">
+														<p class="id-nvncc">Mã NVNCC: </p>
+														<div>@donHang.MaNvncc</div>
+													</div>
+													<div class="flex">
+														<p class="od-date">Ngày đặt: </p>
+														<div>@donHang.NgayDat</div>
+													</div>
+													<div class="flex">
+														<p class="deliver-date">Ngày giao hàng: </p>
+														<div>@donHang.NgayGiaoHang</div>
+													</div>
+													<div class="flex">
+														<p class="od-made-date">Thời gian tạo đơn hàng: </p>
+														<div>@donHang.TgtaoDon</div>
+													</div>
+													<div class="flex">
+														<p class="deliver-address">Địa chỉ nhận: </p>
+														<div>@donHang.DiaChiNhan</div>
+													</div>
+													<div class="flex">
+														<p class="payment-method">Hình thức thanh toán: </p>
+														<div>@donHang.HinhThucThanhToan</div>
+													</div>
+													<div class="flex">
+														<p class="od-status">Trạng thái đơn hàng: </p>
+														<div>@donHang.TrangThaiDh</div>
+													</div>
+													<div class="btn-danhgia position-absolute bottom-0 right-0" style="display: flex; margin-bottom: 16px; margin-right:20px;">
+														<a asp-controller="DonHang" asp-action="ChiTietDonHang" asp-route-id="@donHang.MaDh" onclick="document.getElementById('rate-form').style.display='block'" class="btn btn-primary bg-lime-600" style="width:auto; margin-left:12px;">Xem chi tiết</a>
+													</div>
+												</div>
+											}
+										}
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+</section>

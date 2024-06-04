@@ -1,0 +1,146 @@
+﻿@model IEnumerable<Website_QLCC_RauSach.Models.NhanVienNcc>
+
+@{
+    ViewData["Title"] = "Quản lý nhân viên";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    th, td {
+        text-align: center;
+    }
+</style>
+
+<section class="hero hero-normal">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="hero__categories">
+                    <div class="hero__categories__all">
+                        <i class="fa fa-bars"></i>
+                        <span>Danh mục</span>
+                    </div>
+                    <ul>
+                        <li><a href="#">Nhóm Rau lá</a></li>
+                        <li><a href="#">Nhóm Củ</a></li>
+                        <li><a href="#">Nhóm Trái cây</a></li>
+                        <li><a href="#">Nhóm Mầm</a></li>
+                        <li><a href="#">Nhóm Hoa</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <div class="hero__search">
+                    <div class="hero__search__form">
+                        <form action="Search">
+                            <div class="hero__search__categories">
+                                Tất cả
+                                <span class="arrow_carrot-down"></span>
+                            </div>
+                            <input type="text" placeholder="Bạn muốn tìm kiếm gì?">
+                            <button type="submit" class="site-btn">SEARCH</button>
+                        </form>
+                    </div>
+                    <div class="hero__search__phone">
+                        <div class="hero__search__phone__icon">
+                            <i class="fa fa-phone"></i>
+                        </div>
+                        <div class="hero__search__phone__text">
+                            <h5>0987654321</h5>
+                            <span>Hỗ trợ 24/7</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="featured spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-title">
+                    <h2>Quản lý nhân viên nhà cung cấp</h2>
+                </div>
+            </div>
+        </div>
+        <div class="text-center">
+            <span class="text-danger">@TempData["ErrorMessage"]</span>
+        </div>
+        <div class="row featured__filter">
+            <a type="submit" class="site-btn-add" asp-action="Create">Thêm nhân viên mới</a>
+            <div class="col d-flex align-items-center justify-content-end">
+                <h5 style="color: #7fad39">@ViewBag.NCC</h5>
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            Mã nhân viên
+                        </th>
+                        <th>
+                            Họ và tên
+                        </th>
+                        <th>
+                            Chức vụ
+                        </th>
+                        <th>
+                            Số điện thoại
+                        </th>
+                        <th>
+                            Email
+                        </th>
+                        <th>
+                            Tình trạng
+                        </th>
+                        <th>
+                            Thao tác
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.MaNv)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TenNv)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ChucVu)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.MaTkNavigation.Sdt)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.MaTkNavigation.Email)
+                            </td>
+                            @if (item.MaTkNavigation.IsActive == 1)
+                            {
+                                <td>
+                                    Đang làm việc
+                                </td>
+                            }
+                            else
+                            {
+                                <td>
+                                    Đã nghỉ việc
+                                </td>
+                            }
+                            <td>
+                                <a asp-action="Details" asp-route-id="@item.MaNv" class="btn btn-primary btn-sm">Chi tiết</a> |
+                                <form asp-action="Delete" method="post" style="display:inline-block;">
+                                    <input type="hidden" name="id" value="@item.MaNv" />
+                                    <button type="submit" class="btn btn-danger btn-sm">Xóa</button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+

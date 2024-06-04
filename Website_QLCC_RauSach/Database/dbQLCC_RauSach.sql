@@ -274,21 +274,6 @@ values
 	('MH004', 2, N'Khoai tây hữu cơ', null, N'Kg', 30000, 500, '5 ngày', 1),
 	('MH005', 4, N'Súp lơ xanh hữu cơ', null, N'Bịch', 85000, 400, '4 ngày', 1)
 
-	SET IDENTITY_INSERT [dbo].[HinhAnhMatHang] ON 
-
-INSERT [dbo].[HinhAnhMatHang] ([MaHAMH], [DuongDanHinhAnh], [MaMH]) VALUES (1, N'~/assets/img/myproducts/cai-ngong-1.jpg', N'MH001')
-INSERT [dbo].[HinhAnhMatHang] ([MaHAMH], [DuongDanHinhAnh], [MaMH]) VALUES (2, N'~/assets/img/myproducts/rau-muong-5.jpg', N'MH002')
-INSERT [dbo].[HinhAnhMatHang] ([MaHAMH], [DuongDanHinhAnh], [MaMH]) VALUES (3, N'~/assets/img/myproducts/cua-cai-trang-9.jpg', N'MH003')
-INSERT [dbo].[HinhAnhMatHang] ([MaHAMH], [DuongDanHinhAnh], [MaMH]) VALUES (4, N'~/assets/img/myproducts/khoai-tay-huu-co-7.jpg', N'MH004')
-INSERT [dbo].[HinhAnhMatHang] ([MaHAMH], [DuongDanHinhAnh], [MaMH]) VALUES (5, N'~/assets/img/myproducts/sup-lo-xanh.jpg', N'MH005')
-INSERT [dbo].[HinhAnhMatHang] ([MaHAMH], [DuongDanHinhAnh], [MaMH]) VALUES (6, N'~/assets/img/myproducts/cai-kale-8.jpg', N'MH006')
-INSERT [dbo].[HinhAnhMatHang] ([MaHAMH], [DuongDanHinhAnh], [MaMH]) VALUES (7, N'~/assets/img/myproducts/can-tay-5.jpg', N'MH007')
-INSERT [dbo].[HinhAnhMatHang] ([MaHAMH], [DuongDanHinhAnh], [MaMH]) VALUES (8, N'~/assets/img/myproducts/khoai-lang-mat-6.jpg', N'MH008')
-INSERT [dbo].[HinhAnhMatHang] ([MaHAMH], [DuongDanHinhAnh], [MaMH]) VALUES (9, N'~/assets/img/myproducts/bi-do-3.jpg', N'MH009')
-INSERT [dbo].[HinhAnhMatHang] ([MaHAMH], [DuongDanHinhAnh], [MaMH]) VALUES (10, N'~/assets/img/myproducts/bap-su-tim-8.jpg', N'MH010')
-INSERT [dbo].[HinhAnhMatHang] ([MaHAMH], [DuongDanHinhAnh], [MaMH]) VALUES (11, N'~/assets/img/myproducts/thanh-long-ruot-trang-5.jpg', N'MH011')
-	select * from HinhAnhMatHang
-
 insert into HinhAnhMatHang
 values
 	(null, 'MH001'),

@@ -1,7 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System;
 using Website_QLCC_RauSach.Models;
 
 namespace Website_QLCC_RauSach.Areas.NhaCungCap.Controllers
@@ -87,17 +85,32 @@ namespace Website_QLCC_RauSach.Areas.NhaCungCap.Controllers
         {
             var nvncc = _context.NhanVienNccs.Where(nv => nv.MaNv.Equals(id)).FirstOrDefault();
             if (nvncc != null) {
-                _context.NhanVienNccs.Remove(nvncc);
-                _context.SaveChanges();
-
-                var taikhoan = _context.TaiKhoans.Where(tk => tk.MaTk.Equals(nvncc.MaTk)).FirstOrDefault();
-                if (taikhoan != null)
+                var dh = _context.DonHangs.FirstOrDefault(dh => dh.MaNvncc.Equals(id));
+                if (dh == null)
                 {
-                    _context.TaiKhoans.Remove(taikhoan);
+                    _context.NhanVienNccs.Remove(nvncc);
                     _context.SaveChanges();
+
+                    var taikhoan = _context.TaiKhoans.FirstOrDefault(tk => tk.MaTk.Equals(nvncc.MaTk));
+                    if (taikhoan != null)
+                    {
+                        _context.TaiKhoans.Remove(taikhoan);
+                        _context.SaveChanges();
+                    }
+
+                    var tkNganHang = _context.TknganHangs.FirstOrDefault(tk => tk.MaTk.Equals(nvncc.MaTk));
+                    if (tkNganHang != null)
+                    {
+                        _context.TknganHangs.Remove(tkNganHang);
+                        _context.SaveChanges();
+                    }
+                }
+                else
+                {
+                    TempData["ErrorMessage"] = "Không thể xóa nhân viên đã nhận đơn hàng!";
+                    return RedirectToAction("Index");
                 }
             }
-
             return RedirectToAction("Index");
         }
     }

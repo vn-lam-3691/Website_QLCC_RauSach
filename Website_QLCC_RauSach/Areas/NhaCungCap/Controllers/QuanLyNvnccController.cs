@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System;
 using Website_QLCC_RauSach.Models;
 
 namespace Website_QLCC_RauSach.Areas.NhaCungCap.Controllers
@@ -25,74 +26,79 @@ namespace Website_QLCC_RauSach.Areas.NhaCungCap.Controllers
             return View(nhanVienNccs);
         }
 
-
-        // GET: QuanLyNvnccController/Details/5
-        public ActionResult Details(int id)
+        public async Task<IActionResult> Details(string id)
         {
-            return View();
+            var nhanVienNcc = _context.NhanVienNccs.Include(nv => nv.MaTkNavigation)
+                            .Where(nv => nv.MaNv == id).FirstOrDefault();
+            return View(nhanVienNcc);
         }
 
-        // GET: QuanLyNvnccController/Create
+
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: QuanLyNvnccController/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public async Task<IActionResult> Create(NhanVienNcc nv, string username, string password, string sdt, string email)
         {
-            try
+            var usernameExist = _context.TaiKhoans.FirstOrDefault(tk => tk.TenDangNhap.Equals(username));
+            if (usernameExist == null)
             {
-                return RedirectToAction(nameof(Index));
+                var newTaiKhoan = new TaiKhoan
+                {
+                    TenDangNhap = username,
+                    Matkhau = password,
+                    Email = email,
+                    Sdt = sdt,
+                    IsActive = 1,
+                    MaPhanQuyen = 3
+                };
+                _context.Add(newTaiKhoan);
+                _context.SaveChanges();
+
+                var maNCC = HttpContext.Session.GetString("MaNcc");
+                var currentNCC = _context.NhaCungCaps.Where(ncc => ncc.MaNcc.Equals(maNCC)).Select(ncc => ncc.MaNcc).FirstOrDefault();
+
+                if (currentNCC != null)
+                {
+                    var newNV = new NhanVienNcc
+                    {
+                        MaNv = nv.MaNv,
+                        TenNv = nv.TenNv,
+                        ChucVu = nv.ChucVu,
+                        MaNcc = currentNCC,
+                        MaTk = newTaiKhoan.MaTk
+                    };
+                    _context.Add(newNV);
+                    _context.SaveChanges();
+                }
             }
-            catch
+            else
             {
+                ViewBag.Error = "Tên đăng nhập đã tồn tại!!!";
                 return View();
             }
+            return RedirectToAction("Index");
         }
 
-        // GET: QuanLyNvnccController/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: QuanLyNvnccController/Edit/5
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public async Task<IActionResult> Delete(string id)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
+            var nvncc = _context.NhanVienNccs.Where(nv => nv.MaNv.Equals(id)).FirstOrDefault();
+            if (nvncc != null) {
+                _context.NhanVienNccs.Remove(nvncc);
+                _context.SaveChanges();
 
-        // GET: QuanLyNvnccController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
+                var taikhoan = _context.TaiKhoans.Where(tk => tk.MaTk.Equals(nvncc.MaTk)).FirstOrDefault();
+                if (taikhoan != null)
+                {
+                    _context.TaiKhoans.Remove(taikhoan);
+                    _context.SaveChanges();
+                }
+            }
 
-        // POST: QuanLyNvnccController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            return RedirectToAction("Index");
         }
     }
 }

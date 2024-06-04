@@ -1,0 +1,133 @@
+﻿@model Website_QLCC_RauSach.Models.NhanVienNcc
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    label {
+        margin-left: 50px;
+    }
+
+    .nice-select {
+        width: 100%;
+    }
+</style>
+
+<section class="hero hero-normal">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="hero__categories">
+                    <div class="hero__categories__all">
+                        <i class="fa fa-bars"></i>
+                        <span>Danh mục</span>
+                    </div>
+                    <ul>
+                        <li><a href="#">Nhóm Rau lá</a></li>
+                        <li><a href="#">Nhóm Củ</a></li>
+                        <li><a href="#">Nhóm Trái cây</a></li>
+                        <li><a href="#">Nhóm Mầm</a></li>
+                        <li><a href="#">Nhóm Hoa</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <div class="hero__search">
+                    <div class="hero__search__form">
+                        <form action="Search">
+                            <div class="hero__search__categories">
+                                Tất cả
+                                <span class="arrow_carrot-down"></span>
+                            </div>
+                            <input type="text" placeholder="Bạn muốn tìm kiếm gì?">
+                            <button type="submit" class="site-btn">SEARCH</button>
+                        </form>
+                    </div>
+                    <div class="hero__search__phone">
+                        <div class="hero__search__phone__icon">
+                            <i class="fa fa-phone"></i>
+                        </div>
+                        <div class="hero__search__phone__text">
+                            <h5>0987654321</h5>
+                            <span>Hỗ trợ 24/7</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="featured spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-title">
+                    <h2>Thêm tài khoản nhân viên mới</h2>
+                </div>
+            </div>
+        </div>
+        @*      <div class="row">
+        <div class="col-md-3"> *@
+        <form asp-action="Create" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="row mb-3">
+                <label class="col-sm-3 control-label"> Mã nhân viên</label>
+                <div class="col-md-5">
+                    <input asp-for="MaNv" class="form-control" />
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-sm-3 control-label">Họ và tên</label>
+                <div class="col-md-5">
+                    <input asp-for="TenNv" class="form-control" />
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-sm-3 control-label">Tên đăng nhập</label>
+                <div class="col-md-5">
+                    <input name="username" class="form-control" />
+                    <span name="username" class="text-danger">@ViewBag.Error</span>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-sm-3 control-label">Mật khẩu</label>
+                <div class="col-md-5">
+                    <input type="password" name="password" class="form-control" />
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-sm-3 control-label">Chức vụ</label>
+                <div class="col-md-5">
+                    <select asp-for="ChucVu">
+                        <option value="">-- Chọn chức vụ --</option>
+                        <option value="Quản lý">Quản lý</option>
+                        <option value="Nhân viên">Nhân viên</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-sm-3 control-label">Số điện thoại</label>
+                <div class="col-md-5">
+                    <input name="sdt" class="form-control" />
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-sm-3 control-label">Email</label>
+                <div class="col-md-5">
+                    <input name="email" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group" style="text-align: center;">
+                <input type="submit" value="Thêm mới" class="site-btn-add" />
+            </div>
+
+            <div>
+                <a asp-action="Index" class="btn btn-primary btn-sm">Về trang quản lý</a>
+            </div>
+        </form>
+    </div>
+</section>
+
+

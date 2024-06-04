@@ -193,39 +193,6 @@ ol {
 	border-radius: 5px;
 }
 
-.site-btn-edit {
-	font-size: 14px;
-	color: #ffffff;
-	display: inline-block;
-	padding: 5x 10px;
-	background: #5586cf;
-	border: none;
-	margin-bottom: 10px;
-	border-radius: 5px;
-}
-
-.site-btn-detail {
-	font-size: 14px;
-	color: #ffffff;
-	display: inline-block;
-	padding: 5x 10px;
-	background: #7fad39;
-	border: none;
-	margin-bottom: 10px;
-	border-radius: 5px;
-}
-
-.site-btn-delete {
-	font-size: 14px;
-	color: #ffffff;
-	display: inline-block;
-	padding: 5x 10px;
-	background: #ff2a2a;
-	border: none;
-	margin-bottom: 10px;
-	border-radius: 5px;
-}
-
 /* Preloder */
 
 #preloder {

@@ -65,7 +65,7 @@
             </div>
         </div>
         <div class="row featured__filter">
-                <button type="submit" class="site-btn-add">Thêm nhân viên mới</button>
+            <a type="submit" class="site-btn-add" asp-action="Create">Thêm nhân viên mới</a>
             <div class="col d-flex align-items-center justify-content-end">
                 <h5 style="color: #7fad39">@ViewBag.NCC</h5>
             </div>
@@ -76,16 +76,19 @@
                             Mã nhân viên
                         </th>
                         <th>
-                            Tên nhân viên
+                            Họ và tên
                         </th>
                         <th>
                             Chức vụ
                         </th>
                         <th>
-                            Mã tài khoản
+                            Số điện thoại
                         </th>
                         <th>
-                            Tên đăng nhập
+                            Email
+                        </th>
+                        <th>
+                            Tình trạng
                         </th>
                         <th>
                             Thao tác
@@ -106,18 +109,29 @@
                                 @Html.DisplayFor(modelItem => item.ChucVu)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.MaTkNavigation.MaTk)
+                                @Html.DisplayFor(modelItem => item.MaTkNavigation.Sdt)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.MaTkNavigation.TenDangNhap)
+                                @Html.DisplayFor(modelItem => item.MaTkNavigation.Email)
                             </td>
+                            @if (item.MaTkNavigation.IsActive == 1)
+                            {
+                                <td>
+                                    Đang làm việc
+                                </td>
+                            }
+                            else
+                            {
+                                <td>
+                                    Đã nghỉ việc
+                                </td>
+                            }
                             <td>
-                                <button type="submit" class="site-btn-edit">Sửa</button> |
-                                <button type="submit" class="site-btn-detail">Chi tiết</button> |
-                                <button type="submit" class="site-btn-delete">Xóa</button>
-                                @*  <a asp-action="Edit" asp-route-id="@item.MaNv">Edit</a> |
-                            <a asp-action="Details" asp-route-id="@item.MaNv">Details</a> |
-                            <a asp-action="Delete" asp-route-id="@item.MaNv">Delete</a> *@
+                                <a asp-action="Details" asp-route-id="@item.MaNv" class="btn btn-primary btn-sm">Chi tiết</a> |
+                                <form asp-action="Delete" method="post" style="display:inline-block;">
+                                    <input type="hidden" name="id" value="@item.MaNv" />
+                                    <button type="submit" class="btn btn-danger btn-sm">Xóa</button>
+                                </form>
                             </td>
                         </tr>
                     }

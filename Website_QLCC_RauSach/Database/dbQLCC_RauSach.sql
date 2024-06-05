@@ -212,11 +212,11 @@ values
 
 insert into SieuThi
 values
-	('ST001', N'Win Mart'),
-	('ST002', N'Vita Mart'),
-	('ST003', N'BB Mini Mart'),
-	('ST004', N'DMart'),
-	('ST005', N'The 1971 Mini Mart')
+	('ST001', '123456789', N'Win Mart'),
+	('ST002', '987654321', N'Vita Mart'),
+	('ST003', '123123123', N'BB Mini Mart'),
+	('ST004', '321321321', N'DMart'),
+	('ST005', '456456456', N'The 1971 Mini Mart')
 
 set dateformat dmy;
 insert into NhaCungCap

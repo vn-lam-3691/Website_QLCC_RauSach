@@ -6,6 +6,7 @@ namespace Website_QLCC_RauSach.Models;
 public partial class SieuThi
 {
     public string MaSt { get; set; } = null!;
+    public string MaSoThueSt { get; set; } = null!;
 
     public string TenSt { get; set; } = null!;
 

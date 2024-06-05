@@ -61,12 +61,16 @@ namespace Website_QLCC_RauSach.Areas.NhaCungCap.Controllers
 						column.Item().Text($"Thời gian tạo hóa đơn:     {DateTime.Now.ToString("HH:mm dd-MM-yyyy")}");
 						column.Item().Text($"Ngày giao hàng:     {DateTime.Now.ToString("dd-MM-yyyy")}");
 
+						column.Item().Text($"\nSiêu thị:     {donHang.order2.TenSt}");
 						column.Item().Text($"Người đặt hàng:     {donHang.order2.TenNvst}");
+						column.Item().Text($"Mã số thuế:	 {donHang.order2.MaSoThueSt}");
+						column.Item().Text($"\nNhà cung cấp:     {donHang.order2.TenNcc}");
 						column.Item().Text($"Nhân viên bán hàng:      {donHang.order2.TenNvncc}");
-						column.Item().Text($"Nhân viên giao hàng:      {donHang.NhanVienGiaoHang}");
+						column.Item().Text($"Mã số thuế:	 {donHang.order2.MaSoThue}");
+						column.Item().Text($"\nNhân viên giao hàng:      {donHang.NhanVienGiaoHang}");
 						column.Item().Text($"Địa chỉ giao hàng:    {donHang.order1.Diachinhan}");
 
-						column.Item().Text("Danh sách mặt hàng:").Bold();
+						column.Item().Text("\n Danh sách mặt hàng:").Bold();
 
 						column.Item().Table(table =>
 						{
@@ -96,7 +100,7 @@ namespace Website_QLCC_RauSach.Areas.NhaCungCap.Controllers
 						{
 							row.RelativeColumn().Column(col =>
 							{
-								col.Item().Text($"Tổng thanh toán:            {donHang.order1.Tongtien:N0}"+" VND").Bold();
+								col.Item().Text($"\nTổng thanh toán:            {donHang.order1.Tongtien:N0}"+" VND").Bold();
 								col.Item().Text($"Hình thức thanh toán:     {donHang.order1.Pttt}");
 								if (!donHang.order1.Ghichu.IsNullOrEmpty())
 								{
@@ -110,8 +114,8 @@ namespace Website_QLCC_RauSach.Areas.NhaCungCap.Controllers
 
 						column.Item().Row(row =>
 						{
-							row.RelativeColumn().AlignLeft().Text("Nhân viên siêu thị (ký)");
-							row.RelativeColumn().AlignRight().Text("Nhân viên giao hàng (ký)");
+							row.RelativeColumn().AlignLeft().Text("\n Nhân viên siêu thị \n(Ký, ghi rõ họ,tên)");
+							row.RelativeColumn().AlignRight().Text("\n Nhân viên giao hàng \n (Ký, ghi rõ họ,tên)");
 						});
 					});
 				});

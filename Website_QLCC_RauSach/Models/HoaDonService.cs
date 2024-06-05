@@ -33,11 +33,17 @@ namespace Website_QLCC_RauSach.Models
 			var q2 = from dh in _context.DonHangs
 					 join nvncc in _context.NhanVienNccs on dh.MaNvncc equals nvncc.MaNv
 					 join nvst in _context.NhanVienSts on dh.MaNvst equals nvst.MaNv
+					 join st in _context.SieuThis on nvst.MaSt equals st.MaSt
+					 join ncc in _context.NhaCungCaps on nvncc.MaNcc equals ncc.MaNcc
 					 where dh.MaDh == maDh
 					 select new Order2
 					 {
 						 TenNvst = nvst.TenNv,
-						 TenNvncc = nvncc.TenNv
+						 TenNvncc = nvncc.TenNv,
+						 TenSt = st.TenSt,
+						 TenNcc = ncc.TenNcc,
+						 MaSoThue = ncc.MaSoThue,
+						 MaSoThueSt = st.MaSoThueSt
 					 };
 			ttOrder.order2 = q2.FirstOrDefault();
 
@@ -82,6 +88,10 @@ namespace Website_QLCC_RauSach.Models
 	{
 		public string TenNvst { get; set; }
 		public string TenNvncc { get; set; }
+		public string TenSt { get; set; }
+		public string TenNcc { get; set; }
+		public string MaSoThueSt { get; set; }
+		public string MaSoThue { get; set; }
 	}
 
 	public class Orders
